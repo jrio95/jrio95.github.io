@@ -59,6 +59,16 @@ harían de inciso, la frase se parte en dos o se resuelve con comas.
 
 El tono es de primera persona y a ras de suelo. Nada de lemas ni de manifiesto.
 
+## Dónde está servida
+
+Ahora mismo en Railway, en el proyecto `jrio-dev`, servicio `web`:
+`https://web-production-2a891.up.railway.app`. Se redespliega sola con cada
+push a la rama conectada.
+
+El `Dockerfile` existe sólo para eso: Railway necesita un proceso escuchando
+en un puerto y ahí va Caddy en modo `file-server`. GitHub Pages no lo mira, y
+para desarrollar tampoco hace falta.
+
 ## Dominio
 
 Ahora mismo se sirve en `jrio95.github.io`. Cuando `jrio.dev` esté comprado:
