@@ -319,9 +319,11 @@ h1, h2 {
   font-weight: 400;
 }
 
+/* auto-fit y no un número fijo de columnas: al quitar o añadir una casilla la
+ * fila se recoloca sola, sin dejar un hueco. */
 .rejilla {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1px;
   background: var(--borde);
   border: 1px solid var(--borde);
@@ -423,6 +425,13 @@ h1, h2 {
 .etiqueta--suelta { border-style: dashed; }
 
 .recuento { padding-top: 26px; }
+
+.vacio {
+  margin: 0;
+  padding: 40px 0 0;
+  color: var(--apagado);
+}
+.vacio[hidden] { display: none; }
 
 /* ---------- Sobre y contacto ---------- */
 

@@ -29,13 +29,16 @@ etiquetas, las ondas del fondo y una de cada seis estrellas.
 --marca: #ff3b30;
 ```
 
-**Los textos** están en `index.html`, tal cual. Todo lo que aparece entre
-corchetes (`[TU CIUDAD]`, `[FECHA]`, `[TUS AFICIONES]`) es un hueco por
-rellenar, no contenido.
+**Los textos** están en `index.html`, tal cual. Ya no queda ningún hueco entre
+corchetes por rellenar.
 
-**Una entrada nueva** en la lista de proyectos se copia de una que ya haya y se
+**Una entrada nueva** en la lista de proyectos se copia de la que ya hay y se
 cambia el `data-tipo`, que es lo que leen los filtros: `proyecto`, `nota` o
-`prueba`. La numeración la recalcula sola el JavaScript al filtrar.
+`prueba`. La numeración la recalcula sola el JavaScript al filtrar, y los
+filtros que no encuentran nada avisan en vez de dejar la lista en blanco.
+
+De momento sólo hay una entrada, la real. No se dejan entradas de ejemplo: una
+lista con un proyecto de verdad y dos maquetas se nota desde fuera.
 
 ## El fondo
 

@@ -51,6 +51,7 @@
   var filtros = document.querySelectorAll('.filtro');
   var entradas = document.querySelectorAll('.entrada');
   var recuento = document.getElementById('recuento');
+  var vacio = document.getElementById('vacio');
 
   function aplicar(tipo) {
     var visibles = 0;
@@ -68,6 +69,9 @@
     }
     if (recuento) {
       recuento.textContent = visibles === 1 ? '1 entrada' : visibles + ' entradas';
+    }
+    if (vacio) {
+      vacio.hidden = visibles > 0;
     }
   }
 
