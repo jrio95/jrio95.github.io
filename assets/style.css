@@ -26,7 +26,7 @@
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   margin: 0;
@@ -39,7 +39,6 @@ body {
   font-size: 17px;
   line-height: 1.62;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -97,7 +96,7 @@ h1, h2 {
 .estrella {
   position: absolute;
   border-radius: 50%;
-  animation: titilar 5.5s ease-in-out infinite;
+  animation: titilar 5.5s ease-in-out infinite, vagar 26s ease-in-out infinite;
 }
 
 @keyframes titilar {
@@ -105,26 +104,71 @@ h1, h2 {
   50%      { opacity: 0.06; }
 }
 
+@keyframes vagar {
+  0%, 100% { transform: translate(0, 0); }
+  25%      { transform: translate(9px, -6px); }
+  50%      { transform: translate(3px, 7px); }
+  75%      { transform: translate(-8px, 2px); }
+}
+
+/* Quien recorta es el div y quien se mueve es el svg de dentro. Si se anima
+ * el div, se lleva consigo su propio recorte: la onda se desliza fuera de la
+ * pantalla y deja media página vacía. */
 .onda { position: absolute; left: 0; right: 0; overflow: hidden; }
-.onda svg { width: 200%; height: 100%; display: block; }
 .onda path { fill: none; }
 
-/* Cada capa recorre exactamente dos ondas completas, así que el bucle cierra
- * sin costura. Al ir a velocidades que no son múltiplos entre sí, las tres
- * nunca vuelven a coincidir. */
-.onda--1 { top: 14%; height: 320px; animation: derivar 88s linear infinite; }
-.onda--2 { top: 20%; height: 260px; animation: derivar 61s linear infinite; }
-.onda--3 { top: 47%; height: 300px; animation: derivar 38s linear infinite; }
-.onda--4 { top: 76%; height: 300px; animation: derivar 61s linear infinite; }
+.onda svg {
+  width: 200%;
+  height: 100%;
+  display: block;
+  will-change: transform;
+  animation: derivar linear infinite;
+}
 
-.onda--1 path { stroke: var(--marca); stroke-width: 1.4; opacity: 0.5; }
-.onda--2 path { stroke: var(--texto); stroke-width: 1; opacity: 0.14; }
-.onda--3 path { stroke: var(--marca); stroke-width: 1.2; opacity: 0.34; }
-.onda--4 path { stroke: var(--texto); stroke-width: 1; opacity: 0.1; }
+/* Cada capa recorre exactamente una onda completa, así que el bucle cierra sin
+ * costura. Al ir a velocidades que no son múltiplos entre sí, las cuatro no
+ * vuelven a coincidir nunca. */
+.onda--1 { top: 12%; height: 320px; }
+.onda--2 { top: 19%; height: 260px; }
+.onda--3 { top: 46%; height: 300px; }
+.onda--4 { top: 74%; height: 300px; }
+
+.onda--1 svg { animation-duration: 26s; }
+.onda--2 svg { animation-duration: 37s; }
+.onda--3 svg { animation-duration: 44s; }
+.onda--4 svg { animation-duration: 61s; }
+
+.onda--1 path { stroke: var(--marca); stroke-width: 1.6; opacity: 0.55; }
+.onda--2 path { stroke: var(--texto); stroke-width: 1.2; opacity: 0.2; }
+.onda--3 path { stroke: var(--marca); stroke-width: 1.4; opacity: 0.42; }
+.onda--4 path { stroke: var(--texto); stroke-width: 1.2; opacity: 0.16; }
 
 @keyframes derivar {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+/* Estrellas fugaces. Casi todo el ciclo lo pasan invisibles: cruzan, se
+ * apagan y esperan. */
+.fugaz {
+  position: absolute;
+  width: 170px;
+  height: 1.5px;
+  border-radius: 1px;
+  opacity: 0;
+  transform: rotate(24deg);
+  animation: cruzar linear infinite;
+}
+
+.fugaz--1 { top: 9%;  left: 3%;  animation-duration: 14s; animation-delay: 2s;  background: linear-gradient(90deg, transparent, var(--texto)); }
+.fugaz--2 { top: 41%; left: 46%; animation-duration: 23s; animation-delay: 9s;  background: linear-gradient(90deg, transparent, var(--marca)); }
+.fugaz--3 { top: 67%; left: 12%; animation-duration: 31s; animation-delay: 17s; background: linear-gradient(90deg, transparent, var(--texto)); }
+
+@keyframes cruzar {
+  0%   { opacity: 0; transform: rotate(24deg) translateX(0); }
+  1.5% { opacity: 0.9; }
+  8%   { opacity: 0; transform: rotate(24deg) translateX(560px); }
+  100% { opacity: 0; transform: rotate(24deg) translateX(560px); }
 }
 
 /* ---------- Barra ---------- */
@@ -457,8 +501,9 @@ h1, h2 {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .estrella, .onda, .desfile__pista, .aparece {
+  .estrella, .onda svg, .fugaz, .desfile__pista, .aparece {
     animation: none !important;
   }
+  .fugaz { display: none; }
   .aparece { opacity: 1; transform: none; }
 }

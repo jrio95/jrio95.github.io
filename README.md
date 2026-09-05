@@ -45,10 +45,17 @@ Las **estrellas** se generan con un generador congruencial de semilla fija en
 lugar de `Math.random`, así que el cielo es idéntico en cada visita y no salta
 al repintar.
 
-Las **ondas** son cuatro líneas del mismo trazo a 38, 61 y 88 segundos. Al no
-ser múltiplos entre sí no vuelven a coincidir nunca. El bucle cierra sin
+Las **ondas** son cuatro líneas del mismo trazo a 26, 37, 44 y 61 segundos. Al
+no ser múltiplos entre sí no vuelven a coincidir nunca. El bucle cierra sin
 costura porque cada `svg` mide el doble que su contenedor y la animación lo
-desplaza un `-50%`, es decir dos periodos completos de la onda.
+desplaza un `-50%`.
+
+Ojo con quién lleva la animación: recorta el `div` y se mueve el `svg` de
+dentro. Animar el `div` lo hace arrastrar su propio recorte, y entonces la
+onda se desliza fuera de la pantalla y deja media página vacía.
+
+Cruzan además tres **estrellas fugaces** cada bastantes segundos. Pasan casi
+todo su ciclo invisibles.
 
 Con `prefers-reduced-motion` no se mueve nada.
 
