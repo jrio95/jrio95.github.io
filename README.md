@@ -42,9 +42,17 @@ antigua por la fecha en que arrancó cada proyecto. No se dejan entradas de
 ejemplo: una lista con un proyecto de verdad y dos maquetas se nota desde
 fuera.
 
-**Los tres repositorios enlazados son privados.** Para quien no sea su dueño,
-esos enlaces dan un 404 de GitHub. O se hacen públicos, o conviene apuntar a
-otro sitio (las dos aplicaciones tienen URL pública en Railway).
+Cada entrada apunta a la **aplicación en vivo**, no al repositorio. Los tres
+repos son privados y un enlace a un repo privado es un 404 para cualquiera que
+no sea su dueño, que es la mitad de quien visita una página personal.
+
+| Proyecto | Enlace |
+|---|---|
+| Chess Coach | `chess-coach-production-5b27.up.railway.app` |
+| bme-fundamentals | `api-production-2a50.up.railway.app` (la landing del servicio) |
+| Divr | `divr.es` |
+
+Si algún repositorio se hace público, ahí se puede volver a enlazar al código.
 
 ## El fondo
 
