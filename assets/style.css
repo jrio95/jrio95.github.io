@@ -216,27 +216,33 @@ h1, h2 {
   margin: 0;
 }
 
-/* El horizonte: el perfil de Salamanca cerrando la portada, a modo de línea
- * de tierra. Se dibuja solo al cargar, una vez. */
+/* El horizonte: el perfil real de Salamanca cerrando la portada.
+ *
+ * Va contenido y no a sangre completa. A todo lo ancho habría que estirarlo
+ * dos veces y media, y una silueta estirada deja de ser reconocible, que es
+ * justo lo único que este dibujo tiene que conseguir. */
 .horizonte {
   position: relative;
   z-index: 1;
   line-height: 0;
-  margin-top: -28px;
+  max-width: 680px;
+  margin: -8px auto 0;
+  padding: 0 24px;
 }
-.horizonte svg { display: block; width: 100%; height: 160px; }
+.horizonte svg { display: block; width: 100%; height: auto; }
 .horizonte path {
   fill: none;
   stroke: var(--melocoton);
-  stroke-width: 1.6;
+  stroke-width: 3;
   stroke-linejoin: round;
   stroke-linecap: round;
-  opacity: 0.6;
+  opacity: 0.75;
+  vector-effect: non-scaling-stroke;
   /* El guion es más largo que el trazo entero, así que el recorrido completo
    * cabe en uno solo y el desfase lo va destapando. */
-  stroke-dasharray: 4000;
-  stroke-dashoffset: 4000;
-  animation: trazar 2.8s cubic-bezier(0.4, 0, 0.2, 1) 0.35s forwards;
+  stroke-dasharray: 2856;
+  stroke-dashoffset: 2856;
+  animation: trazar 3.2s cubic-bezier(0.4, 0, 0.2, 1) 0.35s forwards;
 }
 
 @keyframes trazar {
@@ -538,7 +544,6 @@ h1, h2 {
   .portada__caja { padding-top: 64px; padding-bottom: 76px; gap: 22px; }
   .seccion { padding-top: 68px; }
   .panel { padding: 40px 26px; }
-  .horizonte svg { height: 110px; }
   .halo { filter: blur(80px); opacity: 0.13; }
 }
 
