@@ -207,33 +207,40 @@ h1, h2 {
   max-width: 900px;
 }
 
-.saludo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  align-self: flex-start;
-  background: var(--tarjeta);
-  border: 1px solid var(--borde);
-  border-radius: 999px;
-  padding: 9px 18px 9px 14px;
-  font-size: 15px;
-  color: var(--tenue);
+.lugar {
+  font-family: var(--teclado);
+  font-size: 13px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--melocoton);
+  margin: 0;
 }
-.saludo b { color: var(--texto); font-weight: 600; }
 
-.mano {
-  display: inline-block;
-  font-size: 17px;
-  transform-origin: 70% 70%;
-  animation: saludar 3.4s ease-in-out infinite;
+/* El horizonte: el perfil de Salamanca cerrando la portada, a modo de línea
+ * de tierra. Se dibuja solo al cargar, una vez. */
+.horizonte {
+  position: relative;
+  z-index: 1;
+  line-height: 0;
+  margin-top: -28px;
 }
-@keyframes saludar {
-  0%, 60%, 100% { transform: rotate(0deg); }
-  65% { transform: rotate(16deg); }
-  70% { transform: rotate(-10deg); }
-  75% { transform: rotate(16deg); }
-  80% { transform: rotate(-6deg); }
-  85% { transform: rotate(10deg); }
+.horizonte svg { display: block; width: 100%; height: 160px; }
+.horizonte path {
+  fill: none;
+  stroke: var(--melocoton);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  opacity: 0.6;
+  /* El guion es más largo que el trazo entero, así que el recorrido completo
+   * cabe en uno solo y el desfase lo va destapando. */
+  stroke-dasharray: 4000;
+  stroke-dashoffset: 4000;
+  animation: trazar 2.8s cubic-bezier(0.4, 0, 0.2, 1) 0.35s forwards;
+}
+
+@keyframes trazar {
+  to { stroke-dashoffset: 0; }
 }
 
 .titular { font-size: clamp(44px, 7vw, 84px); line-height: 1.02; }
@@ -531,6 +538,7 @@ h1, h2 {
   .portada__caja { padding-top: 64px; padding-bottom: 76px; gap: 22px; }
   .seccion { padding-top: 68px; }
   .panel { padding: 40px 26px; }
+  .horizonte svg { height: 110px; }
   .halo { filter: blur(80px); opacity: 0.13; }
 }
 
@@ -552,6 +560,7 @@ h1, h2 {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .malla, .halo, .mano, .desfile__pista, .aparece { animation: none !important; }
+  .malla, .halo, .desfile__pista, .aparece { animation: none !important; }
+  .horizonte path { animation: none !important; stroke-dashoffset: 0; }
   .aparece { opacity: 1; transform: none; }
 }

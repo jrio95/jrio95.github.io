@@ -64,6 +64,17 @@ no sea su dueño, que es la mitad de quien visita una página personal.
 
 Si algún repositorio se hace público, ahí se puede volver a enlazar al código.
 
+## El horizonte
+
+Bajo la portada hay un perfil de Salamanca dibujado a mano en SVG: las torres,
+la cúpula y las cubiertas, en trazo y sin relleno. No es una imagen ni un
+icono suelto pegado en una esquina, es la línea de tierra sobre la que se
+apoya el resto de la página.
+
+Se dibuja solo al cargar, una vez, con el truco de `stroke-dasharray`: el
+guion se declara más largo que el trazo entero, así que el recorrido completo
+cabe en uno solo y animar el desfase lo va destapando de izquierda a derecha.
+
 ## El fondo
 
 Textura, no dibujos. Cualquier figura reconocible ahí detrás se come al
