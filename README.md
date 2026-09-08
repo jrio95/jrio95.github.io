@@ -11,8 +11,8 @@ trabajar en ella basta con editar el fichero y recargar.
 ```
 index.html        La página entera
 404.html          Página de error
-assets/style.css  Todo el diseño
-assets/app.js     Estrellas del fondo y filtros de la lista
+assets/style.css  Todo el diseño, fondo incluido
+assets/app.js     Los filtros de la lista, y nada más
 ```
 
 Lo único que se descarga de fuera son las dos tipografías de Google Fonts.
@@ -66,19 +66,18 @@ Si algún repositorio se hace público, ahí se puede volver a enlazar al códig
 
 ## El fondo
 
-Es lo único que se mueve; el contenido se queda quieto encima.
+Textura, no dibujos. Cualquier figura reconocible ahí detrás se come al
+contenido y baja la edad de la página.
 
-Son **formas geométricas** grandes y muy transparentes (círculos, pastillas y
-cuadrados redondeados) flotando despacio, más dos manchas de luz desenfocadas
-que dan profundidad. Cada forma tiene su tamaño, su color, su duración y su
-retardo, y el retardo es **negativo**: así cada una arranca en un punto
-distinto del ciclo y no se mueven todas a la vez al cargar la página.
+Son tres capas de CSS, sin una línea de JavaScript:
 
-Las siembra `assets/app.js` con un generador congruencial de semilla fija en
-lugar de `Math.random`, para que el fondo sea idéntico en cada visita.
+- Una **retícula de puntos** que deriva muy despacio. Se desplaza exactamente
+  una celda (34 px), así que el bucle cierra sin costura.
+- Dos **manchas de luz** desenfocadas que respiran a 34 y 47 segundos. Al no
+  ser múltiplos, no vuelven a coincidir.
+- Una capa de **grano** fino, que quita el aspecto plano de un fondo liso.
 
-Con `prefers-reduced-motion` no se mueve nada, y se siembran la mitad de
-formas.
+Con `prefers-reduced-motion` no se mueve nada.
 
 ## Reglas de escritura
 

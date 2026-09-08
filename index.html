@@ -18,9 +18,13 @@
 <a class="saltar" href="#contenido">Saltar al contenido</a>
 
 <div class="fondo" aria-hidden="true">
+  <div class="malla"></div>
   <div class="halo halo--1"></div>
   <div class="halo halo--2"></div>
-  <div id="formas"></div>
+  <svg class="grano" width="100%" height="100%" focusable="false">
+    <filter id="grano-filtro"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"></feTurbulence></filter>
+    <rect width="100%" height="100%" filter="url(#grano-filtro)"></rect>
+  </svg>
 </div>
 
 <header class="barra">

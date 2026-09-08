@@ -98,7 +98,12 @@ h1, h2 {
 }
 .rotulo--marca { color: var(--melocoton); }
 
-/* ---------- Fondo: formas flotando ---------- */
+/* ---------- Fondo ----------
+ *
+ * Tres capas y ninguna llamativa: una retícula de puntos que deriva, dos
+ * manchas de luz que respiran muy despacio y una capa de grano. La idea es
+ * que el fondo tenga textura y no dibujos: cualquier figura reconocible ahí
+ * detrás se come al contenido y baja la edad de la página. */
 
 .fondo {
   position: absolute;
@@ -108,36 +113,54 @@ h1, h2 {
   z-index: 0;
 }
 
-/* Las formas las siembra assets/app.js con semilla fija. Cada una flota por su
- * cuenta, a su ritmo y en su dirección, así que el conjunto nunca repite el
- * mismo cuadro. */
-.forma {
+/* La retícula se desplaza exactamente una celda, así que el bucle cierra sin
+ * costura y no hace falta pintar nada extra. */
+.malla {
   position: absolute;
-  opacity: 0.16;
-  animation: flotar linear infinite;
-}
-.forma--circulo { border-radius: 50%; }
-.forma--pastilla { border-radius: 999px; }
-.forma--cuadrado { border-radius: 22%; }
-
-@keyframes flotar {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  25%  { transform: translate(26px, -34px) rotate(70deg); }
-  50%  { transform: translate(-18px, -58px) rotate(150deg); }
-  75%  { transform: translate(-38px, -22px) rotate(250deg); }
-  100% { transform: translate(0, 0) rotate(360deg); }
+  inset: -6%;
+  background-image: radial-gradient(circle at 1px 1px, rgba(179, 156, 245, 0.16) 1px, transparent 0);
+  background-size: 34px 34px;
+  animation: derivar-malla 120s linear infinite;
 }
 
-/* Dos manchas de luz suaves que dan profundidad sin ser un degradado sobre el
- * contenido. */
+@keyframes derivar-malla {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(34px, 34px); }
+}
+
 .halo {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.2;
+  filter: blur(110px);
+  opacity: 0.16;
+  animation: respirar ease-in-out infinite;
 }
-.halo--1 { top: -180px; left: -140px; width: 620px; height: 620px; background: var(--lila); }
-.halo--2 { top: 46%; right: -220px; width: 560px; height: 560px; background: var(--melocoton); }
+.halo--1 {
+  top: -220px; left: -180px;
+  width: 680px; height: 680px;
+  background: var(--lila);
+  animation-duration: 34s;
+}
+.halo--2 {
+  top: 44%; right: -260px;
+  width: 600px; height: 600px;
+  background: var(--melocoton);
+  animation-duration: 47s;
+  animation-delay: -12s;
+}
+
+@keyframes respirar {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(30px, -40px) scale(1.12); }
+}
+
+/* Grano fino: quita el aspecto plano de un fondo liso sin dibujar nada. */
+.grano {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
 
 /* ---------- Barra ---------- */
 
@@ -508,7 +531,7 @@ h1, h2 {
   .portada__caja { padding-top: 64px; padding-bottom: 76px; gap: 22px; }
   .seccion { padding-top: 68px; }
   .panel { padding: 40px 26px; }
-  .halo { display: none; }
+  .halo { filter: blur(80px); opacity: 0.13; }
 }
 
 @media (max-width: 620px) {
@@ -529,6 +552,6 @@ h1, h2 {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .forma, .mano, .desfile__pista, .aparece { animation: none !important; }
+  .malla, .halo, .mano, .desfile__pista, .aparece { animation: none !important; }
   .aparece { opacity: 1; transform: none; }
 }
