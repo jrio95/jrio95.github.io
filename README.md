@@ -37,8 +37,14 @@ cambia el `data-tipo`, que es lo que leen los filtros: `proyecto`, `nota` o
 `prueba`. La numeración la recalcula sola el JavaScript al filtrar, y los
 filtros que no encuentran nada avisan en vez de dejar la lista en blanco.
 
-De momento sólo hay una entrada, la real. No se dejan entradas de ejemplo: una
-lista con un proyecto de verdad y dos maquetas se nota desde fuera.
+Hay tres entradas, las tres reales, ordenadas de la más reciente a la más
+antigua por la fecha en que arrancó cada proyecto. No se dejan entradas de
+ejemplo: una lista con un proyecto de verdad y dos maquetas se nota desde
+fuera.
+
+**Los tres repositorios enlazados son privados.** Para quien no sea su dueño,
+esos enlaces dan un 404 de GitHub. O se hacen públicos, o conviene apuntar a
+otro sitio (las dos aplicaciones tienen URL pública en Railway).
 
 ## El fondo
 
