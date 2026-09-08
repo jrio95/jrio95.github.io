@@ -20,22 +20,32 @@ Lo único que se descarga de fuera son las dos tipografías de Google Fonts.
 ## Cambiar cosas
 
 **Los colores** están todos juntos al principio de `assets/style.css`, en el
-bloque `:root`. Cambiar `--marca` repinta el sitio entero: titulares, botones,
-etiquetas, las ondas del fondo y una de cada seis estrellas.
+bloque `:root`. Son tres acentos planos sobre un fondo ciruela, y cambiar
+cualquiera repinta el sitio entero: titulares, botones, etiquetas y las formas
+que flotan de fondo.
 
 ```css
---fondo: #08070c;
---texto: #ece9f2;
---marca: #ff3b30;
+--fondo:     #1b1726;   /* ciruela oscuro, no negro */
+--tarjeta:   #241f33;
+--texto:     #f3eee8;   /* crema, no blanco */
+
+--melocoton: #ff9e7d;   /* el acento de marca */
+--menta:     #6fe0b0;
+--lila:      #b39cf5;
 ```
+
+El texto sobre los botones de melocotón va en el color del fondo y no en
+blanco: así da 8,7:1 de contraste, mientras que en blanco se quedaría en
+2,0:1.
 
 **Los textos** están en `index.html`, tal cual. Ya no queda ningún hueco entre
 corchetes por rellenar.
 
 **Una entrada nueva** en la lista de proyectos se copia de la que ya hay y se
 cambia el `data-tipo`, que es lo que leen los filtros: `proyecto`, `nota` o
-`prueba`. La numeración la recalcula sola el JavaScript al filtrar, y los
-filtros que no encuentran nada avisan en vez de dejar la lista en blanco.
+`prueba`. Cada tarjeta lleva su color de etiqueta (`etiqueta--melocoton`,
+`--menta`, `--lila`), y los filtros que no encuentran nada avisan en vez de
+dejar la lista en blanco.
 
 Hay tres entradas, las tres reales, ordenadas de la más reciente a la más
 antigua por la fecha en que arrancó cada proyecto. No se dejan entradas de
@@ -56,25 +66,19 @@ Si algún repositorio se hace público, ahí se puede volver a enlazar al códig
 
 ## El fondo
 
-Es lo único que se mueve; el contenido se queda quieto.
+Es lo único que se mueve; el contenido se queda quieto encima.
 
-Las **estrellas** se generan con un generador congruencial de semilla fija en
-lugar de `Math.random`, así que el cielo es idéntico en cada visita y no salta
-al repintar.
+Son **formas geométricas** grandes y muy transparentes (círculos, pastillas y
+cuadrados redondeados) flotando despacio, más dos manchas de luz desenfocadas
+que dan profundidad. Cada forma tiene su tamaño, su color, su duración y su
+retardo, y el retardo es **negativo**: así cada una arranca en un punto
+distinto del ciclo y no se mueven todas a la vez al cargar la página.
 
-Las **ondas** son cuatro líneas del mismo trazo a 26, 37, 44 y 61 segundos. Al
-no ser múltiplos entre sí no vuelven a coincidir nunca. El bucle cierra sin
-costura porque cada `svg` mide el doble que su contenedor y la animación lo
-desplaza un `-50%`.
+Las siembra `assets/app.js` con un generador congruencial de semilla fija en
+lugar de `Math.random`, para que el fondo sea idéntico en cada visita.
 
-Ojo con quién lleva la animación: recorta el `div` y se mueve el `svg` de
-dentro. Animar el `div` lo hace arrastrar su propio recorte, y entonces la
-onda se desliza fuera de la pantalla y deja media página vacía.
-
-Cruzan además tres **estrellas fugaces** cada bastantes segundos. Pasan casi
-todo su ciclo invisibles.
-
-Con `prefers-reduced-motion` no se mueve nada.
+Con `prefers-reduced-motion` no se mueve nada, y se siembran la mitad de
+formas.
 
 ## Reglas de escritura
 

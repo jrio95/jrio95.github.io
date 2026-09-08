@@ -1,50 +1,56 @@
-/* Dos cosas y ninguna imprescindible: sembrar el cielo y filtrar la lista.
- * Sin JavaScript la página se lee entera igual, sólo que sin estrellas. */
+/* Dos cosas y ninguna imprescindible: sembrar las formas del fondo y filtrar
+ * la lista. Sin JavaScript la página se lee entera igual, sólo que con el
+ * fondo quieto. */
 (function () {
   'use strict';
 
   var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- Estrellas ----
-   * Semilla fija en vez de Math.random: así el cielo es el mismo en cada
-   * visita y no salta al repintar. */
-  function sembrar(cielo, cuantas) {
-    var semilla = 20260904;
+  /* ---- Formas del fondo ----
+   * Semilla fija en vez de Math.random: así el fondo es el mismo en cada
+   * visita y no cambia de sitio al repintar. */
+  function sembrar(caja, cuantas) {
+    var semilla = 20260908;
     function azar() {
       semilla = (semilla * 1664525 + 1013904223) % 4294967296;
       return semilla / 4294967296;
     }
 
+    var colores = ['var(--melocoton)', 'var(--menta)', 'var(--lila)'];
+    var formas = ['forma--circulo', 'forma--pastilla', 'forma--cuadrado'];
+
     var trozos = document.createDocumentFragment();
     for (var i = 0; i < cuantas; i++) {
       var x = azar() * 100;
       var y = azar() * 100;
-      var t = azar();
-      var tam = t < 0.74 ? 1 : (t < 0.94 ? 1.6 : 2.4);
-      var opacidad = 0.16 + azar() * 0.46;
-      var retardo = azar() * 6;
-      var roja = azar() < 0.16;
+      var lado = 40 + azar() * 130;
+      var esPastilla = azar() < 0.3;
+      var forma = formas[Math.floor(azar() * formas.length)];
+      var color = colores[Math.floor(azar() * colores.length)];
+      var duracion = 26 + azar() * 34;
+      var retardo = -azar() * 40;
 
-      var estrella = document.createElement('span');
-      estrella.className = 'estrella';
-      estrella.style.left = x.toFixed(2) + '%';
-      estrella.style.top = y.toFixed(2) + '%';
-      estrella.style.width = tam + 'px';
-      estrella.style.height = tam + 'px';
-      estrella.style.opacity = opacidad.toFixed(2);
-      estrella.style.setProperty('--o', opacidad.toFixed(2));
-      estrella.style.animationDelay = retardo.toFixed(2) + 's';
-      estrella.style.background = roja
-        ? 'var(--marca)'
-        : 'var(--texto)';
-      trozos.appendChild(estrella);
+      var el = document.createElement('span');
+      el.className = 'forma ' + forma;
+      el.style.left = x.toFixed(2) + '%';
+      el.style.top = y.toFixed(2) + '%';
+      el.style.width = Math.round(esPastilla ? lado * 1.8 : lado) + 'px';
+      el.style.height = Math.round(lado) + 'px';
+      el.style.background = color;
+      el.style.animationDuration = duracion.toFixed(1) + 's';
+      // Retardo negativo: cada forma arranca en un punto distinto del ciclo,
+      // así no se mueven todas a la vez al cargar.
+      el.style.animationDelay = retardo.toFixed(1) + 's';
+      trozos.appendChild(el);
     }
-    cielo.appendChild(trozos);
+    caja.appendChild(trozos);
   }
 
-  var cielo = document.getElementById('cielo');
-  if (cielo) {
-    sembrar(cielo, quieto ? 60 : 130);
+  var caja = document.getElementById('formas');
+  if (caja && !quieto) {
+    sembrar(caja, 26);
+  } else if (caja) {
+    sembrar(caja, 14);
   }
 
   /* ---- Filtros ---- */
@@ -61,10 +67,6 @@
       entrada.hidden = !encaja;
       if (encaja) {
         visibles++;
-        var num = entrada.querySelector('.entrada__num');
-        if (num) {
-          num.textContent = visibles < 10 ? '0' + visibles : String(visibles);
-        }
       }
     }
     if (recuento) {
