@@ -9,9 +9,9 @@ FROM caddy:2-alpine
 WORKDIR /srv
 COPY index.html 404.html ./
 COPY assets ./assets
+COPY Caddyfile /etc/caddy/Caddyfile
 
 ENV PORT=8080
 EXPOSE 8080
 
-# Railway asigna el puerto por variable de entorno, de ahí el shell.
-CMD ["sh", "-c", "caddy file-server --root /srv --listen :${PORT}"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]

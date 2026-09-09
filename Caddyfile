@@ -1,0 +1,25 @@
+# Configuración de Caddy para Railway.
+#
+# Existe por una razón concreta: sin cabecera Cache-Control el navegador
+# aplica caché heurística, y en el móvil eso significa seguir viendo la
+# versión de ayer después de desplegar. `no-cache` no desactiva la caché,
+# obliga a revalidar: con el ETag que ya envía Caddy, la respuesta habitual
+# es un 304 vacío. Sale gratis y siempre se ve lo último.
+
+:{$PORT:8080} {
+	root * /srv
+	encode gzip
+
+	header {
+		Cache-Control "no-cache"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+
+	file_server
+
+	handle_errors {
+		rewrite * /404.html
+		file_server
+	}
+}
