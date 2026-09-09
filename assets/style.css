@@ -203,7 +203,7 @@ h1, h2 {
   flex-direction: column;
   gap: 26px;
   padding-top: 96px;
-  padding-bottom: 110px;
+  padding-bottom: 56px;
   max-width: 900px;
 }
 
@@ -226,7 +226,7 @@ h1, h2 {
   z-index: 1;
   line-height: 0;
   max-width: 680px;
-  margin: -8px auto 0;
+  margin: 0 auto;
   padding: 0 24px;
 }
 .horizonte svg { display: block; width: 100%; height: auto; }
@@ -287,45 +287,6 @@ h1, h2 {
 /* Texto oscuro sobre el melocotón: da 8,7:1. En blanco se quedaría en 2,0:1. */
 .boton--lleno:hover { background: #ffb499; border-color: #ffb499; }
 
-/* ---------- Cinta ---------- */
-
-.desfile {
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  padding: 14px 0;
-  background: var(--fondo-alto);
-  border-top: 1px solid var(--borde);
-  border-bottom: 1px solid var(--borde);
-}
-
-.desfile__pista { display: flex; width: max-content; animation: desfilar 44s linear infinite; }
-
-.desfile__pista span {
-  display: inline-flex;
-  align-items: center;
-  gap: 22px;
-  padding-right: 22px;
-  white-space: nowrap;
-  font-size: 15px;
-  color: var(--tenue);
-}
-
-.desfile__pista i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  display: inline-block;
-  background: var(--menta);
-}
-.desfile__pista span:nth-child(2n) i { background: var(--lila); }
-.desfile__pista span:nth-child(3n) i { background: var(--melocoton); }
-
-@keyframes desfilar {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
 /* ---------- Secciones ---------- */
 
 .seccion { position: relative; z-index: 1; padding-top: 96px; }
@@ -382,28 +343,6 @@ h1, h2 {
 .rejilla__pie { margin: auto 0 0; font-size: 15px; color: var(--apagado); }
 
 /* ---------- Proyectos ---------- */
-
-.filtros { display: flex; flex-wrap: wrap; gap: 8px; }
-
-.filtro {
-  font-family: var(--letra);
-  font-size: 15px;
-  font-weight: 500;
-  min-height: 44px;
-  padding: 10px 18px;
-  border: 1px solid var(--borde-claro);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--tenue);
-  cursor: pointer;
-  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
-}
-.filtro:hover { background: var(--tarjeta); color: var(--texto); }
-.filtro[aria-pressed="true"] {
-  background: var(--melocoton);
-  border-color: var(--melocoton);
-  color: #1b1726;
-}
 
 .lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
 
@@ -473,15 +412,6 @@ h1, h2 {
   border-radius: 999px;
   padding: 4px 11px;
 }
-
-.recuento { padding-top: 22px; }
-
-.vacio {
-  margin: 0;
-  padding: 36px 0 0;
-  color: var(--apagado);
-}
-.vacio[hidden] { display: none; }
 
 /* ---------- Sobre ---------- */
 
@@ -555,8 +485,6 @@ h1, h2 {
   .entradilla { font-size: 17px; }
   .acciones { flex-direction: column; align-items: stretch; }
   .boton { justify-content: center; }
-  .filtros { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
-  .filtro { white-space: nowrap; }
   .lista { grid-template-columns: 1fr; }
   .pie__fila { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
@@ -565,7 +493,7 @@ h1, h2 {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .malla, .halo, .desfile__pista, .aparece { animation: none !important; }
+  .malla, .halo, .aparece { animation: none !important; }
   .horizonte path { animation: none !important; stroke-dashoffset: 0; }
   .aparece { opacity: 1; transform: none; }
 }

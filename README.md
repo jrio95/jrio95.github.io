@@ -11,11 +11,11 @@ trabajar en ella basta con editar el fichero y recargar.
 ```
 index.html        La página entera
 404.html          Página de error
-assets/style.css  Todo el diseño, fondo incluido
-assets/app.js     Los filtros de la lista, y nada más
+assets/style.css  Todo el diseño, fondo y horizonte incluidos
 ```
 
-Lo único que se descarga de fuera son las dos tipografías de Google Fonts.
+**No hay JavaScript.** Ni una línea. Lo único que se descarga de fuera son las
+dos tipografías de Google Fonts.
 
 ## Cambiar cosas
 
@@ -41,16 +41,14 @@ blanco: así da 8,7:1 de contraste, mientras que en blanco se quedaría en
 **Los textos** están en `index.html`, tal cual. Ya no queda ningún hueco entre
 corchetes por rellenar.
 
-**Una entrada nueva** en la lista de proyectos se copia de la que ya hay y se
-cambia el `data-tipo`, que es lo que leen los filtros: `proyecto`, `nota` o
-`prueba`. Cada tarjeta lleva su color de etiqueta (`etiqueta--melocoton`,
-`--menta`, `--lila`), y los filtros que no encuentran nada avisan en vez de
-dejar la lista en blanco.
+**Una entrada nueva** en la lista de proyectos se copia de la que ya hay. Cada
+tarjeta lleva su color de etiqueta: `etiqueta--melocoton`, `--menta` o
+`--lila`.
 
-Hay tres entradas, las tres reales, ordenadas de la más reciente a la más
-antigua por la fecha en que arrancó cada proyecto. No se dejan entradas de
-ejemplo: una lista con un proyecto de verdad y dos maquetas se nota desde
-fuera.
+No hay filtros. Los hubo, con cuatro botones para tres entradas del mismo
+tipo, y no filtraban nada: eran un control decorativo que además obligaba a
+desplazar la fila en el móvil. Si algún día hay notas y pruebas de verdad,
+están en el historial de git.
 
 Cada entrada apunta a la **aplicación en vivo**, no al repositorio. Los tres
 repos son privados y un enlace a un repo privado es un 404 para cualquiera que
