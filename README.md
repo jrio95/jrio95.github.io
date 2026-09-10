@@ -11,7 +11,7 @@ trabajar en ella basta con editar el fichero y recargar.
 ```
 index.html        La página entera
 404.html          Página de error
-assets/style.css  Todo el diseño, fondo y horizonte incluidos
+assets/style.css  Todo el diseño, tema claro y oscuro incluidos
 ```
 
 **No hay JavaScript.** Ni una línea. Lo único que se descarga de fuera son las
@@ -20,30 +20,31 @@ dos tipografías de Google Fonts.
 ## Cambiar cosas
 
 **Los colores** están todos juntos al principio de `assets/style.css`, en el
-bloque `:root`. Son tres acentos planos sobre un fondo ciruela, y cambiar
-cualquiera repinta el sitio entero: titulares, botones, etiquetas y las formas
-que flotan de fondo.
+bloque `:root`, y repetidos dentro de `@media (prefers-color-scheme: dark)`
+con los mismos nombres. Cambiar un token repinta el sitio entero en los dos
+temas.
 
 ```css
---fondo:     #1b1726;   /* ciruela oscuro, no negro */
---tarjeta:   #241f33;
---texto:     #f3eee8;   /* crema, no blanco */
+--papel:  #f7f8fa;   /* fondo de la página */
+--lienzo: #ffffff;   /* tarjetas */
+--borde:  #e3e6ec;
+--tinta:  #14161c;   /* texto */
 
---melocoton: #ff9e7d;   /* el acento de marca */
---menta:     #6fe0b0;
---lila:      #b39cf5;
+--azul:   #2c62f0;   /* el único acento */
+--verde:  #0f9d64;   /* sólo estados: "esto está vivo" */
 ```
 
-El texto sobre los botones de melocotón va en el color del fondo y no en
-blanco: así da 8,7:1 de contraste, mientras que en blanco se quedaría en
-2,0:1.
+Hay **un solo color de acento**. El verde no decora: aparece únicamente en la
+pastilla de disponibilidad y en el punto de estado de cada proyecto, donde
+significa algo. Cuando cada tarjeta lleva su propio color, el color deja de
+querer decir nada.
 
 **Los textos** están en `index.html`, tal cual. Ya no queda ningún hueco entre
 corchetes por rellenar.
 
-**Una entrada nueva** en la lista de proyectos se copia de la que ya hay. Cada
-tarjeta lleva su color de etiqueta: `etiqueta--melocoton`, `--menta` o
-`--lila`.
+**Una entrada nueva** en la lista de proyectos se copia de la que ya hay. El
+estado se marca con `marca-estado` (verde, en producción) o
+`marca-estado marca-estado--obra` (azul, en desarrollo).
 
 No hay filtros. Los hubo, con cuatro botones para tres entradas del mismo
 tipo, y no filtraban nada: eran un control decorativo que además obligaba a
@@ -62,31 +63,37 @@ no sea su dueño, que es la mitad de quien visita una página personal.
 
 Si algún repositorio se hace público, ahí se puede volver a enlazar al código.
 
-## El horizonte
+## El diseño
 
-Bajo la portada hay un perfil de Salamanca dibujado a mano en SVG: las torres,
-la cúpula y las cubiertas, en trazo y sin relleno. No es una imagen ni un
-icono suelto pegado en una esquina, es la línea de tierra sobre la que se
-apoya el resto de la página.
+El rumbo es **claro, limpio y de herramienta**: fondo de papel, tarjetas
+blancas con un borde de un píxel, un solo azul de interfaz y monoespaciada
+para todo lo que sea dato (fechas, etiquetas de campo, lenguajes, estados). Se
+tiene que leer como la documentación de un producto y no como un póster.
 
-Se dibuja solo al cargar, una vez, con el truco de `stroke-dasharray`: el
-guion se declara más largo que el trazo entero, así que el recorrido completo
-cabe en uno solo y animar el desfase lo va destapando de izquierda a derecha.
+Tres decisiones sostienen el resto:
 
-## El fondo
+- **La jerarquía la hace el espacio, no el color.** Cada sección abre con un
+  título y una línea, y todo lo demás son tarjetas del mismo alto de borde.
+- **La ficha de la portada.** Los datos que daría un `whoami` (nombre, rol,
+  lugar, stack, contacto) en una tabla de clave y valor. Es la pieza que hace
+  que la portada informe en lugar de proclamar.
+- **Nada se mueve salvo al entrar.** Un desvanecido corto en la portada y se
+  acabó. El fondo antiguo (retícula, manchas de luz y grano) se ha ido entero:
+  daba textura pero también ruido, y competía con el contenido.
 
-Textura, no dibujos. Cualquier figura reconocible ahí detrás se come al
-contenido y baja la edad de la página.
-
-Son tres capas de CSS, sin una línea de JavaScript:
-
-- Una **retícula de puntos** que deriva muy despacio. Se desplaza exactamente
-  una celda (34 px), así que el bucle cierra sin costura.
-- Dos **manchas de luz** desenfocadas que respiran a 34 y 47 segundos. Al no
-  ser múltiplos, no vuelven a coincidir.
-- Una capa de **grano** fino, que quita el aspecto plano de un fondo liso.
+El **tema oscuro** es el mismo diseño con los tokens cambiados. Lo decide el
+sistema operativo con `prefers-color-scheme`: no hay interruptor, porque un
+interruptor obligaría a meter JavaScript para recordar la elección.
 
 Con `prefers-reduced-motion` no se mueve nada.
+
+## El horizonte
+
+El perfil de Salamanca dibujado en SVG (las torres, la cúpula y las cubiertas,
+en trazo y sin relleno) sigue ahí, pero de remate del pie y no de portada. Va
+contenido a 520 px y a media tinta: da el sitio sin robarle espacio al
+contenido. A todo lo ancho medía más de 400 px de alto y se convertía en el
+protagonista de la página, que no es lo que hace.
 
 ## Reglas de escritura
 

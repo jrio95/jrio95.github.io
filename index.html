@@ -3,37 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>José · jrio.dev</title>
-<meta name="description" content="Página personal de José, programador en Salamanca. Proyectos pequeños sobre inversión e inteligencia artificial.">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#1b1726">
-<link rel="icon" href="data:,">
+<title>José Martín · jrio.dev</title>
+<meta name="description" content="José Martín, programador en Salamanca. Backend en Go, datos financieros y proyectos propios sobre inversión e inteligencia artificial.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1015" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232c62f0'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='17' font-weight='700' fill='white' text-anchor='middle'%3Ej%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <a class="saltar" href="#contenido">Saltar al contenido</a>
 
-<div class="fondo" aria-hidden="true">
-  <div class="malla"></div>
-  <div class="halo halo--1"></div>
-  <div class="halo halo--2"></div>
-  <svg class="grano" width="100%" height="100%" focusable="false">
-    <filter id="grano-filtro"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"></feTurbulence></filter>
-    <rect width="100%" height="100%" filter="url(#grano-filtro)"></rect>
-  </svg>
-</div>
-
 <header class="barra">
   <div class="ancho barra__fila">
-    <a class="marca" href="/">jrio<span>.</span>dev</a>
+    <a class="marca" href="/"><span class="marca__ficha" aria-hidden="true">j</span>jrio<span>.dev</span></a>
     <nav class="menu" aria-label="Secciones">
       <a href="#proyectos">Proyectos</a>
-      <a href="#sobre">Sobre mí</a>
-      <a href="https://github.com/jrio95" rel="me">GitHub</a>
+      <a class="menu--oculto" href="#ahora">Ahora</a>
+      <a class="menu--oculto" href="#sobre">Sobre mí</a>
+      <a class="menu--fuera" href="https://github.com/jrio95" rel="me">GitHub ↗</a>
     </nav>
   </div>
 </header>
@@ -41,47 +33,53 @@
 <main id="contenido">
 
   <section class="portada">
-    <div class="ancho portada__caja">
-      <p class="lugar aparece">Salamanca</p>
+    <div class="ancho portada__reja">
+      <div class="portada__texto">
+        <p class="estado aparece"><span class="estado__luz" aria-hidden="true"></span>Abierto a proyectos</p>
 
-      <h1 class="titular aparece">Hago cosas pequeñas<br>que me sirven <em>a mí</em>.</h1>
+        <h1 class="titular aparece">Programo herramientas para <em>entender los datos</em>.</h1>
 
-      <p class="entradilla aparece">Soy programador. Casi todo lo que construyo va de inversión y, desde hace un tiempo, de inteligencia artificial. Lo voy dejando por aquí por si a alguien más le sirve.</p>
+        <p class="entradilla aparece">Backend, mercados financieros y, últimamente, inteligencia artificial. Construyo lo que necesito y lo dejo publicado por si a alguien más le sirve.</p>
 
-      <div class="acciones aparece">
-        <a class="boton boton--lleno" href="#proyectos">
-          Ver lo que hago
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="m6 13 6 6 6-6"></path></svg>
-        </a>
-        <a class="boton" href="mailto:josmartin95@gmail.com">Escríbeme</a>
+        <div class="acciones aparece">
+          <a class="boton boton--lleno" href="#proyectos">Ver proyectos</a>
+          <a class="boton" href="mailto:josmartin95@gmail.com">Escríbeme</a>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <div class="horizonte" aria-hidden="true">
-    <svg viewBox="0 0 1200 475" focusable="false">
-      <path d="M0.0,463.9 L9.4,463.9 L14.1,447.5 L84.5,421.7 L110.4,435.7 L115.1,435.7 L143.2,449.8 L145.6,463.9 L147.9,466.3 L157.3,466.3 L159.7,463.9 L162.0,431.0 L164.4,428.7 L166.7,405.2 L171.4,398.2 L176.1,360.6 L180.8,355.9 L187.9,355.9 L192.6,358.3 L194.9,384.1 L197.3,384.1 L199.6,400.5 L204.3,407.6 L206.7,431.0 L209.0,431.0 L211.4,466.3 L213.7,466.3 L216.0,435.7 L232.5,421.7 L234.8,384.1 L241.9,377.0 L246.6,346.5 L251.3,344.2 L253.6,358.3 L256.0,358.3 L258.3,377.0 L260.7,379.4 L265.4,247.9 L270.1,247.9 L272.4,179.8 L274.8,172.7 L277.1,125.8 L281.8,121.1 L286.5,121.1 L291.2,132.8 L305.3,116.4 L310.0,97.6 L312.3,74.1 L314.7,10.7 L319.4,6.0 L328.8,6.0 L331.1,8.3 L333.5,71.8 L335.8,74.1 L338.2,102.3 L342.9,118.7 L354.6,132.8 L359.3,121.1 L364.0,121.1 L366.3,123.4 L368.7,168.0 L371.0,168.0 L373.4,177.4 L375.7,245.5 L380.4,247.9 L385.1,337.1 L387.5,337.1 L389.8,323.0 L685.7,323.0 L690.4,301.9 L697.5,294.8 L704.5,292.5 L706.8,250.2 L713.9,250.2 L716.2,233.8 L720.9,224.4 L739.7,205.6 L746.8,203.3 L749.1,139.9 L756.2,135.2 L760.9,135.2 L765.6,139.9 L770.3,205.6 L777.3,208.0 L798.4,226.7 L803.1,252.6 L807.8,252.6 L810.2,294.8 L817.2,297.2 L824.3,304.2 L831.3,327.7 L833.7,325.4 L885.3,325.4 L899.4,332.4 L918.2,337.1 L920.5,325.4 L929.9,325.4 L932.3,355.9 L984.0,381.7 L993.3,384.1 L998.0,388.8 L1000.4,400.5 L1023.9,386.4 L1047.4,402.9 L1054.4,405.2 L1056.8,407.6 L1059.1,452.2 L1082.6,452.2 L1084.9,466.3 L1146.0,466.3 L1148.3,463.9 L1150.7,466.3 L1155.4,466.3 L1157.7,463.9 L1200.0,463.9"></path>
-    </svg>
-  </div>
-
-
-  <section class="seccion" id="ahora">
-    <div class="ancho">
-      <div class="seccion__cabeza">
-        <h2><span class="punto punto--melocoton"></span> Ahora</h2>
-        <p class="rotulo">Actualizado en septiembre de 2026</p>
-      </div>
-      <div class="rejilla">
-        <article>
-          <p class="rotulo rotulo--marca">Programando</p>
-          <p class="rejilla__valor">bme-fundamentals</p>
-          <p class="rejilla__pie">Me falta la primera carga real contra la CNMV</p>
-        </article>
-        <article>
-          <p class="rotulo rotulo--marca">Aprendiendo</p>
-          <p class="rejilla__valor">IA aplicada, RAG y lo que vaya saliendo</p>
-          <p class="rejilla__pie">Todavía no sabría decir bien por qué. Me pica y ya está.</p>
-        </article>
+      <div class="ficha aparece">
+        <div class="ficha__barra">
+          <span class="ficha__punto" aria-hidden="true"></span>
+          <span class="ficha__punto" aria-hidden="true"></span>
+          <span class="ficha__punto" aria-hidden="true"></span>
+          <span class="ficha__ruta">~/jose.json</span>
+        </div>
+        <dl class="ficha__cuerpo">
+          <div class="ficha__fila">
+            <dt class="ficha__clave">nombre</dt>
+            <dd class="ficha__valor">José Martín Río</dd>
+          </div>
+          <div class="ficha__fila">
+            <dt class="ficha__clave">rol</dt>
+            <dd class="ficha__valor">Programador · backend y datos</dd>
+          </div>
+          <div class="ficha__fila">
+            <dt class="ficha__clave">lugar</dt>
+            <dd class="ficha__valor">Salamanca, España</dd>
+          </div>
+          <div class="ficha__fila">
+            <dt class="ficha__clave">experiencia</dt>
+            <dd class="ficha__valor">9 años escribiendo código</dd>
+          </div>
+          <div class="ficha__fila">
+            <dt class="ficha__clave">stack</dt>
+            <dd class="ficha__valor">Go · Postgres · TypeScript · React</dd>
+          </div>
+          <div class="ficha__fila">
+            <dt class="ficha__clave">contacto</dt>
+            <dd class="ficha__valor"><a href="mailto:josmartin95@gmail.com">josmartin95@gmail.com</a></dd>
+          </div>
+        </dl>
       </div>
     </div>
   </section>
@@ -89,58 +87,103 @@
   <section class="seccion" id="proyectos">
     <div class="ancho">
       <div class="seccion__cabeza">
-        <h2><span class="punto punto--menta"></span> Proyectos</h2>
+        <h2>Proyectos</h2>
+        <p class="dato">3 activos</p>
       </div>
 
-      <div class="lista" id="lista">
-        <a class="entrada" href="https://chess-coach-production-5b27.up.railway.app">
-          <span class="entrada__meta">
-            <span class="etiqueta etiqueta--melocoton">Proyecto</span>
-            <span class="rotulo">Agosto 2026</span>
+      <div class="lista">
+        <a class="entrada" href="https://divr.es">
+          <span class="entrada__cabeza">
+            <span class="entrada__titulo">Divr</span>
+            <span class="marca-estado">En producción</span>
+            <span class="dato">Abril 2026</span>
           </span>
-          <span class="entrada__titulo">Chess Coach
-            <span class="entrada__flecha" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
-          </span>
-          <span class="entrada__texto">Pegas el PGN de una partida y te dice qué jugaste mal, qué era mejor y qué errores repites de una partida a otra. El análisis lo hace Stockfish en el servidor, así que cada comentario sale de una evaluación del motor y no de una opinión.</span>
-          <span class="entrada__stack"><span>TypeScript</span><span>Node</span><span>Stockfish</span></span>
+          <span class="entrada__flecha" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
+          <span class="entrada__texto">Mi cartera de inversión: acciones, movimientos, dividendos y opciones PUT, con el cálculo del IRPF hecho. Tiene web y aplicación móvil. De aquí salió bme-fundamentals, el día que dejé de fiarme de los datos que estaba consumiendo.</span>
+          <span class="entrada__stack"><span>Go</span><span>Postgres</span><span>React</span><span>Expo</span></span>
         </a>
 
         <a class="entrada" href="https://api-production-2a50.up.railway.app">
-          <span class="entrada__meta">
-            <span class="etiqueta etiqueta--menta">Proyecto</span>
-            <span class="rotulo">Agosto 2026</span>
+          <span class="entrada__cabeza">
+            <span class="entrada__titulo">bme-fundamentals</span>
+            <span class="marca-estado marca-estado--obra">En desarrollo</span>
+            <span class="dato">Agosto 2026</span>
           </span>
-          <span class="entrada__titulo">bme-fundamentals
-            <span class="entrada__flecha" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
-          </span>
+          <span class="entrada__flecha" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
           <span class="entrada__texto">Saca los estados financieros de las empresas del BME de lo que cada una deposita en la CNMV. Lo hice porque la fuente que usaba para mi cartera devolvía ceros donde en realidad no había dato, y me estaba comiendo errores sin enterarme.</span>
           <span class="entrada__stack"><span>Go</span><span>Postgres</span><span>XBRL</span></span>
         </a>
 
-        <a class="entrada" href="https://divr.es">
-          <span class="entrada__meta">
-            <span class="etiqueta etiqueta--lila">Proyecto</span>
-            <span class="rotulo">Abril 2026</span>
+        <a class="entrada" href="https://chess-coach-production-5b27.up.railway.app">
+          <span class="entrada__cabeza">
+            <span class="entrada__titulo">Chess Coach</span>
+            <span class="marca-estado">En producción</span>
+            <span class="dato">Agosto 2026</span>
           </span>
-          <span class="entrada__titulo">Divr
-            <span class="entrada__flecha" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
-          </span>
-          <span class="entrada__texto">Mi cartera de inversión: acciones, movimientos, dividendos y opciones PUT, con el cálculo del IRPF hecho. Tiene web y aplicación móvil. Es también el proyecto del que salió bme-fundamentals, el día que dejé de fiarme de los datos que estaba consumiendo.</span>
-          <span class="entrada__stack"><span>Go</span><span>Postgres</span><span>React</span><span>Expo</span></span>
+          <span class="entrada__flecha" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
+          <span class="entrada__texto">Pegas el PGN de una partida y te dice qué jugaste mal, qué era mejor y qué errores repites de una partida a otra. El análisis lo hace Stockfish en el servidor, así que cada comentario sale de una evaluación del motor y no de una opinión.</span>
+          <span class="entrada__stack"><span>TypeScript</span><span>Node</span><span>Stockfish</span></span>
         </a>
       </div>
+    </div>
+  </section>
 
+  <section class="seccion" id="ahora">
+    <div class="ancho">
+      <div class="seccion__cabeza">
+        <h2>En qué ando</h2>
+        <p class="dato">Septiembre 2026</p>
+      </div>
+      <div class="rejilla">
+        <article class="tarjeta">
+          <p class="dato">Programando</p>
+          <p class="tarjeta__valor">bme-fundamentals</p>
+          <p class="tarjeta__pie">Me falta la primera carga real contra la CNMV.</p>
+        </article>
+        <article class="tarjeta">
+          <p class="dato">Aprendiendo</p>
+          <p class="tarjeta__valor">IA aplicada y RAG</p>
+          <p class="tarjeta__pie">Todavía no sabría decir bien por qué. Me pica y ya está.</p>
+        </article>
+        <article class="tarjeta">
+          <p class="dato">Fuera del teclado</p>
+          <p class="tarjeta__valor">Crossfit</p>
+          <p class="tarjeta__pie">Y deporte en general, que si no no me levanto de la silla.</p>
+        </article>
+      </div>
     </div>
   </section>
 
   <section class="seccion" id="sobre">
     <div class="ancho">
       <div class="seccion__cabeza">
-        <h2><span class="punto punto--lila"></span> Sobre mí</h2>
+        <h2>Sobre mí</h2>
+        <p class="dato">Salamanca</p>
       </div>
-      <div class="columnas">
-        <p>Llevo nueve años escribiendo código. Por mi cuenta me interesan dos cosas: los mercados y, desde hace un tiempo, la inteligencia artificial. Casi todo lo que hay en esta página sale de juntar las tres.</p>
-        <p>Los proyectos nacen todos igual: algo que necesitaba yo y que no encontraba hecho, o que estaba hecho de una forma de la que no me fiaba. Los dejo publicados por si a alguien más le sirven. Fuera del ordenador: crossfit y deporte en general.</p>
+      <div class="sobre">
+        <div class="prosa">
+          <p>Llevo <strong>nueve años escribiendo código</strong>. Por mi cuenta me interesan dos cosas: los mercados y, desde hace un tiempo, la inteligencia artificial. Casi todo lo que hay en esta página sale de juntar las dos.</p>
+          <p>Los proyectos nacen todos igual: algo que necesitaba yo y que no encontraba hecho, o que estaba hecho de una forma de la que no me fiaba. Cuando funciona, lo dejo publicado por si a alguien más le sirve.</p>
+          <p>Trabajo sobre todo en <strong>backend y datos</strong>: APIs en Go, esquemas en Postgres y todo el trabajo aburrido de limpiar información financiera hasta que se puede confiar en ella.</p>
+        </div>
+        <aside class="herramientas">
+          <div class="herramientas__grupo">
+            <p class="dato">Backend</p>
+            <div class="herramientas__lista"><span>Go</span><span>Node</span><span>Postgres</span><span>REST</span></div>
+          </div>
+          <div class="herramientas__grupo">
+            <p class="dato">Frontend</p>
+            <div class="herramientas__lista"><span>TypeScript</span><span>React</span><span>Expo</span><span>HTML/CSS</span></div>
+          </div>
+          <div class="herramientas__grupo">
+            <p class="dato">Infra y datos</p>
+            <div class="herramientas__lista"><span>Docker</span><span>Railway</span><span>XBRL</span><span>SQL</span></div>
+          </div>
+          <div class="herramientas__grupo">
+            <p class="dato">Explorando</p>
+            <div class="herramientas__lista"><span>LLM</span><span>RAG</span><span>Embeddings</span></div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -148,8 +191,10 @@
   <section class="seccion" id="contacto">
     <div class="ancho">
       <div class="panel">
-        <h2>¿Hablamos?</h2>
-        <p>Si tienes una duda, una corrección o te apetece comentar algo, aquí estoy.</p>
+        <div>
+          <h2>¿Hablamos?</h2>
+          <p>Una duda, una corrección o algo que quieras montar: escribe y te contesto.</p>
+        </div>
         <div class="acciones">
           <a class="boton boton--lleno" href="mailto:josmartin95@gmail.com">josmartin95@gmail.com</a>
           <a class="boton" href="https://www.linkedin.com/in/josemartinrio" rel="me">LinkedIn</a>
@@ -161,10 +206,20 @@
 
 </main>
 
+<div class="ancho horizonte" aria-hidden="true">
+  <svg viewBox="0 0 1200 475" focusable="false">
+    <path d="M0.0,463.9 L9.4,463.9 L14.1,447.5 L84.5,421.7 L110.4,435.7 L115.1,435.7 L143.2,449.8 L145.6,463.9 L147.9,466.3 L157.3,466.3 L159.7,463.9 L162.0,431.0 L164.4,428.7 L166.7,405.2 L171.4,398.2 L176.1,360.6 L180.8,355.9 L187.9,355.9 L192.6,358.3 L194.9,384.1 L197.3,384.1 L199.6,400.5 L204.3,407.6 L206.7,431.0 L209.0,431.0 L211.4,466.3 L213.7,466.3 L216.0,435.7 L232.5,421.7 L234.8,384.1 L241.9,377.0 L246.6,346.5 L251.3,344.2 L253.6,358.3 L256.0,358.3 L258.3,377.0 L260.7,379.4 L265.4,247.9 L270.1,247.9 L272.4,179.8 L274.8,172.7 L277.1,125.8 L281.8,121.1 L286.5,121.1 L291.2,132.8 L305.3,116.4 L310.0,97.6 L312.3,74.1 L314.7,10.7 L319.4,6.0 L328.8,6.0 L331.1,8.3 L333.5,71.8 L335.8,74.1 L338.2,102.3 L342.9,118.7 L354.6,132.8 L359.3,121.1 L364.0,121.1 L366.3,123.4 L368.7,168.0 L371.0,168.0 L373.4,177.4 L375.7,245.5 L380.4,247.9 L385.1,337.1 L387.5,337.1 L389.8,323.0 L685.7,323.0 L690.4,301.9 L697.5,294.8 L704.5,292.5 L706.8,250.2 L713.9,250.2 L716.2,233.8 L720.9,224.4 L739.7,205.6 L746.8,203.3 L749.1,139.9 L756.2,135.2 L760.9,135.2 L765.6,139.9 L770.3,205.6 L777.3,208.0 L798.4,226.7 L803.1,252.6 L807.8,252.6 L810.2,294.8 L817.2,297.2 L824.3,304.2 L831.3,327.7 L833.7,325.4 L885.3,325.4 L899.4,332.4 L918.2,337.1 L920.5,325.4 L929.9,325.4 L932.3,355.9 L984.0,381.7 L993.3,384.1 L998.0,388.8 L1000.4,400.5 L1023.9,386.4 L1047.4,402.9 L1054.4,405.2 L1056.8,407.6 L1059.1,452.2 L1082.6,452.2 L1084.9,466.3 L1146.0,466.3 L1148.3,463.9 L1150.7,466.3 L1155.4,466.3 L1157.7,463.9 L1200.0,463.9"></path>
+  </svg>
+</div>
+
 <footer class="pie">
   <div class="ancho pie__fila">
-    <span class="rotulo">jrio.dev · José</span>
-    <span class="rotulo">2026</span>
+    <p class="dato">José Martín Río · Salamanca · 2026</p>
+    <nav class="pie__enlaces" aria-label="Enlaces">
+      <a href="mailto:josmartin95@gmail.com">Email</a>
+      <a href="https://github.com/jrio95" rel="me">GitHub</a>
+      <a href="https://www.linkedin.com/in/josemartinrio" rel="me">LinkedIn</a>
+    </nav>
   </div>
 </footer>
 
