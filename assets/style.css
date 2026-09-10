@@ -2,73 +2,82 @@
  *
  * Una hoja, sin compilar, sin dependencias y sin JavaScript.
  *
- * Rumbo: claro, limpio y de herramienta. Fondo de papel, tarjetas blancas,
- * un solo azul de acento y monoespaciada para todo lo que sea dato (fechas,
- * etiquetas, versiones). Se lee como documentación de un producto y no como
- * un póster. El tema oscuro es el mismo diseño con los tokens cambiados: lo
- * decide el sistema operativo, sin interruptor y sin JavaScript. */
+ * Rumbo: oscuro y de herramienta, con relieve. Fondo casi negro, superficies
+ * que suben por capas (cada tarjeta lleva su propia luz arriba), un azul de
+ * interfaz y monoespaciada para todo lo que sea dato. La página tiene que
+ * leerse como el panel de un producto, no como un póster.
+ *
+ * Contra el aspecto plano: sombras y filos de luz de verdad, un halo suave
+ * detrás de la portada, tarjetas de tamaños distintos y las secciones que
+ * entran al pasar por delante (`animation-timeline: view()`, sin JavaScript).
+ * Con `prefers-reduced-motion` no se mueve nada. */
 
 :root {
-  color-scheme: light dark;
+  color-scheme: dark light;
 
-  /* Superficies */
-  --papel: #f7f8fa;
-  --lienzo: #ffffff;
-  --hueco: #f1f3f7;
-  --borde: #e3e6ec;
-  --borde-fuerte: #d2d7e0;
+  /* Superficies, de más al fondo a más arriba. */
+  --papel: #090a0e;
+  --lienzo: #101219;
+  --lienzo-alto: #161923;
+  --hueco: #1a1e29;
+  --borde: #242936;
+  --borde-fuerte: #333a4b;
+  /* El filo de luz del borde superior de cada tarjeta. Es lo que separa una
+   * superficie de la de detrás sin necesidad de subir el brillo del relleno. */
+  --filo: rgba(255, 255, 255, 0.07);
 
   /* Texto */
-  --tinta: #14161c;
-  --tinta-media: #545c6b;
-  --tinta-suave: #858d9d;
+  --tinta: #eef1f7;
+  --tinta-media: #a4adbf;
+  --tinta-suave: #737c90;
 
-  /* Acento: azul de interfaz, un solo color en toda la página. */
-  --azul: #2c62f0;
-  --azul-hover: #1f4fd4;
-  --azul-suave: #eaf0ff;
-  --azul-borde: #c7d7ff;
-  --sobre-azul: #ffffff;
-
-  /* Verde de estado. No decora: sólo dice "esto está vivo". */
-  --verde: #0f9d64;
-  --verde-suave: #e6f7f0;
+  /* Acento: un azul de interfaz. El violeta sólo existe para los degradados,
+   * nunca para pintar un elemento entero. */
+  --azul: #5b8cff;
+  --azul-hover: #7ba3ff;
+  --azul-borde: #2f4a8f;
+  --azul-halo: rgba(91, 140, 255, 0.22);
+  --violeta: #a78bfa;
+  --sobre-azul: #07080c;
 
   --ancho: 1120px;
-  --radio: 14px;
-  --radio-chico: 8px;
+  --radio: 16px;
+  --radio-chico: 9px;
   --radio-pastilla: 999px;
 
-  --sombra: 0 1px 2px rgba(20, 22, 28, 0.04), 0 4px 16px rgba(20, 22, 28, 0.04);
-  --sombra-alta: 0 2px 4px rgba(20, 22, 28, 0.05), 0 12px 32px rgba(20, 22, 28, 0.09);
+  --sombra: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.32);
+  --sombra-alta: 0 2px 6px rgba(0, 0, 0, 0.5), 0 20px 48px rgba(0, 0, 0, 0.5);
 
   --letra: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
+/* El tema claro es el mismo diseño con los tokens cambiados. Lo decide el
+ * sistema operativo: un interruptor obligaría a meter JavaScript para
+ * recordar la elección. */
+@media (prefers-color-scheme: light) {
   :root {
-    --papel: #0e1015;
-    --lienzo: #14171e;
-    --hueco: #1a1e27;
-    --borde: #262b36;
-    --borde-fuerte: #333a48;
+    --papel: #f6f7fa;
+    --lienzo: #ffffff;
+    --lienzo-alto: #ffffff;
+    --hueco: #eef1f6;
+    --borde: #e1e5ed;
+    --borde-fuerte: #cdd3df;
+    --filo: rgba(255, 255, 255, 0.9);
 
-    --tinta: #eceff5;
-    --tinta-media: #a3acbc;
-    --tinta-suave: #798294;
+    --tinta: #12141a;
+    --tinta-media: #525a6b;
+    --tinta-suave: #838b9c;
 
-    --azul: #6b95ff;
-    --azul-hover: #86a9ff;
-    --azul-suave: #17203a;
-    --azul-borde: #2b3a63;
-    --sobre-azul: #0e1015;
+    --azul: #2c5fef;
+    --azul-hover: #1e4bcf;
+    --azul-borde: #b9ccff;
+    --azul-halo: rgba(44, 95, 239, 0.14);
+    --violeta: #7c53f0;
+    --sobre-azul: #ffffff;
 
-    --verde: #3ecf9a;
-    --verde-suave: #12271f;
-
-    --sombra: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --sombra-alta: 0 2px 6px rgba(0, 0, 0, 0.45), 0 16px 40px rgba(0, 0, 0, 0.35);
+    --sombra: 0 1px 2px rgba(18, 20, 26, 0.05), 0 6px 20px rgba(18, 20, 26, 0.05);
+    --sombra-alta: 0 2px 4px rgba(18, 20, 26, 0.06), 0 18px 40px rgba(18, 20, 26, 0.12);
   }
 }
 
@@ -78,7 +87,7 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   /* La barra pegajosa taparía el título de la sección al saltar a un ancla. */
-  scroll-padding-top: 84px;
+  scroll-padding-top: 88px;
 }
 
 body {
@@ -90,6 +99,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -98,7 +108,7 @@ img, svg { max-width: 100%; }
 h1, h2, h3 {
   margin: 0;
   font-weight: 700;
-  letter-spacing: -0.022em;
+  letter-spacing: -0.024em;
   line-height: 1.15;
 }
 
@@ -124,6 +134,28 @@ h1, h2, h3 {
   border-radius: var(--radio-chico);
 }
 
+/* ---------- Halo ----------
+ *
+ * Una sola mancha de luz azul detrás de la portada, no en toda la página.
+ * Da profundidad al fondo sin convertirse en un dibujo. */
+.halo {
+  position: absolute;
+  top: -280px;
+  left: 50%;
+  width: min(1100px, 130vw);
+  height: 760px;
+  transform: translateX(-50%);
+  background: radial-gradient(50% 50% at 50% 50%, var(--azul-halo), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: latir 18s ease-in-out infinite;
+}
+
+@keyframes latir {
+  0%, 100% { opacity: 0.75; transform: translateX(-50%) scale(1); }
+  50%      { opacity: 1;    transform: translateX(-52%) scale(1.08); }
+}
+
 /* ---------- Piezas que se repiten ---------- */
 
 /* Todo lo que es dato y no prosa va en monoespaciada: fechas, etiquetas de
@@ -138,52 +170,64 @@ h1, h2, h3 {
   margin: 0;
 }
 
-.estado {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 12px 5px 10px;
-  border-radius: var(--radio-pastilla);
-  background: var(--verde-suave);
-  color: var(--verde);
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+/* Superficie elevada: relleno en degradado y un filo de luz arriba. Es la
+ * regla que quita el aspecto plano en toda la página. */
+.relieve {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0) 42%),
+    var(--lienzo);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
 }
-.estado__luz {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: currentColor;
-  flex: none;
-  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 22%, transparent);
+.relieve::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  border-radius: var(--radio) var(--radio) 0 0;
+  background: linear-gradient(90deg, transparent, var(--filo) 22%, var(--filo) 78%, transparent);
+  pointer-events: none;
 }
 
 .boton {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 44px;
-  padding: 11px 20px;
+  min-height: 46px;
+  padding: 12px 22px;
   border: 1px solid var(--borde-fuerte);
   border-radius: var(--radio-chico);
-  background: var(--lienzo);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0)) var(--lienzo);
   color: var(--tinta);
   font-size: 15px;
   font-weight: 500;
   font-family: inherit;
-  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
-.boton:hover { border-color: var(--tinta-suave); box-shadow: var(--sombra); }
+.boton:hover {
+  transform: translateY(-2px);
+  border-color: var(--borde-fuerte);
+  box-shadow: var(--sombra);
+}
 
 .boton--lleno {
-  background: var(--azul);
-  border-color: var(--azul);
+  background: linear-gradient(180deg, var(--azul-hover), var(--azul));
+  border-color: transparent;
   color: var(--sobre-azul);
   font-weight: 600;
+  box-shadow: 0 6px 20px rgba(91, 140, 255, 0.25);
 }
-.boton--lleno:hover { background: var(--azul-hover); border-color: var(--azul-hover); color: var(--sobre-azul); }
+.boton--lleno:hover {
+  box-shadow: 0 10px 28px rgba(91, 140, 255, 0.34);
+  color: var(--sobre-azul);
+}
+
+.boton svg { transition: transform 0.18s ease; }
+.boton:hover svg { transform: translateY(2px); }
 
 /* ---------- Barra ---------- */
 
@@ -191,9 +235,9 @@ h1, h2, h3 {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in srgb, var(--papel) 82%, transparent);
-  backdrop-filter: saturate(180%) blur(12px);
-  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  background: color-mix(in srgb, var(--papel) 76%, transparent);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
   border-bottom: 1px solid var(--borde);
 }
 
@@ -202,7 +246,7 @@ h1, h2, h3 {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  height: 64px;
+  height: 66px;
 }
 
 .marca {
@@ -218,13 +262,14 @@ h1, h2, h3 {
 .marca__ficha {
   display: grid;
   place-items: center;
-  width: 26px; height: 26px;
-  border-radius: 7px;
-  background: var(--azul);
-  color: var(--sobre-azul);
+  width: 27px; height: 27px;
+  border-radius: 8px;
+  background: linear-gradient(140deg, var(--azul), var(--violeta));
+  color: #fff;
   font-size: 13px;
   font-weight: 700;
   flex: none;
+  box-shadow: 0 3px 12px rgba(91, 140, 255, 0.35);
 }
 .marca span { color: var(--tinta-suave); }
 
@@ -242,7 +287,12 @@ h1, h2, h3 {
 
 /* ---------- Portada ---------- */
 
-.portada { padding-top: 72px; padding-bottom: 40px; }
+.portada {
+  position: relative;
+  z-index: 1;
+  padding-top: 78px;
+  padding-bottom: 44px;
+}
 
 .portada__reja {
   display: grid;
@@ -251,15 +301,41 @@ h1, h2, h3 {
   align-items: center;
 }
 
-.portada__texto { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+.portada__texto { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+
+.antetitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.antetitulo::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--azul), transparent);
+}
 
 .titular {
-  font-size: clamp(38px, 5.2vw, 60px);
-  line-height: 1.06;
-  letter-spacing: -0.035em;
+  font-size: clamp(40px, 5.4vw, 62px);
+  line-height: 1.04;
+  letter-spacing: -0.038em;
   max-width: 15ch;
 }
-.titular em { font-style: normal; color: var(--azul); }
+/* El degradado va sólo en el trozo que remata la frase. Pintar el titular
+ * entero de color lo convierte en un cartel. */
+.titular em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--azul), var(--violeta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 .entradilla {
   margin: 0;
@@ -271,15 +347,9 @@ h1, h2, h3 {
 
 .acciones { display: flex; flex-wrap: wrap; gap: 10px; }
 
-/* La ficha: los mismos datos que daría un `whoami`, en formato de tabla.
- * Es la pieza que hace que la portada se lea como una herramienta. */
-.ficha {
-  background: var(--lienzo);
-  border: 1px solid var(--borde);
-  border-radius: var(--radio);
-  box-shadow: var(--sombra);
-  overflow: hidden;
-}
+/* La ficha: los mismos datos que daría un `whoami`, en formato de tabla. Es
+ * la pieza que hace que la portada informe en lugar de proclamar. */
+.ficha { overflow: hidden; }
 
 .ficha__barra {
   display: flex;
@@ -308,10 +378,62 @@ h1, h2, h3 {
 .ficha__valor a { color: var(--azul); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .ficha__valor a:hover { color: var(--azul-hover); }
 
+/* El cursor de la última fila: la ficha parece un terminal esperando y no
+ * una captura muerta. Es lo único que parpadea en toda la página. */
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.16em;
+  background: var(--azul);
+  animation: parpadeo 1.15s steps(1) infinite;
+}
+
+@keyframes parpadeo {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ---------- Cifras ----------
+ *
+ * Una banda de números grandes entre la portada y los proyectos. Rompe la
+ * sucesión de tarjetas iguales y da un dato de un vistazo. */
+
+.cifras {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 12px;
+  padding: 26px 8px;
+  overflow: hidden;
+}
+
+.cifra {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 22px;
+  border-left: 1px solid var(--borde);
+}
+.cifra:first-child { border-left: 0; }
+
+.cifra__valor {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: clamp(26px, 3.2vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.cifra__valor span { color: var(--azul); }
+
 /* ---------- Secciones ---------- */
 
-.seccion { padding-top: 76px; }
-.seccion:last-of-type { padding-bottom: 8px; }
+.seccion { position: relative; z-index: 1; padding-top: 84px; }
 
 .seccion__cabeza {
   display: flex;
@@ -319,94 +441,148 @@ h1, h2, h3 {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px 24px;
-  padding-bottom: 14px;
-  margin-bottom: 26px;
+  padding-bottom: 16px;
+  margin-bottom: 28px;
   border-bottom: 1px solid var(--borde);
 }
-.seccion__cabeza h2 { font-size: 24px; letter-spacing: -0.025em; }
-.seccion__cabeza .dato { padding-top: 2px; }
-
-/* ---------- Ahora ---------- */
-
-.rejilla {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 14px;
-}
-
-.tarjeta {
-  background: var(--lienzo);
-  border: 1px solid var(--borde);
-  border-radius: var(--radio);
-  padding: 20px;
+.seccion__cabeza h2 {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 26px;
+  letter-spacing: -0.028em;
 }
-.tarjeta:hover { border-color: var(--borde-fuerte); box-shadow: var(--sombra); }
+/* Numerar las secciones les da orden de lectura y sitio, que es justo lo que
+ * le falta a una página que es toda del mismo tamaño. */
+.seccion__num {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--azul);
+  letter-spacing: 0.04em;
+}
 
-.tarjeta__valor { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.4; letter-spacing: -0.015em; }
-.tarjeta__pie { margin: 0; font-size: 14.5px; color: var(--tinta-media); line-height: 1.55; }
+/* ---------- Proyectos ----------
+ *
+ * El primero ocupa la fila entera y los otros dos van a media anchura: la
+ * jerarquía se ve antes de leer una palabra, y la retícula deja de ser una
+ * pila de rectángulos idénticos. */
 
-/* ---------- Proyectos ---------- */
-
-.lista { display: grid; gap: 14px; }
+.lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
 
 .entrada {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 6px 24px;
-  background: var(--lienzo);
-  border: 1px solid var(--borde);
-  border-radius: var(--radio);
-  padding: 24px;
-  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 26px;
+  overflow: hidden;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
 .entrada:hover {
+  transform: translateY(-4px);
   border-color: var(--azul-borde);
   box-shadow: var(--sombra-alta);
-  transform: translateY(-2px);
 }
+/* El resplandor que se enciende al pasar por encima. Va detrás del texto y
+ * sube desde la esquina del enlace. */
+.entrada::after {
+  content: "";
+  position: absolute;
+  inset: -40% -20% auto auto;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, var(--azul-halo), transparent 68%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+}
+.entrada:hover::after { opacity: 1; }
+
+.entrada > * { position: relative; }
+
+.entrada--destacada {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: 18px 40px;
+  align-items: start;
+  padding: 34px;
+}
+.entrada--destacada .entrada__cabeza { grid-column: 1; padding-right: 0; }
+.entrada--destacada .entrada__url { grid-column: 1; }
+.entrada--destacada .entrada__texto { grid-column: 2; grid-row: 1 / span 3; font-size: 16px; }
+.entrada--destacada .entrada__stack { grid-column: 1; align-self: end; }
+.entrada--destacada .entrada__titulo { font-size: 30px; }
 
 .entrada__cabeza {
-  grid-column: 1;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 10px 12px;
+  /* Hueco reservado para la flecha, que va posicionada sobre la esquina. */
+  padding-right: 48px;
 }
-.entrada__titulo { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+.entrada__titulo { font-size: 21px; font-weight: 700; letter-spacing: -0.024em; }
 
 .entrada__flecha {
-  grid-column: 2;
-  grid-row: 1;
+  position: absolute;
+  top: 24px;
+  right: 24px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 34px; height: 34px;
   border-radius: var(--radio-chico);
   background: var(--hueco);
+  border: 1px solid var(--borde);
   color: var(--tinta-suave);
-  flex: none;
-  transition: background 0.16s ease, color 0.16s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
-.entrada:hover .entrada__flecha { background: var(--azul); color: var(--sobre-azul); }
+.entrada:hover .entrada__flecha {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: var(--sobre-azul);
+  transform: translate(2px, -2px);
+}
+.entrada--destacada .entrada__flecha { top: 30px; right: 30px; }
 
 .entrada__texto {
-  grid-column: 1;
   margin: 0;
   color: var(--tinta-media);
   font-size: 15.5px;
-  max-width: 74ch;
+  max-width: 62ch;
+  padding-right: 44px;
 }
+.entrada--destacada .entrada__texto { padding-right: 52px; }
+
+/* La dirección a la que apunta la tarjeta, en monoespaciada. Dice a dónde
+ * lleva el enlace antes de pincharlo y llena la columna del destacado. */
+.entrada__url {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--tinta-suave);
+  transition: color 0.2s ease;
+}
+.entrada:hover .entrada__url { color: var(--azul); }
+.entrada__fecha {
+  color: var(--tinta-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 11.5px;
+}
+.entrada__fecha::after { content: " · "; }
 
 .entrada__stack {
-  grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 12px;
+  margin-top: auto;
+  padding-top: 6px;
 }
 .entrada__stack span {
   font-family: var(--mono);
@@ -415,18 +591,19 @@ h1, h2, h3 {
   background: var(--hueco);
   border: 1px solid var(--borde);
   border-radius: var(--radio-pastilla);
-  padding: 3px 10px;
+  padding: 3px 11px;
 }
 
-/* Estado del proyecto: dice si está vivo o parado, que es el dato que
- * alguien busca antes de pinchar. */
+/* Estado del proyecto: dice si está vivo o en obra, que es el dato que
+ * alguien busca antes de pinchar. Sin pastilla y sin verde: sólo un punto y
+ * el texto, en el azul de la página. */
 .marca-estado {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   font-family: var(--mono);
   font-size: 11.5px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--tinta-suave);
 }
@@ -434,24 +611,46 @@ h1, h2, h3 {
   content: "";
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: var(--verde);
+  background: var(--azul);
+  box-shadow: 0 0 0 3px var(--azul-halo);
 }
-.marca-estado--obra::before { background: var(--azul); }
+.marca-estado--obra::before {
+  background: transparent;
+  border: 1.5px solid var(--tinta-suave);
+  box-shadow: none;
+}
+
+/* ---------- Ahora ---------- */
+
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.tarjeta {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.tarjeta:hover { transform: translateY(-3px); border-color: var(--borde-fuerte); box-shadow: var(--sombra-alta); }
+
+.tarjeta__valor { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.4; letter-spacing: -0.018em; }
+.tarjeta__pie { margin: 0; font-size: 14.5px; color: var(--tinta-media); line-height: 1.55; }
 
 /* ---------- Sobre mí ---------- */
 
 .sobre {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 14px;
+  gap: 16px;
   align-items: start;
 }
 
 .prosa {
-  background: var(--lienzo);
-  border: 1px solid var(--borde);
-  border-radius: var(--radio);
-  padding: 26px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -460,15 +659,12 @@ h1, h2, h3 {
 .prosa p strong { color: var(--tinta); font-weight: 600; }
 
 .herramientas {
-  background: var(--lienzo);
-  border: 1px solid var(--borde);
-  border-radius: var(--radio);
-  padding: 22px 24px;
+  padding: 24px 26px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
-.herramientas__grupo { display: flex; flex-direction: column; gap: 8px; }
+.herramientas__grupo { display: flex; flex-direction: column; gap: 9px; }
 .herramientas__lista { display: flex; flex-wrap: wrap; gap: 6px; }
 .herramientas__lista span {
   font-family: var(--mono);
@@ -477,8 +673,10 @@ h1, h2, h3 {
   background: var(--hueco);
   border: 1px solid var(--borde);
   border-radius: var(--radio-chico);
-  padding: 4px 9px;
+  padding: 4px 10px;
+  transition: border-color 0.16s ease, color 0.16s ease;
 }
+.herramientas__lista span:hover { border-color: var(--azul-borde); color: var(--azul); }
 
 /* ---------- Contacto ---------- */
 
@@ -488,28 +686,35 @@ h1, h2, h3 {
   align-items: center;
   justify-content: space-between;
   gap: 26px;
-  background: var(--lienzo);
-  border: 1px solid var(--borde);
-  border-radius: var(--radio);
-  padding: 34px;
+  padding: 38px;
+  overflow: hidden;
 }
-.panel h2 { font-size: 26px; letter-spacing: -0.025em; margin-bottom: 8px; }
+/* El panel de cierre sí lleva luz propia: es el sitio donde la página pide
+ * algo, y tiene que destacar sobre las tarjetas que la preceden. */
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -70% auto;
+  width: 460px;
+  height: 380px;
+  background: radial-gradient(circle, var(--azul-halo), transparent 68%);
+  pointer-events: none;
+}
+.panel > * { position: relative; }
+.panel h2 { font-size: 28px; letter-spacing: -0.028em; margin-bottom: 8px; }
 .panel p { margin: 0; color: var(--tinta-media); max-width: 46ch; }
 
 /* ---------- Horizonte y pie ----------
  *
- * El perfil de Salamanca queda como remate del pie: da el sitio sin robarle
- * sitio al contenido. Va a media tinta, no como ilustración protagonista. */
+ * El perfil de Salamanca remata el pie. Contenido y a media tinta: a todo lo
+ * ancho medía más de 400 px de alto y se comía la página. */
 
 .horizonte {
-  margin-top: 72px;
+  margin-top: 82px;
   line-height: 0;
-  opacity: 0.45;
+  opacity: 0.4;
 }
-/* Contenido y centrado: a todo lo ancho el dibujo mide más de 400px de alto
- * y se convierte en el protagonista de la página, que no es lo que hace. */
-.horizonte svg { max-width: 520px; margin: 0 auto; }
-.horizonte svg { display: block; width: 100%; height: auto; }
+.horizonte svg { display: block; width: 100%; max-width: 520px; height: auto; margin: 0 auto; }
 .horizonte path {
   fill: none;
   stroke: var(--tinta-suave);
@@ -519,7 +724,7 @@ h1, h2, h3 {
   vector-effect: non-scaling-stroke;
 }
 
-.pie { border-top: 1px solid var(--borde); }
+.pie { position: relative; z-index: 1; border-top: 1px solid var(--borde); }
 .pie__fila {
   display: flex;
   align-items: center;
@@ -529,56 +734,100 @@ h1, h2, h3 {
   padding-block: 26px 34px;
 }
 .pie__enlaces { display: flex; flex-wrap: wrap; gap: 16px; }
-.pie__enlaces a { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tinta-suave); }
+.pie__enlaces a {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  transition: color 0.16s ease;
+}
 .pie__enlaces a:hover { color: var(--azul); }
 
 /* ---------- Entrada en escena ---------- */
 
-.aparece { animation: aparecer 0.5s cubic-bezier(0.16, 0.84, 0.24, 1) both; }
+.aparece { animation: aparecer 0.6s cubic-bezier(0.16, 0.84, 0.24, 1) both; }
 .portada__texto > :nth-child(1) { animation-delay: 0.02s; }
-.portada__texto > :nth-child(2) { animation-delay: 0.08s; }
-.portada__texto > :nth-child(3) { animation-delay: 0.14s; }
-.portada__texto > :nth-child(4) { animation-delay: 0.2s; }
-.portada__reja > .ficha { animation-delay: 0.16s; }
+.portada__texto > :nth-child(2) { animation-delay: 0.09s; }
+.portada__texto > :nth-child(3) { animation-delay: 0.16s; }
+.portada__texto > :nth-child(4) { animation-delay: 0.23s; }
+.portada__reja > .ficha { animation-delay: 0.18s; }
 
 @keyframes aparecer {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: none; }
+}
+
+/* Entrada al desplazar, sin JavaScript. Los navegadores que no soportan
+ * `animation-timeline` no entran en el bloque y lo ven todo visible, que es
+ * exactamente el resultado correcto. */
+@supports (animation-timeline: view()) {
+  .entra {
+    animation: entrar linear both;
+    animation-timeline: view();
+    /* Se completa dentro de la propia entrada del elemento: así lo que ya
+     * está en pantalla al cargar aparece hecho, y lo último de la página no
+     * se queda a medio camino cuando ya no queda scroll. */
+    animation-range: entry 5% entry 65%;
+  }
+
+  @keyframes entrar {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: none; }
+  }
 }
 
 /* ---------- Pantallas estrechas ---------- */
 
+@media (max-width: 980px) {
+  .entrada--destacada { grid-template-columns: 1fr; padding: 28px; }
+  .entrada--destacada .entrada__texto { grid-column: 1; grid-row: auto; }
+  .entrada--destacada .entrada__titulo { font-size: 26px; }
+}
+
 @media (max-width: 900px) {
   .ancho { padding-inline: 22px; }
-  .portada { padding-top: 48px; }
-  .portada__reja { grid-template-columns: 1fr; gap: 34px; }
+  .portada { padding-top: 52px; }
+  .portada__reja { grid-template-columns: 1fr; gap: 36px; }
   .titular { max-width: 20ch; }
-  .seccion { padding-top: 56px; }
+  .seccion { padding-top: 60px; }
+  .lista { grid-template-columns: 1fr; }
   .sobre { grid-template-columns: 1fr; }
-  .horizonte { margin-top: 56px; }
+  .cifras { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 0; padding: 20px 4px; }
+  .cifra:nth-child(3) { border-left: 0; }
+  .horizonte { margin-top: 60px; }
+  .halo { height: 560px; }
 }
 
 @media (max-width: 620px) {
   .ancho { padding-inline: 18px; }
+  /* En el móvil la barra sólo lleva lo imprescindible: con cuatro enlaces el
+   * menú salta a dos líneas y descuadra la cabecera entera. */
   .menu { gap: 0; }
   .menu a { padding: 7px 9px; font-size: 13.5px; }
-  /* En el móvil la barra sólo lleva lo imprescindible: con cuatro enlaces
-   * el menú salta a dos líneas y descuadra la cabecera entera. */
   .menu .menu--oculto { display: none; }
-  .horizonte { margin-top: 48px; }
   .entradilla { font-size: 16.5px; }
+  /* A esta anchura dos botones en fila parten su etiqueta en dos líneas. */
   .acciones { width: 100%; }
-  .acciones .boton { flex: 1 1 160px; }
-  .entrada { padding: 20px; }
+  .acciones .boton { flex: 1 1 100%; }
+  .entrada, .entrada--destacada { padding: 22px; }
+  .entrada__texto, .entrada--destacada .entrada__texto { padding-right: 0; }
+  .entrada__flecha { position: absolute; top: 20px; right: 20px; }
+  .entrada--destacada .entrada__flecha { top: 20px; right: 20px; }
   .ficha__fila { grid-template-columns: 1fr; gap: 2px; }
-  .panel { padding: 26px 22px; }
+  .panel { padding: 28px 22px; }
   .panel .acciones { width: 100%; }
+  .cifra { padding: 6px 14px; }
 }
 
 /* ---------- Sin movimiento ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .aparece { animation: none; opacity: 1; transform: none; }
-  .entrada:hover, .boton:hover { transform: none; }
+  .aparece, .halo, .cursor { animation: none; opacity: 1; transform: none; }
+  .halo { transform: translateX(-50%); }
+  .entrada:hover, .boton:hover, .tarjeta:hover { transform: none; }
+  @supports (animation-timeline: view()) {
+    .entra { animation: none; opacity: 1; transform: none; }
+  }
 }

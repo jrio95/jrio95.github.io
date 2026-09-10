@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>José Martín · jrio.dev</title>
 <meta name="description" content="José Martín, programador en Salamanca. Backend en Go, datos financieros y proyectos propios sobre inversión e inteligencia artificial.">
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0e1015" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232c62f0'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='17' font-weight='700' fill='white' text-anchor='middle'%3Ej%3C/text%3E%3C/svg%3E">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#090a0e" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f7fa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235b8cff'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='17' font-weight='700' fill='%23090a0e' text-anchor='middle'%3Ej%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
@@ -17,6 +17,7 @@
 <body>
 
 <a class="saltar" href="#contenido">Saltar al contenido</a>
+<div class="halo" aria-hidden="true"></div>
 
 <header class="barra">
   <div class="ancho barra__fila">
@@ -35,19 +36,22 @@
   <section class="portada">
     <div class="ancho portada__reja">
       <div class="portada__texto">
-        <p class="estado aparece"><span class="estado__luz" aria-hidden="true"></span>Abierto a proyectos</p>
+        <p class="antetitulo aparece">Salamanca, España</p>
 
         <h1 class="titular aparece">Programo herramientas para <em>entender los datos</em>.</h1>
 
         <p class="entradilla aparece">Backend, mercados financieros y, últimamente, inteligencia artificial. Construyo lo que necesito y lo dejo publicado por si a alguien más le sirve.</p>
 
         <div class="acciones aparece">
-          <a class="boton boton--lleno" href="#proyectos">Ver proyectos</a>
+          <a class="boton boton--lleno" href="#proyectos">
+            Ver proyectos
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="m6 13 6 6 6-6"></path></svg>
+          </a>
           <a class="boton" href="mailto:josmartin95@gmail.com">Escríbeme</a>
         </div>
       </div>
 
-      <div class="ficha aparece">
+      <div class="ficha relieve aparece">
         <div class="ficha__barra">
           <span class="ficha__punto" aria-hidden="true"></span>
           <span class="ficha__punto" aria-hidden="true"></span>
@@ -64,64 +68,85 @@
             <dd class="ficha__valor">Programador · backend y datos</dd>
           </div>
           <div class="ficha__fila">
-            <dt class="ficha__clave">lugar</dt>
-            <dd class="ficha__valor">Salamanca, España</dd>
-          </div>
-          <div class="ficha__fila">
-            <dt class="ficha__clave">experiencia</dt>
-            <dd class="ficha__valor">9 años escribiendo código</dd>
-          </div>
-          <div class="ficha__fila">
             <dt class="ficha__clave">stack</dt>
             <dd class="ficha__valor">Go · Postgres · TypeScript · React</dd>
           </div>
           <div class="ficha__fila">
+            <dt class="ficha__clave">intereses</dt>
+            <dd class="ficha__valor">Mercados financieros e IA aplicada</dd>
+          </div>
+          <div class="ficha__fila">
             <dt class="ficha__clave">contacto</dt>
             <dd class="ficha__valor"><a href="mailto:josmartin95@gmail.com">josmartin95@gmail.com</a></dd>
+          </div>
+          <div class="ficha__fila">
+            <dt class="ficha__clave">estado</dt>
+            <dd class="ficha__valor">Abierto a proyectos<span class="cursor" aria-hidden="true"></span></dd>
           </div>
         </dl>
       </div>
     </div>
   </section>
 
+  <div class="ancho">
+    <div class="cifras relieve entra">
+      <div class="cifra">
+        <p class="cifra__valor">9<span>+</span></p>
+        <p class="dato">Años programando</p>
+      </div>
+      <div class="cifra">
+        <p class="cifra__valor">3</p>
+        <p class="dato">Proyectos en marcha</p>
+      </div>
+      <div class="cifra">
+        <p class="cifra__valor">Go<span>·</span>TS</p>
+        <p class="dato">Lo que más toco</p>
+      </div>
+      <div class="cifra">
+        <p class="cifra__valor">100<span>%</span></p>
+        <p class="dato">Nacidos de una necesidad propia</p>
+      </div>
+    </div>
+  </div>
+
   <section class="seccion" id="proyectos">
     <div class="ancho">
-      <div class="seccion__cabeza">
-        <h2>Proyectos</h2>
-        <p class="dato">3 activos</p>
+      <div class="seccion__cabeza entra">
+        <h2><span class="seccion__num">01</span>Proyectos</h2>
+        <p class="dato">3 en marcha</p>
       </div>
 
       <div class="lista">
-        <a class="entrada" href="https://divr.es">
+        <a class="entrada entrada--destacada relieve entra" href="https://divr.es">
           <span class="entrada__cabeza">
             <span class="entrada__titulo">Divr</span>
             <span class="marca-estado">En producción</span>
-            <span class="dato">Abril 2026</span>
           </span>
           <span class="entrada__flecha" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
+          <span class="entrada__url"><span class="entrada__fecha">Abril 2026</span>divr.es ↗</span>
           <span class="entrada__texto">Mi cartera de inversión: acciones, movimientos, dividendos y opciones PUT, con el cálculo del IRPF hecho. Tiene web y aplicación móvil. De aquí salió bme-fundamentals, el día que dejé de fiarme de los datos que estaba consumiendo.</span>
           <span class="entrada__stack"><span>Go</span><span>Postgres</span><span>React</span><span>Expo</span></span>
         </a>
 
-        <a class="entrada" href="https://api-production-2a50.up.railway.app">
+        <a class="entrada relieve entra" href="https://api-production-2a50.up.railway.app">
           <span class="entrada__cabeza">
             <span class="entrada__titulo">bme-fundamentals</span>
             <span class="marca-estado marca-estado--obra">En desarrollo</span>
-            <span class="dato">Agosto 2026</span>
           </span>
           <span class="entrada__flecha" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
+          <span class="entrada__url"><span class="entrada__fecha">Agosto 2026</span>api-production-2a50.up.railway.app ↗</span>
           <span class="entrada__texto">Saca los estados financieros de las empresas del BME de lo que cada una deposita en la CNMV. Lo hice porque la fuente que usaba para mi cartera devolvía ceros donde en realidad no había dato, y me estaba comiendo errores sin enterarme.</span>
           <span class="entrada__stack"><span>Go</span><span>Postgres</span><span>XBRL</span></span>
         </a>
 
-        <a class="entrada" href="https://chess-coach-production-5b27.up.railway.app">
+        <a class="entrada relieve entra" href="https://chess-coach-production-5b27.up.railway.app">
           <span class="entrada__cabeza">
             <span class="entrada__titulo">Chess Coach</span>
             <span class="marca-estado">En producción</span>
-            <span class="dato">Agosto 2026</span>
           </span>
           <span class="entrada__flecha" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
-          <span class="entrada__texto">Pegas el PGN de una partida y te dice qué jugaste mal, qué era mejor y qué errores repites de una partida a otra. El análisis lo hace Stockfish en el servidor, así que cada comentario sale de una evaluación del motor y no de una opinión.</span>
+          <span class="entrada__url"><span class="entrada__fecha">Agosto 2026</span>chess-coach-production-5b27.up.railway.app ↗</span>
+          <span class="entrada__texto">Pegas el PGN de una partida y te dice qué jugaste mal, qué era mejor y qué errores repites de una partida a otra. El análisis lo hace Stockfish en el servidor, así que cada comentario sale del motor y no de una opinión.</span>
           <span class="entrada__stack"><span>TypeScript</span><span>Node</span><span>Stockfish</span></span>
         </a>
       </div>
@@ -130,22 +155,22 @@
 
   <section class="seccion" id="ahora">
     <div class="ancho">
-      <div class="seccion__cabeza">
-        <h2>En qué ando</h2>
+      <div class="seccion__cabeza entra">
+        <h2><span class="seccion__num">02</span>En qué ando</h2>
         <p class="dato">Septiembre 2026</p>
       </div>
       <div class="rejilla">
-        <article class="tarjeta">
+        <article class="tarjeta relieve entra">
           <p class="dato">Programando</p>
           <p class="tarjeta__valor">bme-fundamentals</p>
           <p class="tarjeta__pie">Me falta la primera carga real contra la CNMV.</p>
         </article>
-        <article class="tarjeta">
+        <article class="tarjeta relieve entra">
           <p class="dato">Aprendiendo</p>
           <p class="tarjeta__valor">IA aplicada y RAG</p>
           <p class="tarjeta__pie">Todavía no sabría decir bien por qué. Me pica y ya está.</p>
         </article>
-        <article class="tarjeta">
+        <article class="tarjeta relieve entra">
           <p class="dato">Fuera del teclado</p>
           <p class="tarjeta__valor">Crossfit</p>
           <p class="tarjeta__pie">Y deporte en general, que si no no me levanto de la silla.</p>
@@ -156,17 +181,17 @@
 
   <section class="seccion" id="sobre">
     <div class="ancho">
-      <div class="seccion__cabeza">
-        <h2>Sobre mí</h2>
-        <p class="dato">Salamanca</p>
+      <div class="seccion__cabeza entra">
+        <h2><span class="seccion__num">03</span>Sobre mí</h2>
+        <p class="dato">Nueve años de oficio</p>
       </div>
       <div class="sobre">
-        <div class="prosa">
+        <div class="prosa relieve entra">
           <p>Llevo <strong>nueve años escribiendo código</strong>. Por mi cuenta me interesan dos cosas: los mercados y, desde hace un tiempo, la inteligencia artificial. Casi todo lo que hay en esta página sale de juntar las dos.</p>
           <p>Los proyectos nacen todos igual: algo que necesitaba yo y que no encontraba hecho, o que estaba hecho de una forma de la que no me fiaba. Cuando funciona, lo dejo publicado por si a alguien más le sirve.</p>
           <p>Trabajo sobre todo en <strong>backend y datos</strong>: APIs en Go, esquemas en Postgres y todo el trabajo aburrido de limpiar información financiera hasta que se puede confiar en ella.</p>
         </div>
-        <aside class="herramientas">
+        <aside class="herramientas relieve entra">
           <div class="herramientas__grupo">
             <p class="dato">Backend</p>
             <div class="herramientas__lista"><span>Go</span><span>Node</span><span>Postgres</span><span>REST</span></div>
@@ -190,7 +215,7 @@
 
   <section class="seccion" id="contacto">
     <div class="ancho">
-      <div class="panel">
+      <div class="panel relieve entra">
         <div>
           <h2>¿Hablamos?</h2>
           <p>Una duda, una corrección o algo que quieras montar: escribe y te contesto.</p>

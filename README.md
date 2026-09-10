@@ -20,31 +20,35 @@ dos tipografías de Google Fonts.
 ## Cambiar cosas
 
 **Los colores** están todos juntos al principio de `assets/style.css`, en el
-bloque `:root`, y repetidos dentro de `@media (prefers-color-scheme: dark)`
+bloque `:root`, y repetidos dentro de `@media (prefers-color-scheme: light)`
 con los mismos nombres. Cambiar un token repinta el sitio entero en los dos
 temas.
 
 ```css
---papel:  #f7f8fa;   /* fondo de la página */
---lienzo: #ffffff;   /* tarjetas */
---borde:  #e3e6ec;
---tinta:  #14161c;   /* texto */
+--papel:   #090a0e;   /* fondo de la página */
+--lienzo:  #101219;   /* tarjetas */
+--borde:   #242936;
+--filo:    rgba(255,255,255,.07);  /* el brillo del borde de arriba */
+--tinta:   #eef1f7;   /* texto */
 
---azul:   #2c62f0;   /* el único acento */
---verde:  #0f9d64;   /* sólo estados: "esto está vivo" */
+--azul:    #5b8cff;   /* el único acento */
+--violeta: #a78bfa;   /* sólo para degradados, nunca sólido */
 ```
 
-Hay **un solo color de acento**. El verde no decora: aparece únicamente en la
-pastilla de disponibilidad y en el punto de estado de cada proyecto, donde
-significa algo. Cuando cada tarjeta lleva su propio color, el color deja de
-querer decir nada.
+Hay **un solo color de acento**. El violeta no pinta ningún elemento entero:
+existe para el degradado del titular y el del logotipo, y ahí se acaba. No hay
+verde en ninguna parte: una pastilla verde de "disponible" es el adorno que
+lleva puesto media web generada, y no dice nada que no diga la fila `estado`
+de la ficha.
 
 **Los textos** están en `index.html`, tal cual. Ya no queda ningún hueco entre
 corchetes por rellenar.
 
 **Una entrada nueva** en la lista de proyectos se copia de la que ya hay. El
-estado se marca con `marca-estado` (verde, en producción) o
-`marca-estado marca-estado--obra` (azul, en desarrollo).
+estado se marca con `marca-estado` (punto azul, en producción) o
+`marca-estado marca-estado--obra` (punto hueco, en desarrollo). La primera
+tarjeta lleva además `entrada--destacada` y ocupa la fila entera; si algún día
+hay una cuarta, la retícula la coloca sola.
 
 No hay filtros. Los hubo, con cuatro botones para tres entradas del mismo
 tipo, y no filtraban nada: eran un control decorativo que además obligaba a
@@ -65,23 +69,39 @@ Si algún repositorio se hace público, ahí se puede volver a enlazar al códig
 
 ## El diseño
 
-El rumbo es **claro, limpio y de herramienta**: fondo de papel, tarjetas
-blancas con un borde de un píxel, un solo azul de interfaz y monoespaciada
-para todo lo que sea dato (fechas, etiquetas de campo, lenguajes, estados). Se
-tiene que leer como la documentación de un producto y no como un póster.
+El rumbo es **oscuro y de herramienta, con relieve**: fondo casi negro,
+superficies que suben por capas, un azul de interfaz y monoespaciada para todo
+lo que sea dato (fechas, dominios, lenguajes, estados). Se tiene que leer como
+el panel de un producto y no como un póster.
 
-Tres decisiones sostienen el resto:
+Lo que sostiene el resto:
 
-- **La jerarquía la hace el espacio, no el color.** Cada sección abre con un
-  título y una línea, y todo lo demás son tarjetas del mismo alto de borde.
 - **La ficha de la portada.** Los datos que daría un `whoami` (nombre, rol,
-  lugar, stack, contacto) en una tabla de clave y valor. Es la pieza que hace
-  que la portada informe en lugar de proclamar.
-- **Nada se mueve salvo al entrar.** Un desvanecido corto en la portada y se
-  acabó. El fondo antiguo (retícula, manchas de luz y grano) se ha ido entero:
-  daba textura pero también ruido, y competía con el contenido.
+  stack, intereses, contacto, estado) en una tabla de clave y valor. Es la
+  pieza que hace que la portada informe en lugar de proclamar. La última fila
+  lleva un cursor parpadeando: la ficha parece un terminal esperando y no una
+  captura muerta.
+- **La banda de cifras.** Cuatro números grandes entre la portada y los
+  proyectos. Rompe la sucesión de tarjetas iguales, que es lo que hace que una
+  página se vea plana por mucho contenido que tenga.
+- **Los proyectos no miden lo mismo.** El primero ocupa la fila entera y los
+  otros dos van a media anchura: la jerarquía se ve antes de leer una palabra.
 
-El **tema oscuro** es el mismo diseño con los tokens cambiados. Lo decide el
+### Contra el aspecto plano
+
+Cuatro reglas, todas en CSS:
+
+- La clase `.relieve` da a cada superficie un relleno en degradado y un **filo
+  de luz** de un píxel arriba. Es lo que separa una tarjeta del fondo sin
+  subirle el brillo al relleno.
+- Un **halo** azul detrás de la portada, y sólo ahí. Late muy despacio.
+- **Al pasar por encima**, las tarjetas suben, el borde se tiñe de azul y se
+  enciende un resplandor desde la esquina del enlace.
+- Las secciones **entran al desplazar**, con `animation-timeline: view()` y
+  sin una línea de JavaScript. Los navegadores que no lo soportan no entran en
+  el bloque `@supports` y lo ven todo visible, que es el resultado correcto.
+
+El **tema claro** es el mismo diseño con los tokens cambiados. Lo decide el
 sistema operativo con `prefers-color-scheme`: no hay interruptor, porque un
 interruptor obligaría a meter JavaScript para recordar la elección.
 
