@@ -68,9 +68,10 @@ no sea su dueño.
 - Servido en Railway (proyecto `jrio-dev`, servicio `web`) desde la rama `main`,
   con Caddy en modo `file-server`.
 - Dominio `jrio.dev`, en la lista de precarga HSTS: sólo responde por HTTPS.
-- Decisión abierta: la fila `estado` de la portada dice "Abierto a proyectos" y
-  **no corresponde a una disponibilidad real**. José la describe como una
-  fórmula. Hay que quitarla o sustituirla por un dato cierto.
+- Resuelto: la fila `estado` de la portada decía "Abierto a proyectos" sin
+  corresponder a una disponibilidad real. José la describió como una fórmula y
+  se ha quitado. La ficha se queda en cinco filas, todas comprobables. Si algún
+  día hay una disponibilidad de verdad, vuelve; mientras tanto, no.
 
 ## Brand Commitments
 

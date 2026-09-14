@@ -378,23 +378,6 @@ h1, h2, h3 {
 .ficha__valor a { color: var(--azul); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .ficha__valor a:hover { color: var(--azul-hover); }
 
-/* El cursor de la última fila: la ficha parece un terminal esperando y no
- * una captura muerta. Es lo único que parpadea en toda la página. */
-.cursor {
-  display: inline-block;
-  width: 8px;
-  height: 1.05em;
-  margin-left: 2px;
-  vertical-align: -0.16em;
-  background: var(--azul);
-  animation: parpadeo 1.15s steps(1) infinite;
-}
-
-@keyframes parpadeo {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
 /* ---------- Cifras ----------
  *
  * Una banda de números grandes entre la portada y los proyectos. Rompe la
@@ -824,7 +807,7 @@ h1, h2, h3 {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .aparece, .halo, .cursor { animation: none; opacity: 1; transform: none; }
+  .aparece, .halo { animation: none; opacity: 1; transform: none; }
   .halo { transform: translateX(-50%); }
   .entrada:hover, .boton:hover, .tarjeta:hover { transform: none; }
   @supports (animation-timeline: view()) {
