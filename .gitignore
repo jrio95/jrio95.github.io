@@ -1,0 +1,17 @@
+# Estado en tiempo de ejecución de la skill de Impeccable.
+#
+# Lleva el PID, el puerto y un token del servidor local de cada sesión: es de
+# la máquina que lo arranca y no significa nada en otra. Las reglas salen del
+# .gitignore del propio Impeccable. Lo que sí se versiona son PRODUCT.md,
+# DESIGN.md y las críticas, que son contenido del proyecto.
+.impeccable/live/server.json
+.impeccable/live/codex-worker.json
+.impeccable/live/codex-worker.log
+**/.impeccable/hook.cache.json
+.impeccable/live/sessions/
+.impeccable/live/previews/
+.impeccable/live/annotations/
+.impeccable/live/artifacts/
+.impeccable/live/accept-receipts/
+.impeccable/live/locks/
+.impeccable/live/cache/
