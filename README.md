@@ -17,6 +17,12 @@ assets/style.css  Todo el diseño, tema claro y oscuro incluidos
 **No hay JavaScript.** Ni una línea. Lo único que se descarga de fuera son las
 dos tipografías de Google Fonts.
 
+Aparte está `.claude/`, que no es la página: es la skill de
+[Impeccable](https://github.com/pbakaus/impeccable) instalada en el proyecto,
+para tener `/impeccable` también en las sesiones remotas, que no ven los
+plugins instalados en el portátil. El `Dockerfile` no la copia, así que no
+llega a Railway ni pesa en lo que se sirve.
+
 ## Cambiar cosas
 
 **Los colores** están todos juntos al principio de `assets/style.css`, en el
