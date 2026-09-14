@@ -10,33 +10,46 @@ colors:
   borde-fuerte: "#333a4b"
   tinta: "#eef1f7"
   tinta-media: "#a4adbf"
-  tinta-suave: "#737c90"
+  tinta-suave: "#7d8698"
   azul: "#5b8cff"
   azul-hover: "#7ba3ff"
   azul-borde: "#2f4a8f"
   violeta: "#a78bfa"
   sobre-azul: "#07080c"
+  papel-claro: "#f6f7fa"
+  lienzo-claro: "#ffffff"
+  hueco-claro: "#eef1f6"
+  borde-claro: "#e1e5ed"
+  borde-fuerte-claro: "#cdd3df"
+  tinta-claro: "#12141a"
+  tinta-media-claro: "#525a6b"
+  tinta-suave-claro: "#666e7e"
+  azul-claro: "#2c5fef"
+  azul-hover-claro: "#1e4bcf"
+  azul-borde-claro: "#b9ccff"
+  violeta-claro: "#7c53f0"
+  sobre-azul-claro: "#ffffff"
 typography:
   display:
-    fontFamily: "Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
     fontSize: "clamp(40px, 5.4vw, 62px)"
     fontWeight: 700
-    lineHeight: "1.04"
-    letterSpacing: "-0.038em"
+    lineHeight: "1.05"
+    letterSpacing: "-0.03em"
   headline:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "Archivo, system-ui, sans-serif"
     fontSize: "26px"
     fontWeight: 700
     lineHeight: "1.15"
-    letterSpacing: "-0.028em"
+    letterSpacing: "-0.02em"
   title:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "Archivo, system-ui, sans-serif"
     fontSize: "21px"
     fontWeight: 700
     lineHeight: "1.15"
     letterSpacing: "-0.024em"
   body:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "Archivo, system-ui, sans-serif"
     fontSize: "16px"
     fontWeight: 400
     lineHeight: "1.65"
@@ -148,8 +161,9 @@ interfaz que es el único color con voz.
   entre superficies, y el recurso principal ahora que la sombra es de estado.
 - **Tinta** (`#eef1f7`): titulares y valores.
 - **Tinta media** (`#a4adbf`): prosa, descripciones, todo lo que se lee seguido.
-- **Tinta suave** (`#737c90`): rótulos, fechas, dominios. Es el nivel más bajo
-  y ya está en el límite del contraste: 4,47:1 sobre lienzo.
+- **Tinta suave** (`#7d8698`): rótulos, fechas, dominios. Es el nivel más bajo
+  y su valor está elegido por el contraste, no por el gusto: 5,11:1 sobre
+  lienzo en oscuro y 5,13:1 en claro. Pasa AA sobre las tres superficies.
 
 ### Named Rules
 
@@ -160,28 +174,34 @@ viewport, sobra uno.
 **La regla del violeta prestado.** El violeta nunca se usa solo. Sólo existe
 como segundo punto de un degradado, y sólo en piezas de identidad.
 
-**La regla del suelo de contraste.** Ningún texto por debajo de `--tinta-suave`.
-Ese token ya está a 0,03 del mínimo de AA; cualquier gris más bajo incumple.
+**La regla del suelo de contraste.** Ningún texto por debajo de `--tinta-suave`,
+en ninguno de los dos temas. El token está calculado contra las tres
+superficies del sistema y no se toca sin volver a calcularlo.
 
 ## Typography
 
-**Display / Body Font:** Inter (con `system-ui`, `-apple-system`, `Segoe UI`)
+**Display / Body Font:** Archivo (con `system-ui`, `-apple-system`, `Segoe UI`)
 **Label / Mono Font:** JetBrains Mono (con `ui-monospace`, `SFMono-Regular`)
 
-**Character:** el par es funcional y sin retórica. Inter lleva la prosa y los
-titulares, con espaciado negativo fuerte en los tamaños grandes para que un
-titular de 62px se lea como un bloque compacto. JetBrains Mono no decora:
-marca lo que es dato. Esa separación es la gramática del sitio y el lector la
-aprende en la primera pantalla.
+**Character:** Archivo es una grotesca de señalética, algo estrecha y con más
+aristas que las neutras de interfaz. A 62px y con el espaciado apretado del
+titular se lee como un bloque macizo, que es el efecto que busca la portada, y
+en cuerpo pequeño sigue siendo una tipografía de trabajo. JetBrains Mono no
+decora: marca lo que es dato. Esa separación es la gramática del sitio y el
+lector la aprende en la primera pantalla.
 
-Inter es la tipografía más usada de la categoría y está anotada como deuda
-pendiente: el carácter del sistema tiene que venir de una display con más voz,
-no del emparejamiento por defecto.
+Se carga en un solo eje variable de 400 a 700, así que toda la escala de pesos
+cabe en una petición.
+
+Sustituyó a Inter, que era la tipografía más usada de la categoría y no aporta
+carácter: el sistema no puede sonar a sí mismo con la voz por defecto de todos
+los demás.
 
 ### Hierarchy
 
-- **Display** (700, `clamp(40px, 5.4vw, 62px)`, 1.04, `-0.038em`): sólo el
-  titular de la portada y el del 404. Uno por página.
+- **Display** (700, `clamp(40px, 5.4vw, 62px)`, 1.05, `-0.03em`): sólo el
+  titular de la portada y el del 404. Uno por página. El remate de la frase va
+  en azul plano, nunca en degradado.
 - **Headline** (700, 26px, 1.15, `-0.028em`): cabeceras de sección.
 - **Title** (700, 21px, `-0.024em`): nombre de proyecto. En la tarjeta
   destacada sube a 30px.
@@ -228,9 +248,8 @@ sombra no participa en ese reparto.
 
 La sombra aparece sólo como acuse de interacción: al pasar por encima de una
 tarjeta o de un botón, al enfocar. Su papel es ambiental y temporal, nunca
-estructural. Esto es doctrina decidida, y el código actual todavía no la
-cumple: hoy hay doce superficies en reposo con borde de un píxel y sombra de
-24px de desenfoque, que es precisamente el patrón que esta regla prohíbe.
+estructural. La hoja lo cumple: ninguna regla declara `box-shadow` fuera de un
+`:hover`.
 
 El filo de luz de un píxel en el borde superior de cada tarjeta se queda: eso
 no es sombra, es el canto de la superficie, y es lo que hace que una tarjeta
@@ -349,6 +368,8 @@ convierte en ornamento. Es deuda declarada.
 - **Don't** meter una banda de estadísticas, un muro de pastillas de
   tecnología o una losa de contacto al final. Son las tres marcas de la
   plantilla de portafolio que este sistema rechaza por escrito.
+- **Don't** usar degradados recortados sobre el texto. El énfasis viene del
+  peso, del tamaño y del color plano.
 - **Don't** escribir guiones largos ni medios en ninguna copia.
 - **Don't** introducir JavaScript. Si algo no se puede hacer en CSS, se
   replantea la pieza.

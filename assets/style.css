@@ -28,7 +28,7 @@
   /* Texto */
   --tinta: #eef1f7;
   --tinta-media: #a4adbf;
-  --tinta-suave: #737c90;
+  --tinta-suave: #7d8698;
 
   /* Acento: un azul de interfaz. El violeta sólo existe para los degradados,
    * nunca para pintar un elemento entero. */
@@ -47,7 +47,7 @@
   --sombra: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.32);
   --sombra-alta: 0 2px 6px rgba(0, 0, 0, 0.5), 0 20px 48px rgba(0, 0, 0, 0.5);
 
-  --letra: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --letra: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
@@ -65,7 +65,7 @@
 
     --tinta: #12141a;
     --tinta-media: #525a6b;
-    --tinta-suave: #838b9c;
+    --tinta-suave: #666e7e;
 
     --azul: #2c5fef;
     --azul-hover: #1e4bcf;
@@ -106,7 +106,7 @@ img, svg { max-width: 100%; }
 h1, h2, h3 {
   margin: 0;
   font-weight: 700;
-  letter-spacing: -0.024em;
+  letter-spacing: -0.02em;
   line-height: 1.15;
 }
 
@@ -144,14 +144,9 @@ h1, h2, h3 {
   height: 760px;
   transform: translateX(-50%);
   background: radial-gradient(50% 50% at 50% 50%, var(--azul-halo), transparent 70%);
+  opacity: 0.55;
   pointer-events: none;
   z-index: 0;
-  animation: latir 18s ease-in-out infinite;
-}
-
-@keyframes latir {
-  0%, 100% { opacity: 0.75; transform: translateX(-50%) scale(1); }
-  50%      { opacity: 1;    transform: translateX(-52%) scale(1.08); }
 }
 
 /* ---------- Piezas que se repiten ---------- */
@@ -177,7 +172,6 @@ h1, h2, h3 {
     var(--lienzo);
   border: 1px solid var(--borde);
   border-radius: var(--radio);
-  box-shadow: var(--sombra);
 }
 .relieve::before {
   content: "";
@@ -217,7 +211,6 @@ h1, h2, h3 {
   border-color: transparent;
   color: var(--sobre-azul);
   font-weight: 600;
-  box-shadow: 0 6px 20px rgba(91, 140, 255, 0.25);
 }
 .boton--lleno:hover {
   box-shadow: 0 10px 28px rgba(91, 140, 255, 0.34);
@@ -267,7 +260,6 @@ h1, h2, h3 {
   font-size: 13px;
   font-weight: 700;
   flex: none;
-  box-shadow: 0 3px 12px rgba(91, 140, 255, 0.35);
 }
 .marca span { color: var(--tinta-suave); }
 
@@ -303,18 +295,15 @@ h1, h2, h3 {
 
 .titular {
   font-size: clamp(40px, 5.4vw, 62px);
-  line-height: 1.04;
-  letter-spacing: -0.038em;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   max-width: 15ch;
 }
-/* El degradado va sólo en el trozo que remata la frase. Pintar el titular
- * entero de color lo convierte en un cartel. */
+/* El color va sólo en el trozo que remata la frase. Pintar el titular entero
+ * lo convierte en un cartel. */
 .titular em {
   font-style: normal;
-  background: linear-gradient(100deg, var(--azul), var(--violeta));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--azul);
 }
 
 .entradilla {
@@ -529,12 +518,10 @@ h1, h2, h3 {
   width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--azul);
-  box-shadow: 0 0 0 3px var(--azul-halo);
 }
 .marca-estado--obra::before {
   background: transparent;
   border: 1.5px solid var(--tinta-suave);
-  box-shadow: none;
 }
 
 /* ---------- Ahora ---------- */
@@ -622,6 +609,12 @@ h1, h2, h3 {
   gap: 10px 24px;
   padding-block: 26px 34px;
 }
+.pie__firma {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--tinta-suave);
+}
+
 .pie__enlaces { display: flex; flex-wrap: wrap; gap: 16px; }
 .pie__enlaces a {
   font-family: var(--mono);
@@ -708,8 +701,7 @@ h1, h2, h3 {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .aparece, .halo { animation: none; opacity: 1; transform: none; }
-  .halo { transform: translateX(-50%); }
+  .aparece { animation: none; opacity: 1; transform: none; }
   .entrada:hover, .boton:hover, .tarjeta:hover { transform: none; }
   @supports (animation-timeline: view()) {
     .entra { animation: none; opacity: 1; transform: none; }

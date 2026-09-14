@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-14T17:30:00Z",
+  "generatedAt": "2026-09-14T18:10:00Z",
   "title": "Design System: jrio.dev",
   "extensions": {
     "colorMeta": {
@@ -61,15 +61,15 @@
       "tinta-suave": {
         "role": "neutral",
         "displayName": "Tinta suave",
-        "canonical": "#737c90",
-        "light": "#838b9c",
-        "note": "Suelo de contraste: 4,47:1 sobre lienzo. Nada por debajo."
+        "canonical": "#7d8698",
+        "light": "#666e7e",
+        "note": "El suelo de contraste. 5,11:1 sobre lienzo en oscuro, 5,13:1 en claro. Nada por debajo."
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Sólo el titular de la portada. Uno por página."
+        "purpose": "Sólo el titular de la portada. Uno por página. Archivo 700 a -0.03em."
       },
       "headline": {
         "displayName": "Headline",
@@ -153,9 +153,7 @@
       "La regla del suelo de contraste: ningún texto por debajo de tinta-suave."
     ],
     "debt": [
-      "Doce superficies llevan sombra en reposo, contra la regla del reposo plano.",
       "El horizonte de Salamanca está al 40% de opacidad y sin relación con ningún texto: es el motivo del sistema y está renderizado como ornamento.",
-      "Inter es la tipografía más usada de la categoría. El carácter tiene que venir de una display con más voz.",
       "El cromo de ventana de macOS de la ficha pertenece a otra metáfora.",
       "El tema claro separa lienzo y papel un 2% de luminancia, y el filo blanco sobre blanco es invisible."
     ]
