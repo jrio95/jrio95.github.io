@@ -124,23 +124,32 @@ El tono es de primera persona y a ras de suelo. Nada de lemas ni de manifiesto.
 
 ## Dónde está servida
 
-Ahora mismo en Railway, en el proyecto `jrio-dev`, servicio `web`:
-`https://web-production-2a891.up.railway.app`. Se redespliega sola con cada
-push a la rama conectada.
+En Railway, proyecto `jrio-dev`, servicio `web`. Se redespliega sola con cada
+push a `main`, que es la rama que sirve.
 
-El `Dockerfile` existe sólo para eso: Railway necesita un proceso escuchando
-en un puerto y ahí va Caddy en modo `file-server`. GitHub Pages no lo mira, y
-para desarrollar tampoco hace falta.
+El `Dockerfile` existe para eso: Railway necesita un proceso escuchando en un
+puerto y ahí va Caddy en modo `file-server`. Para desarrollar no hace falta,
+se sigue abriendo `index.html` en el navegador.
 
 ## Dominio
 
-Ahora mismo se sirve en `jrio95.github.io`. Cuando `jrio.dev` esté comprado:
+`jrio.dev`, registrado en Porkbun. Los dos nombres están dados de alta en el
+servicio `web` de Railway y cada uno tiene su destino, que no es el mismo:
 
-1. Crear un fichero `CNAME` en la raíz con una sola línea: `jrio.dev`.
-2. En el DNS del dominio, cuatro registros `A` a las IP de GitHub Pages y un
-   `CNAME` para `www` que apunte a `jrio95.github.io`.
-3. En Settings → Pages, marcar *Enforce HTTPS* cuando el certificado esté
-   emitido.
+| Tipo | Host | Valor |
+|---|---|---|
+| ALIAS | (vacío, la raíz) | `m9ge4ka4.up.railway.app` |
+| CNAME | `www` | `2cgc4wzw.up.railway.app` |
 
-El fichero `CNAME` no se añade antes de tener el dominio: haría que el sitio
-dejase de responder en la dirección actual sin responder todavía en la nueva.
+En la raíz va **ALIAS y no CNAME**: el DNS no permite un CNAME en el vértice
+de la zona. Porkbun resuelve el ALIAS por su cuenta y devuelve la dirección,
+así que funciona sin tener que servir la página desde `www`.
+
+Railway emite el certificado solo, en cuanto ve los registros. El `.dev` está
+en la lista de precarga HSTS: sólo responde por HTTPS, nunca en `http://`, así
+que hasta que el certificado no está emitido el dominio no carga. Es normal y
+son minutos.
+
+GitHub Pages sigue activo y sirve la misma rama en `jrio95.github.io`. No
+estorba: no hay fichero `CNAME` en el repositorio, que es lo que haría que
+Pages reclamase el dominio para sí.
