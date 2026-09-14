@@ -4,38 +4,145 @@
   "title": "Design System: jrio.dev",
   "extensions": {
     "colorMeta": {
-      "azul": { "role": "primary", "displayName": "Azul de ventana encendida", "canonical": "#5b8cff", "light": "#2c5fef", "tonalRamp": ["#2f4a8f", "#5b8cff", "#7ba3ff"] },
-      "violeta": { "role": "secondary", "displayName": "Violeta de madrugada", "canonical": "#a78bfa", "light": "#7c53f0", "note": "Sólo dentro de degradados. Nunca sólido." },
-      "papel": { "role": "neutral", "displayName": "Noche", "canonical": "#090a0e", "light": "#f6f7fa" },
-      "lienzo": { "role": "neutral", "displayName": "Lienzo", "canonical": "#101219", "light": "#ffffff" },
-      "hueco": { "role": "neutral", "displayName": "Hueco", "canonical": "#1a1e29", "light": "#eef1f6" },
-      "borde": { "role": "neutral", "displayName": "Borde", "canonical": "#242936", "light": "#e1e5ed" },
-      "tinta": { "role": "neutral", "displayName": "Tinta", "canonical": "#eef1f7", "light": "#12141a" },
-      "tinta-media": { "role": "neutral", "displayName": "Tinta media", "canonical": "#a4adbf", "light": "#525a6b" },
-      "tinta-suave": { "role": "neutral", "displayName": "Tinta suave", "canonical": "#737c90", "light": "#838b9c", "note": "Suelo de contraste: 4,47:1 sobre lienzo. Nada por debajo." }
+      "azul": {
+        "role": "primary",
+        "displayName": "Azul de ventana encendida",
+        "canonical": "#5b8cff",
+        "light": "#2c5fef",
+        "tonalRamp": [
+          "#2f4a8f",
+          "#5b8cff",
+          "#7ba3ff"
+        ]
+      },
+      "violeta": {
+        "role": "secondary",
+        "displayName": "Violeta de madrugada",
+        "canonical": "#a78bfa",
+        "light": "#7c53f0",
+        "note": "Sólo dentro de degradados. Nunca sólido."
+      },
+      "papel": {
+        "role": "neutral",
+        "displayName": "Noche",
+        "canonical": "#090a0e",
+        "light": "#f6f7fa"
+      },
+      "lienzo": {
+        "role": "neutral",
+        "displayName": "Lienzo",
+        "canonical": "#101219",
+        "light": "#ffffff"
+      },
+      "hueco": {
+        "role": "neutral",
+        "displayName": "Hueco",
+        "canonical": "#1a1e29",
+        "light": "#eef1f6"
+      },
+      "borde": {
+        "role": "neutral",
+        "displayName": "Borde",
+        "canonical": "#242936",
+        "light": "#e1e5ed"
+      },
+      "tinta": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "#eef1f7",
+        "light": "#12141a"
+      },
+      "tinta-media": {
+        "role": "neutral",
+        "displayName": "Tinta media",
+        "canonical": "#a4adbf",
+        "light": "#525a6b"
+      },
+      "tinta-suave": {
+        "role": "neutral",
+        "displayName": "Tinta suave",
+        "canonical": "#737c90",
+        "light": "#838b9c",
+        "note": "Suelo de contraste: 4,47:1 sobre lienzo. Nada por debajo."
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Sólo el titular de la portada. Uno por página." },
-      "headline": { "displayName": "Headline", "purpose": "Cabeceras de sección." },
-      "title": { "displayName": "Title", "purpose": "Nombre de proyecto. 30px en la tarjeta destacada." },
-      "body": { "displayName": "Body", "purpose": "Prosa. 18px y 52ch en la entradilla, 15,5px y 62ch en las descripciones." },
-      "label": { "displayName": "Label (mono)", "purpose": "Todo lo que es dato: fechas, dominios, claves, estados, números de sección." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Sólo el titular de la portada. Uno por página."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Cabeceras de sección."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Nombre de proyecto. 30px en la tarjeta destacada."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prosa. 18px y 52ch en la entradilla, 15,5px y 62ch en las descripciones."
+      },
+      "label": {
+        "displayName": "Label (mono)",
+        "purpose": "Todo lo que es dato: fechas, dominios, claves, estados, números de sección."
+      }
     },
     "shadows": [
-      { "name": "respuesta", "value": "0 1px 2px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.32)", "purpose": "Hover de botón y de tarjeta menor. Nunca en reposo." },
-      { "name": "respuesta-alta", "value": "0 2px 6px rgba(0,0,0,0.5), 0 20px 48px rgba(0,0,0,0.5)", "purpose": "Hover de tarjeta de proyecto." },
-      { "name": "filo", "value": "linear-gradient(90deg, transparent, rgba(255,255,255,0.07) 22%, rgba(255,255,255,0.07) 78%, transparent)", "purpose": "El canto de luz de un píxel arriba de cada superficie. No es sombra: es el material. Se queda en reposo." }
+      {
+        "name": "respuesta",
+        "value": "0 1px 2px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.32)",
+        "purpose": "Hover de botón y de tarjeta menor. Nunca en reposo."
+      },
+      {
+        "name": "respuesta-alta",
+        "value": "0 2px 6px rgba(0,0,0,0.5), 0 20px 48px rgba(0,0,0,0.5)",
+        "purpose": "Hover de tarjeta de proyecto."
+      },
+      {
+        "name": "filo",
+        "value": "linear-gradient(90deg, transparent, rgba(255,255,255,0.07) 22%, rgba(255,255,255,0.07) 78%, transparent)",
+        "purpose": "El canto de luz de un píxel arriba de cada superficie. No es sombra: es el material. Se queda en reposo."
+      }
     ],
     "motion": [
-      { "name": "estado", "value": "0.16s ease", "purpose": "Cambios de color y de borde." },
-      { "name": "levantar", "value": "0.22s ease", "purpose": "El desplazamiento vertical de las tarjetas al pasar por encima." },
-      { "name": "entrada", "value": "0.6s cubic-bezier(0.16, 0.84, 0.24, 1)", "purpose": "Aparición de la portada al cargar." },
-      { "name": "entrada-scroll", "value": "animation-timeline: view(); animation-range: entry 5% entry 65%", "purpose": "Entrada de secciones al desplazar, sin JavaScript. Bajo @supports." }
+      {
+        "name": "estado",
+        "value": "0.16s ease",
+        "purpose": "Cambios de color y de borde."
+      },
+      {
+        "name": "levantar",
+        "value": "0.22s ease",
+        "purpose": "El desplazamiento vertical de las tarjetas al pasar por encima."
+      },
+      {
+        "name": "entrada",
+        "value": "0.6s cubic-bezier(0.16, 0.84, 0.24, 1)",
+        "purpose": "Aparición de la portada al cargar."
+      },
+      {
+        "name": "entrada-scroll",
+        "value": "animation-timeline: view(); animation-range: entry 5% entry 65%",
+        "purpose": "Entrada de secciones al desplazar, sin JavaScript. Bajo @supports."
+      }
     ],
     "breakpoints": [
-      { "name": "lg", "value": "980px", "purpose": "La tarjeta destacada pierde sus dos columnas." },
-      { "name": "md", "value": "900px", "purpose": "Todo cae a una columna." },
-      { "name": "sm", "value": "620px", "purpose": "El menú se queda con lo imprescindible y los botones van a ancho completo." }
+      {
+        "name": "lg",
+        "value": "980px",
+        "purpose": "La tarjeta destacada pierde sus dos columnas."
+      },
+      {
+        "name": "md",
+        "value": "900px",
+        "purpose": "Todo cae a una columna."
+      },
+      {
+        "name": "sm",
+        "value": "620px",
+        "purpose": "El menú se queda con lo imprescindible y los botones van a ancho completo."
+      }
     ],
     "northStar": "Salamanca a las tres",
     "rules": [
@@ -50,8 +157,7 @@
       "El horizonte de Salamanca está al 40% de opacidad y sin relación con ningún texto: es el motivo del sistema y está renderizado como ornamento.",
       "Inter es la tipografía más usada de la categoría. El carácter tiene que venir de una display con más voz.",
       "El cromo de ventana de macOS de la ficha pertenece a otra metáfora.",
-      "El tema claro separa lienzo y papel un 2% de luminancia, y el filo blanco sobre blanco es invisible.",
-      "Las pastillas de tecnología tienen hover sin ser controles."
+      "El tema claro separa lienzo y papel un 2% de luminancia, y el filo blanco sobre blanco es invisible."
     ]
   },
   "components": [
