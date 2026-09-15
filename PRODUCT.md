@@ -29,8 +29,10 @@ El éxito son dos cosas a la vez, confirmadas por él:
 2. Que se lleve **una idea de cómo trabaja y qué le interesa**, sin tener que
    hacer nada más.
 
-El éxito **no** es recibir un correo. El contacto está disponible porque tiene
-que estarlo, no porque sea el objetivo.
+El éxito principal **no** es recibir un correo, pero José pidió después una
+sección de contacto explícita, así que estar localizable cuenta como objetivo
+secundario. Se resuelve como una tarjeta más al final, no como una llamada a
+la acción que compita con los proyectos.
 
 ## Positioning
 
@@ -57,7 +59,11 @@ no sea su dueño.
 
 ## Capabilities and Constraints
 
-- Sitio estático: `index.html`, `404.html` y una hoja `assets/style.css`.
+- Sitio estático: `index.html`, `en/index.html`, `404.html` y una hoja
+  `assets/style.css`.
+- **Bilingüe, español e inglés**, con una página completa por idioma en vez de
+  traducciones en el navegador. Un cambio de texto se hace dos veces. Es el
+  precio de no tener compilación y está asumido.
 - **Cero JavaScript.** Es una restricción asumida del proyecto, no una pendiente.
   Todo lo que se mueve o cambia de tema está resuelto en CSS.
 - Sin compilar, sin dependencias y sin gestor de paquetes. Se abre el fichero en

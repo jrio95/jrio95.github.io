@@ -9,7 +9,8 @@ gestor de paquetes**: se abre `index.html` en el navegador y ya se ve. Para
 trabajar en ella basta con editar el fichero y recargar.
 
 ```
-index.html        La página entera
+index.html        La página entera, en español
+en/index.html     La misma página, en inglés
 404.html          Página de error
 assets/style.css  Todo el diseño, tema claro y oscuro incluidos
 ```
@@ -120,6 +121,26 @@ en trazo y sin relleno) sigue ahí, pero de remate del pie y no de portada. Va
 contenido a 520 px y a media tinta: da el sitio sin robarle espacio al
 contenido. A todo lo ancho medía más de 400 px de alto y se convertía en el
 protagonista de la página, que no es lo que hace.
+
+## Los dos idiomas
+
+La página existe en español en `/` y en inglés en `/en/`. **Son dos ficheros
+HTML completos, no una plantilla con traducciones.** Es el precio de no tener
+compilación: un cambio de texto hay que hacerlo en los dos sitios.
+
+Se eligió así a propósito. La alternativa era detectar el idioma y cambiar los
+textos en el navegador, y eso son dependencias, JavaScript y una página que
+parpadea al cargar. Dos ficheros de trece kilobytes no necesitan nada de eso.
+
+Las dos comparten `assets/style.css`. El inglés lo enlaza como `/assets/`, con
+barra inicial, porque cuelga de un subdirectorio.
+
+Cada página declara sus alternativas con `hreflang`, para que un buscador
+sepa que son la misma página en dos lenguas y no contenido duplicado. El
+`x-default` apunta al español.
+
+El cambio de idioma es el botoncito `EN` o `ES` del final del menú. No hay
+detección automática: si alguien elige un idioma, se respeta.
 
 ## Reglas de escritura
 

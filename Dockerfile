@@ -9,6 +9,7 @@ FROM caddy:2-alpine
 WORKDIR /srv
 COPY index.html 404.html ./
 COPY assets ./assets
+COPY en ./en
 COPY Caddyfile /etc/caddy/Caddyfile
 
 ENV PORT=8080
