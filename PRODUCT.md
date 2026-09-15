@@ -82,7 +82,9 @@ no sea su dueño.
 - **Humildad, dicho por él: "no me gusta pecar de flipao".** La página tiene
   que decir tres cosas y ninguna más: que es programador, que le gustan la
   bolsa y la inteligencia artificial, que tiene algunos proyectos pequeños y
-  que es de Salamanca. Nada de "construyo herramientas para entender los
+  que es de Salamanca. Se llama a sí mismo **software engineer**, en inglés y
+  sin traducir. Y la página **no ofrece** los proyectos: los enseña. Nada de
+  "los dejo por aquí por si a alguien le sirven", que suena a ofrecimiento. Nada de "construyo herramientas para entender los
   datos" ni de propuestas de valor. Los proyectos son "proyectillos" y no
   "un ecosistema". El texto se mide con esa vara antes de publicarse.
 - **Nunca se usa el guion largo ni el medio.** Donde harían de inciso, la frase
