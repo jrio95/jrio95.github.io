@@ -79,6 +79,12 @@ no sea su dueño.
 - La página está **en español**. Sin excepciones.
 - Voz en primera persona y a ras de suelo. Nada de lemas, manifiestos ni
   promesas. Si una frase suena a eslogan, está mal.
+- **Humildad, dicho por él: "no me gusta pecar de flipao".** La página tiene
+  que decir tres cosas y ninguna más: que es programador, que le gustan la
+  bolsa y la inteligencia artificial, que tiene algunos proyectos pequeños y
+  que es de Salamanca. Nada de "construyo herramientas para entender los
+  datos" ni de propuestas de valor. Los proyectos son "proyectillos" y no
+  "un ecosistema". El texto se mide con esa vara antes de publicarse.
 - **Nunca se usa el guion largo ni el medio.** Donde harían de inciso, la frase
   se parte en dos o se resuelve con comas.
 - El horizonte de Salamanca es el perfil real de la ciudad, dibujado en SVG.
