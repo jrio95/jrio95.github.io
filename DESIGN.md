@@ -329,14 +329,19 @@ eso funciona.
 El componente firma del sitio. Una tabla de clave y valor con barra de título,
 que presenta los datos de una persona como los presentaría un programa.
 
+Lleva sólo **nombre y enlaces**: email, GitHub, LinkedIn. Nada de rol, años de
+experiencia ni especialidad. Es deliberado y es de José: con la IA borrando
+los límites entre especializaciones, una etiqueta como "backend y datos"
+envejece mal y además no es comprobable. Un enlace sí lo es.
+
 - Barra superior en hueco, con la ruta del fichero en mono a 12px.
 - Filas de `116px` de clave más valor libre, separadas por un píxel.
 - Claves en mono a 12,5px y tinta suave; valores en sans a 14,5px y tinta.
 - Por debajo de 620px las filas caen a una columna.
 
 Es la pieza que hace que la portada informe en vez de proclamar, y por eso no
-se toca sin motivo. Lo que sí sobra es el cromo de ventana de macOS: los tres
-puntos son de otra metáfora.
+se toca sin motivo. El cromo de ventana de macOS ya se quitó: los tres puntos
+eran de otra metáfora.
 
 ### El horizonte
 

@@ -99,6 +99,11 @@ no sea su dueño.
 - **Poco texto.** Si una frase se puede decir en la mitad de palabras, se dice
   en la mitad. Las secciones no llevan rótulo a la derecha: eran adorno con
   forma de dato.
+- **Sin etiquetas de especialidad.** Nada de "backend y datos" ni años de
+  experiencia como credencial. Argumento de José: con la IA, las
+  especializaciones dejan de tener sentido. La ficha de la portada lleva
+  nombre y enlaces, que son comprobables, y ninguna afirmación sobre lo que
+  es o lo que sabe.
 - **Nunca se usa el guion largo ni el medio.** Donde harían de inciso, la frase
   se parte en dos o se resuelve con comas.
 - El horizonte de Salamanca es el perfil real de la ciudad, dibujado en SVG.

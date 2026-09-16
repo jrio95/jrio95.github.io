@@ -642,7 +642,7 @@ h1, h2, h3 {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px 24px;
-  padding-block: 26px 34px;
+  padding-block: 24px 30px;
 }
 .pie__firma {
   margin: 0;
