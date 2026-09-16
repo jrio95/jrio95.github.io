@@ -356,7 +356,7 @@ h1, h2, h3 {
 }
 .ficha__fila:last-child { border-bottom: 0; }
 .ficha__clave { font-family: var(--mono); font-size: 12.5px; color: var(--tinta-suave); }
-.ficha__valor { color: var(--tinta); min-width: 0; }
+.ficha__valor { margin: 0; color: var(--tinta); min-width: 0; }
 .ficha__valor a { color: var(--azul); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .ficha__valor a:hover { color: var(--azul-hover); }
 
@@ -717,7 +717,9 @@ h1, h2, h3 {
    * menú salta a dos líneas y descuadra la cabecera entera. */
   .menu { gap: 0; }
   .menu a { padding: 7px 9px; font-size: 13.5px; }
-  .menu .menu--oculto { display: none; }
+  /* Con GitHub dentro, la barra se parte en dos líneas a esta anchura. El
+   * enlace sigue en el pie, que es donde se va a buscar. */
+  .menu .menu--oculto, .menu .menu--fuera { display: none; }
   .entradilla { font-size: 16.5px; }
   /* A esta anchura dos botones en fila parten su etiqueta en dos líneas. */
   .acciones { width: 100%; }

@@ -93,6 +93,12 @@ no sea su dueño.
   "los dejo por aquí por si a alguien le sirven", que suena a ofrecimiento. Nada de "construyo herramientas para entender los
   datos" ni de propuestas de valor. Los proyectos son "proyectillos" y no
   "un ecosistema". El texto se mide con esa vara antes de publicarse.
+- **La portada no es una presentación, es una marca.** Nada de "Soy José" ni
+  "Me llamo". El titular declara qué es y qué le interesa, en lista y sin
+  conjunciones: "Software engineer. Bolsa, IA, proyectos propios."
+- **Poco texto.** Si una frase se puede decir en la mitad de palabras, se dice
+  en la mitad. Las secciones no llevan rótulo a la derecha: eran adorno con
+  forma de dato.
 - **Nunca se usa el guion largo ni el medio.** Donde harían de inciso, la frase
   se parte en dos o se resuelve con comas.
 - El horizonte de Salamanca es el perfil real de la ciudad, dibujado en SVG.
