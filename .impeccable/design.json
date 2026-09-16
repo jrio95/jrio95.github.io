@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-14T18:10:00Z",
+  "title": "Design System: jrio.dev",
+  "extensions": {
+    "colorMeta": {
+      "azul": {
+        "role": "primary",
+        "displayName": "Azul de ventana encendida",
+        "canonical": "#5b8cff",
+        "light": "#2c5fef",
+        "tonalRamp": [
+          "#2f4a8f",
+          "#5b8cff",
+          "#7ba3ff"
+        ]
+      },
+      "violeta": {
+        "role": "secondary",
+        "displayName": "Violeta de madrugada",
+        "canonical": "#a78bfa",
+        "light": "#7c53f0",
+        "note": "Sólo dentro de degradados. Nunca sólido."
+      },
+      "papel": {
+        "role": "neutral",
+        "displayName": "Noche",
+        "canonical": "#090a0e",
+        "light": "#f6f7fa"
+      },
+      "lienzo": {
+        "role": "neutral",
+        "displayName": "Lienzo",
+        "canonical": "#101219",
+        "light": "#ffffff"
+      },
+      "hueco": {
+        "role": "neutral",
+        "displayName": "Hueco",
+        "canonical": "#1a1e29",
+        "light": "#eef1f6"
+      },
+      "borde": {
+        "role": "neutral",
+        "displayName": "Borde",
+        "canonical": "#242936",
+        "light": "#e1e5ed"
+      },
+      "tinta": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "#eef1f7",
+        "light": "#12141a"
+      },
+      "tinta-media": {
+        "role": "neutral",
+        "displayName": "Tinta media",
+        "canonical": "#a4adbf",
+        "light": "#525a6b"
+      },
+      "tinta-suave": {
+        "role": "neutral",
+        "displayName": "Tinta suave",
+        "canonical": "#7d8698",
+        "light": "#666e7e",
+        "note": "El suelo de contraste. 5,11:1 sobre lienzo en oscuro, 5,13:1 en claro. Nada por debajo."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Sólo el titular de la portada. Uno por página. Archivo 700 a -0.03em."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Cabeceras de sección."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Nombre de proyecto. 30px en la tarjeta destacada."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prosa. 18px y 52ch en la entradilla, 15,5px y 62ch en las descripciones."
+      },
+      "label": {
+        "displayName": "Label (mono)",
+        "purpose": "Todo lo que es dato: fechas, dominios, claves, estados, números de sección."
+      }
+    },
+    "shadows": [
+      {
+        "name": "respuesta",
+        "value": "0 1px 2px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.32)",
+        "purpose": "Hover de botón y de tarjeta menor. Nunca en reposo."
+      },
+      {
+        "name": "respuesta-alta",
+        "value": "0 2px 6px rgba(0,0,0,0.5), 0 20px 48px rgba(0,0,0,0.5)",
+        "purpose": "Hover de tarjeta de proyecto."
+      },
+      {
+        "name": "filo",
+        "value": "linear-gradient(90deg, transparent, rgba(255,255,255,0.07) 22%, rgba(255,255,255,0.07) 78%, transparent)",
+        "purpose": "El canto de luz de un píxel arriba de cada superficie. No es sombra: es el material. Se queda en reposo."
+      }
+    ],
+    "motion": [
+      {
+        "name": "estado",
+        "value": "0.16s ease",
+        "purpose": "Cambios de color y de borde."
+      },
+      {
+        "name": "levantar",
+        "value": "0.22s ease",
+        "purpose": "El desplazamiento vertical de las tarjetas al pasar por encima."
+      },
+      {
+        "name": "entrada",
+        "value": "0.6s cubic-bezier(0.16, 0.84, 0.24, 1)",
+        "purpose": "Aparición de la portada al cargar."
+      },
+      {
+        "name": "entrada-scroll",
+        "value": "animation-timeline: view(); animation-range: entry 5% entry 65%",
+        "purpose": "Entrada de secciones al desplazar, sin JavaScript. Bajo @supports."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "lg",
+        "value": "980px",
+        "purpose": "La tarjeta destacada pierde sus dos columnas."
+      },
+      {
+        "name": "md",
+        "value": "900px",
+        "purpose": "Todo cae a una columna."
+      },
+      {
+        "name": "sm",
+        "value": "620px",
+        "purpose": "El menú se queda con lo imprescindible y los botones van a ancho completo."
+      }
+    ],
+    "northStar": "Salamanca a las tres",
+    "rules": [
+      "La regla de la voz única: el azul aparece en menos del 10% de cualquier pantalla.",
+      "La regla del violeta prestado: nunca sólido, sólo como segundo punto de un degradado.",
+      "La regla mono: monoespaciada es igual a dato; sans es igual a frase.",
+      "La regla del reposo plano: ninguna superficie lleva sombra hasta que el puntero o el foco la tocan.",
+      "La regla del suelo de contraste: ningún texto por debajo de tinta-suave."
+    ],
+    "debt": [
+      "El horizonte de Salamanca está al 40% de opacidad y sin relación con ningún texto: es el motivo del sistema y está renderizado como ornamento.",
+      "El cromo de ventana de macOS de la ficha pertenece a otra metáfora.",
+      "El tema claro separa lienzo y papel un 2% de luminancia, y el filo blanco sobre blanco es invisible."
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón primario",
+      "kind": "button",
+      "refersTo": "boton-primario",
+      "description": "La única acción principal de una pantalla. Texto oscuro sobre azul, nunca blanco.",
+      "html": "<a class=\"ds-boton-primario\" href=\"#\">Ver proyectos</a>",
+      "css": ".ds-boton-primario { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 12px 22px; border: 1px solid transparent; border-radius: 9px; background: linear-gradient(180deg, #7ba3ff, #5b8cff); color: #07080c; font: 600 15px/1.2 Inter, system-ui, sans-serif; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease; } .ds-boton-primario:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(91,140,255,.34); }"
+    },
+    {
+      "name": "Tarjeta de proyecto",
+      "kind": "card",
+      "refersTo": "tarjeta",
+      "description": "El objeto de decisión del sitio. Responde qué es, si está vivo, a dónde lleva y con qué está hecho antes del primer párrafo.",
+      "html": "<a class=\"ds-tarjeta\" href=\"#\"><span class=\"ds-tarjeta__cabeza\"><span class=\"ds-tarjeta__titulo\">Divr</span><span class=\"ds-estado\">En producción</span></span><span class=\"ds-url\">divr.es ↗</span><span class=\"ds-tarjeta__texto\">Mi cartera de inversión, con el cálculo del IRPF hecho.</span></a>",
+      "css": ".ds-tarjeta { position: relative; display: flex; flex-direction: column; gap: 12px; padding: 26px; border: 1px solid #242936; border-radius: 16px; background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,0) 42%), #101219; color: #eef1f7; text-decoration: none; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; } .ds-tarjeta::before { content: \"\"; position: absolute; inset: 0 0 auto; height: 1px; border-radius: 16px 16px 0 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.07) 22%, rgba(255,255,255,.07) 78%, transparent); } .ds-tarjeta:hover { transform: translateY(-4px); border-color: #2f4a8f; box-shadow: 0 2px 6px rgba(0,0,0,.5), 0 20px 48px rgba(0,0,0,.5); } .ds-tarjeta__titulo { font: 700 21px/1.15 Inter, sans-serif; letter-spacing: -.024em; } .ds-estado { display: inline-flex; align-items: center; gap: 7px; font: 500 11.5px/1.4 \"JetBrains Mono\", monospace; letter-spacing: .05em; text-transform: uppercase; color: #737c90; } .ds-estado::before { content: \"\"; width: 6px; height: 6px; border-radius: 50%; background: #5b8cff; box-shadow: 0 0 0 3px rgba(91,140,255,.22); } .ds-url { font: 400 12.5px/1.4 \"JetBrains Mono\", monospace; color: #737c90; } .ds-tarjeta__texto { font: 400 15.5px/1.6 Inter, sans-serif; color: #a4adbf; margin: 0; }"
+    },
+    {
+      "name": "Ficha de clave y valor",
+      "kind": "custom",
+      "refersTo": "tarjeta",
+      "description": "El componente firma. Presenta los datos de una persona como los presentaría un programa. El cromo de ventana de macOS que lleva hoy es deuda: pertenece a otra metáfora.",
+      "html": "<dl class=\"ds-ficha\"><div class=\"ds-ficha__fila\"><dt class=\"ds-ficha__clave\">rol</dt><dd class=\"ds-ficha__valor\">Programador · backend y datos</dd></div></dl>",
+      "css": ".ds-ficha { margin: 0; border: 1px solid #242936; border-radius: 16px; background: #101219; overflow: hidden; } .ds-ficha__fila { display: grid; grid-template-columns: 116px minmax(0,1fr); gap: 16px; padding: 13px 18px; border-bottom: 1px solid #242936; } .ds-ficha__fila:last-child { border-bottom: 0; } .ds-ficha__clave { font: 500 12.5px/1.4 \"JetBrains Mono\", monospace; color: #737c90; } .ds-ficha__valor { margin: 0; font: 400 14.5px/1.5 Inter, sans-serif; color: #eef1f7; }"
+    },
+    {
+      "name": "Pastilla de tecnología",
+      "kind": "chip",
+      "refersTo": "pastilla-stack",
+      "description": "Etiqueta, no control. No lleva hover: un cambio de color al pasar por encima promete un clic que no existe.",
+      "html": "<span class=\"ds-pastilla\">Go</span>",
+      "css": ".ds-pastilla { display: inline-block; padding: 3px 11px; border: 1px solid #242936; border-radius: 999px; background: #1a1e29; color: #a4adbf; font: 400 12px/1.5 \"JetBrains Mono\", monospace; }"
+    }
+  ]
+}

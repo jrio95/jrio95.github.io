@@ -1,58 +1,104 @@
 ---
 name: jrio.dev
-description: La página personal de José Martín Río. Salamanca de noche, piedra y ocre.
+description: La página personal de José Martín Río. Oscura, de herramienta, con Salamanca de fondo.
 colors:
-  papel: "#15110d"
-  tinta: "#efe7d9"
-  tinta-media: "#b9ac99"
-  tinta-suave: "#968875"
-  linea: "#2e2720"
-  linea-fuerte: "#473d32"
-  ocre: "#d99a3e"
-  ocre-vivo: "#ecb45f"
-  papel-claro: "#f3ede2"
-  tinta-claro: "#1a1512"
-  tinta-media-claro: "#4d4238"
-  tinta-suave-claro: "#6b5f51"
-  linea-claro: "#ddd3c4"
-  linea-fuerte-claro: "#c6bbaa"
-  ocre-claro: "#8f5410"
+  papel: "#090a0e"
+  lienzo: "#101219"
+  lienzo-alto: "#161923"
+  hueco: "#1a1e29"
+  borde: "#242936"
+  borde-fuerte: "#333a4b"
+  tinta: "#eef1f7"
+  tinta-media: "#a4adbf"
+  tinta-suave: "#7d8698"
+  azul: "#5b8cff"
+  azul-hover: "#7ba3ff"
+  azul-borde: "#2f4a8f"
+  violeta: "#a78bfa"
+  sobre-azul: "#07080c"
+  papel-claro: "#f6f7fa"
+  lienzo-claro: "#ffffff"
+  hueco-claro: "#eef1f6"
+  borde-claro: "#e1e5ed"
+  borde-fuerte-claro: "#cdd3df"
+  tinta-claro: "#12141a"
+  tinta-media-claro: "#525a6b"
+  tinta-suave-claro: "#666e7e"
+  azul-claro: "#2c5fef"
+  azul-hover-claro: "#1e4bcf"
+  azul-borde-claro: "#b9ccff"
+  violeta-claro: "#7c53f0"
+  sobre-azul-claro: "#ffffff"
 typography:
   display:
-    fontFamily: "Source Serif 4, Bitstream Charter, Charter, Georgia, serif"
-    fontSize: "clamp(34px, 5.2vw, 56px)"
-    fontWeight: 400
-    lineHeight: "1.1"
-    letterSpacing: "-0.012em"
-  title:
-    fontFamily: "Source Serif 4, Georgia, serif"
-    fontSize: "22px"
+    fontFamily: "Archivo, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+    fontSize: "clamp(40px, 5.4vw, 62px)"
     fontWeight: 700
-    lineHeight: "1.3"
-    letterSpacing: "-0.01em"
+    lineHeight: "1.05"
+    letterSpacing: "-0.03em"
+  headline:
+    fontFamily: "Archivo, system-ui, sans-serif"
+    fontSize: "26px"
+    fontWeight: 700
+    lineHeight: "1.15"
+    letterSpacing: "-0.02em"
+  title:
+    fontFamily: "Archivo, system-ui, sans-serif"
+    fontSize: "21px"
+    fontWeight: 700
+    lineHeight: "1.15"
+    letterSpacing: "-0.024em"
   body:
-    fontFamily: "Source Serif 4, Georgia, serif"
-    fontSize: "17px"
+    fontFamily: "Archivo, system-ui, sans-serif"
+    fontSize: "16px"
     fontWeight: 400
-    lineHeight: "1.6"
+    lineHeight: "1.65"
+    letterSpacing: "normal"
   label:
-    fontFamily: "Source Serif 4, Georgia, serif"
-    fontSize: "14px"
-    fontWeight: 400
-    letterSpacing: "0.14em"
+    fontFamily: "JetBrains Mono, ui-monospace, SFMono-Regular, Consolas, monospace"
+    fontSize: "12px"
+    fontWeight: 500
+    lineHeight: "1.4"
+    letterSpacing: "0.06em"
 rounded:
-  ninguno: "0"
+  pastilla: "999px"
+  chico: "9px"
+  md: "16px"
 spacing:
-  fila: "22px"
-  seccion: "62px"
+  xs: "6px"
+  sm: "10px"
+  md: "16px"
+  lg: "26px"
+  xl: "84px"
 components:
-  enlace:
-    textColor: "{colors.ocre}"
-  entrada:
-    backgroundColor: "{colors.papel}"
+  boton-primario:
+    backgroundColor: "{colors.azul}"
+    textColor: "{colors.sobre-azul}"
+    rounded: "{rounded.chico}"
+    padding: "12px 22px"
+    height: "46px"
+  boton-primario-hover:
+    backgroundColor: "{colors.azul-hover}"
+    textColor: "{colors.sobre-azul}"
+  boton-secundario:
+    backgroundColor: "{colors.lienzo}"
     textColor: "{colors.tinta}"
-    rounded: "{rounded.ninguno}"
-    padding: "22px 0"
+    rounded: "{rounded.chico}"
+    padding: "12px 22px"
+  tarjeta:
+    backgroundColor: "{colors.lienzo}"
+    textColor: "{colors.tinta}"
+    rounded: "{rounded.md}"
+    padding: "26px"
+  tarjeta-hover:
+    backgroundColor: "{colors.lienzo}"
+    textColor: "{colors.tinta}"
+  pastilla-stack:
+    backgroundColor: "{colors.hueco}"
+    textColor: "{colors.tinta-media}"
+    rounded: "{rounded.pastilla}"
+    padding: "3px 11px"
+    typography: "{typography.label}"
 ---
 
 # Design System: jrio.dev
@@ -61,184 +107,274 @@ components:
 
 **Creative North Star: "Salamanca a las tres"**
 
-La ciudad de noche. Piedra de Villamayor, que de día es dorada y de noche
-parda, y una ventana encendida. De ahí salen las dos únicas decisiones de
-color del sistema: el fondo es un pardo muy oscuro y cálido, no un gris
-azulado, y el acento es el ocre de la piedra y de los vítores pintados en los
-muros de la universidad.
+La ciudad de noche con una ventana encendida. Todo lo demás está a oscuras y
+en silencio, y en ese silencio se ve trabajar a alguien. Ese es el sistema: un
+fondo casi negro que no compite, superficies que se encienden sólo cuando
+alguien las toca, y el perfil de la ciudad como motivo y no como adorno.
 
-El tono es de página impresa, no de panel de producto. Una sola familia con
-gracias para todo, jerarquía por tamaño y espacio, y una línea de un píxel
-donde hace falta separar. El resultado tiene que parecer compuesto por alguien
-y no generado.
+La metáfora manda sobre dos cosas concretas. La primera: la oscuridad es el
+estado por defecto y no un tema alternativo, así que el tema claro tiene que
+ser la misma escena con la luz puesta, no una hoja distinta. La segunda: el
+horizonte de Salamanca es el motivo del sistema, no una firma al pie. Hoy está
+al 40% de opacidad y a 2000px del único texto que nombra la ciudad, que es
+exactamente el error que este norte corrige.
 
-### Lo que este sistema rechaza, y por qué
-
-Esta es la parte que más manda. El diseño anterior era competente y aun así
-José lo describió así: "se ve y sabes que está hecho con Claude Code". Tenía
-razón, y el motivo no era un detalle suelto sino la combinación entera, que es
-el aspecto por defecto de las páginas hechas con un asistente:
-
-- fondo casi negro azulado con **un azul de interfaz** como único acento;
-- **titular de palo grueso** con el espaciado muy apretado;
-- **tarjetas de esquinas redondeadas** con borde de un píxel y sombra ancha;
-- una **tarjeta imitando un terminal** para parecer técnico;
-- **monoespaciada de atrezo** en rótulos que no son código;
-- **resplandores de color** y degradados recortados sobre el texto.
-
-Ninguna de esas cosas existe aquí, y ninguna vuelve. Si una decisión futura
-lleva a cualquiera de ellas, la decisión está mal.
-
-Se acepta a cambio una marca que un detector señala: el papel crema del tema
-claro. Es deliberado, sale del norte del sistema y se queda.
+El tono es de herramienta, no de póster. Se lee como el panel de algo que está
+funcionando: datos en monoespaciada, prosa en sans, un solo azul que señala.
+Rechazo confirmado: la plantilla de portafolio de programador, con su banda de
+estadísticas, su muro de pastillas de tecnología y su losa de contacto al
+final.
 
 **Key Characteristics:**
 
-- Pardo oscuro por defecto, papel crema por `prefers-color-scheme`.
-- Una sola tipografía, con gracias, para titulares, texto y rótulos.
-- Un solo acento, el ocre, y casi siempre en cursiva o en un enlace.
-- Radio cero. Sombra cero. Sin tarjetas: filas separadas por una línea.
-- Cero JavaScript.
+- Oscuro por defecto, claro por `prefers-color-scheme`, mismos tokens.
+- Monoespaciada para todo lo que es dato; sans para todo lo que es prosa.
+- Un solo color de acento. El violeta existe sólo dentro de degradados.
+- Plano en reposo. La profundidad es una respuesta, no un fondo.
+- Cero JavaScript. Toda la vida de la página está resuelta en CSS.
 
 ## Colors
 
+Una escala de grises azulados que va de casi negro a casi blanco, y un azul de
+interfaz que es el único color con voz.
+
 ### Primary
 
-- **Ocre de Villamayor** (`#d99a3e`): el único color. Aparece en la cursiva del
-  titular, en los enlaces y en el subrayado. En claro baja a `#8f5410` para
-  aguantar el contraste sobre papel.
+- **Azul de ventana encendida** (`#5b8cff`): el único acento. Botón principal,
+  enlaces, punto de estado de los proyectos en producción, número de sección,
+  borde de la tarjeta al pasar por encima. En claro baja a `#2c5fef` para
+  aguantar el contraste sobre blanco.
+
+### Secondary
+
+- **Violeta de madrugada** (`#a78bfa`): no pinta ningún elemento entero. Existe
+  para el degradado del logotipo y para el remate del titular. Si aparece
+  sólido en algún sitio, es un error.
 
 ### Neutral
 
-- **Noche parda** (`#15110d`): el fondo. Pardo, no gris y desde luego no azul.
-- **Crema** (`#efe7d9`): el texto. 15,3:1 sobre el fondo.
-- **Crema media** (`#b9ac99`): prosa y descripciones. 8,4:1.
-- **Crema suave** (`#968875`): fechas, rótulos y estados. 5,4:1.
-- **Línea** (`#2e2720`) y **línea fuerte** (`#473d32`): lo único que separa.
-
-En claro los papeles se invierten: `#f3ede2` de fondo y `#1a1512` de tinta.
-Los cuatro niveles de texto pasan AA en los dos temas; están elegidos por el
-contraste y no por el gusto.
+- **Noche** (`#090a0e`): el fondo de la página. Casi negro, con azul dentro.
+- **Lienzo** (`#101219`): las tarjetas. Un escalón por encima de la noche.
+- **Hueco** (`#1a1e29`): lo que se hunde. Barra de la ficha, pastillas, fondo
+  de los botones de flecha en reposo.
+- **Borde** (`#242936`) y **Borde fuerte** (`#333a4b`): la separación real
+  entre superficies, y el recurso principal ahora que la sombra es de estado.
+- **Tinta** (`#eef1f7`): titulares y valores.
+- **Tinta media** (`#a4adbf`): prosa, descripciones, todo lo que se lee seguido.
+- **Tinta suave** (`#7d8698`): rótulos, fechas, dominios. Es el nivel más bajo
+  y su valor está elegido por el contraste, no por el gusto: 5,11:1 sobre
+  lienzo en oscuro y 5,13:1 en claro. Pasa AA sobre las tres superficies.
 
 ### Named Rules
 
-**La regla del color único.** Hay un acento y es el ocre. No se añade un
-segundo color para distinguir estados, secciones ni nada. Lo que necesite
-distinguirse, se distingue con tamaño, espacio o una línea.
+**La regla de la voz única.** El azul aparece en menos del 10% de cualquier
+pantalla. Su rareza es el punto. Si dos elementos azules compiten en el mismo
+viewport, sobra uno.
 
-**La regla del pardo.** El fondo lleva rojo y amarillo dentro. Un negro neutro
-o un azulado devuelve la página al sitio del que la hemos sacado.
+**La regla del violeta prestado.** El violeta nunca se usa solo. Sólo existe
+como segundo punto de un degradado, y sólo en piezas de identidad.
+
+**La regla del suelo de contraste.** Ningún texto por debajo de `--tinta-suave`,
+en ninguno de los dos temas. El token está calculado contra las tres
+superficies del sistema y no se toca sin volver a calcularlo.
 
 ## Typography
 
-**Una sola familia:** Source Serif 4 (con Charter, Georgia y la serif del
-sistema detrás).
+**Display / Body Font:** Archivo (con `system-ui`, `-apple-system`, `Segoe UI`)
+**Label / Mono Font:** JetBrains Mono (con `ui-monospace`, `SFMono-Regular`)
 
-**Character:** una serif de texto, de las de leer, no una display de exhibición.
-El titular va en regular y no en negrita: el tamaño ya hace el trabajo, y una
-serif a 56px en regular tiene aire de página impresa mientras que en negrita
-tendría aire de cartel. La cursiva es la que carga el énfasis.
+**Character:** Archivo es una grotesca de señalética, algo estrecha y con más
+aristas que las neutras de interfaz. A 62px y con el espaciado apretado del
+titular se lee como un bloque macizo, que es el efecto que busca la portada, y
+en cuerpo pequeño sigue siendo una tipografía de trabajo. JetBrains Mono no
+decora: marca lo que es dato. Esa separación es la gramática del sitio y el
+lector la aprende en la primera pantalla.
 
-No hay monoespaciada. La había, marcando datos, y sonaba a disfraz técnico:
-fechas y dominios se leen igual de bien en la serif y la página deja de pedir
-que la tomen por una terminal.
+Se carga en un solo eje variable de 400 a 700, así que toda la escala de pesos
+cabe en una petición.
+
+Sustituyó a Inter, que era la tipografía más usada de la categoría y no aporta
+carácter: el sistema no puede sonar a sí mismo con la voz por defecto de todos
+los demás.
 
 ### Hierarchy
 
-- **Display** (400, `clamp(34px, 5.2vw, 56px)`, 1.1): sólo el titular. Uno por
-  página. El remate va en cursiva y en ocre.
-- **Título** (700, 22px): nombre de proyecto.
-- **Texto** (400, 17px, 1.6): prosa. Medida de 46 a 62ch según el bloque.
-- **Rótulo** (400, 14px, versalitas con `font-variant-caps: all-small-caps` y
-  0.14em de espaciado): títulos de sección, claves y estados.
+- **Display** (700, `clamp(40px, 5.4vw, 62px)`, 1.05, `-0.03em`): sólo el
+  titular de la portada y el del 404. Uno por página. El remate de la frase va
+  en azul plano, nunca en degradado.
+- **Headline** (700, 26px, 1.15, `-0.028em`): cabeceras de sección.
+- **Title** (700, 21px, `-0.024em`): nombre de proyecto. En la tarjeta
+  destacada sube a 30px.
+- **Body** (400, 16px, 1.65): prosa. La entradilla sube a 18px y se corta a
+  52ch; las descripciones de proyecto bajan a 15,5px y se cortan a 62ch.
+- **Label** (500, 12px, `0.06em`, mayúsculas, mono): rótulos de campo, fechas,
+  estados, pie. El antetítulo sube a 12,5px y `0.1em`.
 
 ### Named Rules
 
-**La regla de las versalitas.** Lo que en otro sistema iría en mayúsculas
-pequeñas y monoespaciadas, aquí va en versalitas de la propia serif. Es la
-diferencia entre un rótulo compuesto y una etiqueta de interfaz.
+**La regla mono.** Monoespaciada es igual a dato. Fechas, dominios, claves de
+campo, lenguajes, estados, números de sección. Si un texto es una frase, va en
+sans. Si es un valor, va en mono. No hay tercera opción.
 
-**La regla del titular ligero.** El display nunca va en negrita.
+**La regla de las mayúsculas.** Las mayúsculas sólo existen en el rol de
+etiqueta, a 11,5-12,5px y con espaciado positivo. Nunca en prosa ni en un
+titular.
 
 ## Layout
 
-Una sola columna de 820px como máximo, centrada, con 28px de aire a los lados
-que bajan a 20px por debajo de 720px. No hay retícula de tarjetas ni segunda
-columna de apoyo: la página se lee de arriba abajo.
+Una columna centrada de 1120px como máximo, con 32px de aire a los lados que
+bajan a 22px por debajo de 900px y a 18px por debajo de 620px. Todo el sitio
+usa el mismo contenedor: no hay secciones a sangre completa.
 
-Dentro de las secciones sí hay dos columnas, pero son de tabla: 210px para la
-clave (nombre del proyecto, rótulo) y el resto para el contenido. Por debajo de
-720px esa tabla cae a una columna.
+El ritmo vertical lo marca la sección: 84px de separación entre una y otra en
+escritorio, 60px por debajo de 900px. Cada sección abre con una cabecera de
+título más rótulo separada por una línea de un píxel.
 
-El ritmo vertical lo marca la sección, a 62px. Cada sección abre con un rótulo
-en versalitas y una línea, y cada fila se separa de la siguiente con otra
-línea de un píxel.
+Las retículas son dos. Los proyectos van en dos columnas donde el primero
+ocupa la fila entera, para que la jerarquía se vea antes de leer. Las tarjetas
+de "En qué ando" usan `auto-fit` con mínimo de 250px, así que se reparten
+solas. Por debajo de 900px todo cae a una columna.
 
-La cabecera **no es fija**. Una página de este largo no necesita arrastrar un
-menú detrás, y una barra flotante con desenfoque es otro de los tics que
-sobran.
+La barra es fija arriba, de 66px, con desenfoque de fondo. `scroll-padding-top`
+de 88px evita que tape el título al saltar a un ancla.
 
 ## Elevation & Depth
 
-**No hay.** Ni sombras, ni capas, ni superficies elevadas, ni filos de luz.
+**Plano en reposo. La profundidad es una respuesta, no un fondo.**
 
-La profundidad de una página impresa es la que da el espacio en blanco. Lo
-único que separa dos bloques es una línea de un píxel, y lo único que separa un
-bloque del fondo es el aire a su alrededor.
+Las superficies se separan por tono y por borde de un píxel, que es lo que
+hace el trabajo estructural: noche, lienzo, hueco, tres escalones claros. La
+sombra no participa en ese reparto.
+
+La sombra aparece sólo como acuse de interacción: al pasar por encima de una
+tarjeta o de un botón, al enfocar. Su papel es ambiental y temporal, nunca
+estructural. La hoja lo cumple: ninguna regla declara `box-shadow` fuera de un
+`:hover`.
+
+El filo de luz de un píxel en el borde superior de cada tarjeta se queda: eso
+no es sombra, es el canto de la superficie, y es lo que hace que una tarjeta
+parezca material en vez de un rectángulo pintado.
+
+### Shadow Vocabulary
+
+- **Respuesta** (`0 1px 2px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.32)`): al
+  pasar por encima de un botón o de una tarjeta menor.
+- **Respuesta alta** (`0 2px 6px rgba(0,0,0,.5), 0 20px 48px rgba(0,0,0,.5)`):
+  al pasar por encima de una tarjeta de proyecto, que es el elemento con el
+  que de verdad se interactúa.
+
+### Named Rules
+
+**La regla del reposo plano.** Ninguna superficie lleva sombra hasta que el
+puntero o el foco la tocan. Si una tarjeta necesita sombra para distinguirse
+en reposo, el problema es el tono del fondo, no la falta de sombra.
 
 ## Shapes
 
-Radio cero en todo. No hay una sola esquina redondeada en la hoja.
+Tres radios y ninguno más: 16px para las tarjetas y superficies grandes, 9px
+para botones, campos y piezas pequeñas, y 999px para las pastillas de
+tecnología. El salto entre 16 y 9 es deliberado: el radio dice el tamaño de la
+pieza antes de que la leas.
 
-No hay contenedores: no hay tarjetas, ni paneles, ni pastillas, ni recuadros.
-Lo que en otro sistema sería una tarjeta, aquí es una fila con una línea
-debajo. La única geometría libre de la página es el trazo del horizonte.
+El borde de un píxel es la unidad estructural del sistema y está en todo:
+tarjetas, botones, pastillas, separadores de sección, cabecera. No hay
+superficies sin contorno.
+
+Nada se recorta con formas. No hay diagonales, ni curvas decorativas, ni
+máscaras. La única geometría libre del sitio es el trazo del horizonte, y por
+eso funciona.
 
 ## Components
 
-### Enlaces
+### Buttons
 
-- **Estilo:** ocre, subrayado a un píxel con 3 o 4px de separación.
-- **Hover:** el ocre sube a `#ecb45f`.
-- Los enlaces de navegación van sin subrayar hasta que se pasa por encima.
+- **Forma:** radio de 9px, altura mínima de 46px, relleno de 12px por 22px.
+- **Primario:** azul sólido con texto en el color del fondo, no en blanco. El
+  texto oscuro sobre el azul es lo que sostiene el contraste.
+- **Secundario:** fondo de lienzo con borde fuerte y texto en tinta.
+- **Hover:** sube 2px, aparece la sombra de respuesta, el azul aclara a
+  `--azul-hover`. La flecha interior, si la hay, se desplaza en su dirección.
+- **Móvil:** a ancho completo por debajo de 620px, apilados.
 
-### Fila de proyecto
+### Chips
 
-Dos columnas. A la izquierda el nombre en 22px negrita, debajo la fecha y el
-estado en versalitas, y debajo el dominio en ocre subrayado. A la derecha la
-descripción y, en cursiva, las tecnologías.
+- **Estilo:** fondo de hueco, borde de un píxel, texto en tinta media, mono a
+  12px. Radio de pastilla en las tarjetas de proyecto.
+- **Estado:** no tienen. Son etiquetas, no controles. **Nunca llevan hover**:
+  un cambio de color al pasar por encima promete un clic que no existe.
 
-- **Hover:** el fondo se tiñe de ocre al 7% y el nombre pasa a ocre. Sin
-  desplazamiento, sin sombra, sin borde de color.
+### Cards / Containers
 
-### Fila de datos
+- **Esquina:** 16px.
+- **Fondo:** lienzo, con un degradado de blanco al 3,5% que muere al 42% de
+  altura. Es lo que da la sensación de luz cenital.
+- **Filo:** una línea de un píxel arriba, a `--filo`, degradada a transparente
+  por los extremos para que no parezca un borde pegado.
+- **Borde:** un píxel a `--borde`.
+- **Sombra:** ninguna en reposo. Ver Elevation.
+- **Relleno:** 26px, 34px en la tarjeta destacada, 20-22px en las menores.
+- **Hover:** sube 4px, borde a `--azul-borde`, sombra de respuesta alta, y un
+  resplandor radial azul que se enciende desde la esquina del enlace.
 
-El mismo reparto de 210px que los proyectos, para "Ahora mismo" y para las
-herramientas. Clave en versalitas a la izquierda, valor a la derecha.
+### Navigation
+
+- **Estilo:** barra fija de 66px con `backdrop-filter` de 14px y borde inferior
+  de un píxel. Enlaces en tinta media a 14,5px, que pasan a tinta con fondo de
+  hueco al pasar por encima.
+- **Móvil:** por debajo de 620px la barra se queda con lo imprescindible. Con
+  cuatro enlaces el menú salta a dos líneas y descuadra la cabecera.
+
+### La ficha
+
+El componente firma del sitio. Una tabla de clave y valor con barra de título,
+que presenta los datos de una persona como los presentaría un programa.
+
+Lleva sólo **nombre y enlaces**: email, GitHub, LinkedIn. Nada de rol, años de
+experiencia ni especialidad. Es deliberado y es de José: con la IA borrando
+los límites entre especializaciones, una etiqueta como "backend y datos"
+envejece mal y además no es comprobable. Un enlace sí lo es.
+
+- Barra superior en hueco, con la ruta del fichero en mono a 12px.
+- Filas de `116px` de clave más valor libre, separadas por un píxel.
+- Claves en mono a 12,5px y tinta suave; valores en sans a 14,5px y tinta.
+- Por debajo de 620px las filas caen a una columna.
+
+Es la pieza que hace que la portada informe en vez de proclamar, y por eso no
+se toca sin motivo. El cromo de ventana de macOS ya se quitó: los tres puntos
+eran de otra metáfora.
 
 ### El horizonte
 
-El perfil real de Salamanca en SVG, trazo sin relleno. En este sistema ya no es
-un remate suelto: es el motivo del que sale la paleta entera, y cierra la
-página justo encima del pie.
+El perfil real de Salamanca en SVG, trazo sin relleno, `non-scaling-stroke`.
+Según el norte de este sistema es el motivo, no la firma. Hoy está al 40% de
+opacidad, contenido a 520px y sin relación con ningún texto, lo que lo
+convierte en ornamento. Es deuda declarada.
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** usar una sola tipografía con gracias para todo.
-- **Do** separar con espacio y con una línea de un píxel.
-- **Do** poner el énfasis en la cursiva antes que en el color.
-- **Do** dejar el ocre para los enlaces y para un solo trozo del titular.
+- **Do** usar monoespaciada para todo lo que sea un dato y sans para todo lo
+  que sea una frase. Es la gramática del sitio.
+- **Do** separar superficies con tono y borde de un píxel, y dejar la sombra
+  para el hover y el foco.
+- **Do** dar a cada enlace de proyecto su estado y su dominio antes del
+  párrafo. El visitante decide con eso.
+- **Do** respetar `prefers-reduced-motion` en todo lo que se mueva, incluido
+  el desplazamiento suave.
 - **Do** mantener el contraste en o por encima de `--tinta-suave`.
 
 ### Don't:
 
-- **Don't** meter azul. En ningún sitio, para nada.
-- **Don't** redondear una esquina.
-- **Don't** poner una sombra, un resplandor o un degradado sobre texto.
-- **Don't** volver a las tarjetas ni a la tarjeta de terminal.
-- **Don't** usar monoespaciada para algo que no sea código de verdad.
-- **Don't** poner el titular en negrita.
+- **Don't** añadir un color nuevo. Hay un acento y es el azul.
+- **Don't** usar el violeta sólido en ningún elemento.
+- **Don't** poner sombra a una superficie en reposo.
+- **Don't** dar hover a algo que no sea un enlace o un control.
+- **Don't** meter una banda de estadísticas, un muro de pastillas de
+  tecnología o una losa de contacto al final. Son las tres marcas de la
+  plantilla de portafolio que este sistema rechaza por escrito.
+- **Don't** usar degradados recortados sobre el texto. El énfasis viene del
+  peso, del tamaño y del color plano.
 - **Don't** escribir guiones largos ni medios en ninguna copia.
-- **Don't** introducir JavaScript.
+- **Don't** introducir JavaScript. Si algo no se puede hacer en CSS, se
+  replantea la pieza.

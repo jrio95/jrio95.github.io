@@ -4,31 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>José Martín · jrio.dev</title>
-<meta name="description" content="José Martín Río, software engineer in Salamanca, Spain. Stock market, artificial intelligence and side projects.">
+<meta name="description" content="José Martín Río, software engineer in Salamanca, Spain. Backend and data, with side projects about the stock market and artificial intelligence.">
 <meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#15110d" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f3ede2" media="(prefers-color-scheme: light)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2315110d'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23d99a3e' text-anchor='middle'%3Ej%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#090a0e" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f7fa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235b8cff'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='17' font-weight='700' fill='%23090a0e' text-anchor='middle'%3Ej%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://jrio.dev/en/">
 <link rel="alternate" hreflang="es" href="https://jrio.dev/">
 <link rel="alternate" hreflang="en" href="https://jrio.dev/en/">
 <link rel="alternate" hreflang="x-default" href="https://jrio.dev/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400;1,8..60,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
 
 <a class="saltar" href="#contenido">Skip to content</a>
+<div class="halo" aria-hidden="true"></div>
 
 <header class="barra">
   <div class="ancho barra__fila">
-    <a class="marca" href="/en/">jrio.dev</a>
+    <a class="marca" href="/en/"><span class="marca__ficha" aria-hidden="true">j</span>jrio<span>.dev</span></a>
     <nav class="menu" aria-label="Sections">
       <a href="#proyectos">Projects</a>
-      <a href="#contacto">Contact</a>
-      <a class="idioma" href="/" hreflang="es" lang="es" aria-label="Leer esta página en español">Español</a>
+      <a class="menu--oculto" href="#ahora">Now</a>
+      <a class="menu--oculto" href="#sobre">About</a>
+      <a class="menu--movil" href="#contacto">Contact</a>
+      <a class="menu--fuera" href="https://github.com/jrio95" rel="me">GitHub ↗</a>
+      <a class="idioma" href="/" hreflang="es" lang="es" aria-label="Leer esta página en español">ES</a>
     </nav>
   </div>
 </header>
@@ -36,50 +40,84 @@
 <main id="contenido">
 
   <section class="portada">
-    <div class="ancho">
-      <h1 class="titular aparece">Software engineer. <em>Stocks, AI</em>, side projects.</h1>
-      <p class="entradilla aparece">I build them for fun. From Salamanca, Spain.</p>
+    <div class="ancho portada__reja">
+      <div class="portada__texto">
+        <h1 class="titular aparece">Software engineer. <em>Stocks, AI</em>, side projects.</h1>
+
+        <p class="entradilla aparece">I build them for fun. From Salamanca, Spain.</p>
+
+        <div class="acciones aparece">
+          <a class="boton boton--lleno" href="#proyectos">
+            What I have built
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="m6 13 6 6 6-6"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="ficha relieve aparece">
+        <div class="ficha__barra">
+          <span class="ficha__ruta">~/jose.json</span>
+        </div>
+        <dl class="ficha__cuerpo">
+          <div class="ficha__fila">
+            <dt class="ficha__clave">name</dt>
+            <dd class="ficha__valor">José Martín Río</dd>
+          </div>
+          <div class="ficha__fila">
+            <dt class="ficha__clave">email</dt>
+            <dd class="ficha__valor"><a href="mailto:josmartin95@gmail.com">josmartin95@gmail.com</a></dd>
+          </div>
+          <div class="ficha__fila">
+            <dt class="ficha__clave">github</dt>
+            <dd class="ficha__valor"><a href="https://github.com/jrio95" rel="me">github.com/jrio95</a></dd>
+          </div>
+          <div class="ficha__fila">
+            <dt class="ficha__clave">linkedin</dt>
+            <dd class="ficha__valor"><a href="https://www.linkedin.com/in/josemartinrio" rel="me">in/josemartinrio</a></dd>
+          </div>
+        </dl>
+      </div>
     </div>
   </section>
 
   <section class="seccion" id="proyectos">
     <div class="ancho">
-      <h2 class="seccion__titulo entra">Projects</h2>
+      <div class="seccion__cabeza entra">
+        <h2>Projects</h2>
+      </div>
+
       <div class="lista">
-        <a class="entrada entra" href="https://divr.es">
-          <span class="entrada__izq">
+        <a class="entrada entrada--destacada relieve entra" href="https://divr.es">
+          <span class="entrada__cabeza">
             <span class="entrada__titulo">Divr</span>
-            <span class="entrada__meta">April 2026 · <span class="marca-estado ">In production</span></span>
-            <span class="entrada__url">divr.es</span>
+            <span class="marca-estado">In production</span>
           </span>
-          <span class="entrada__der">
-            <span class="entrada__texto">Where I keep my own portfolio: shares, transactions, dividends and PUT options, with the Spanish income tax already worked out. Web and mobile app. bme-fundamentals came out of this one, the day I stopped trusting the data I was using.</span>
-            <span class="entrada__stack">Go, Postgres, React, Expo</span>
-          </span>
+          <span class="entrada__flecha" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
+          <span class="entrada__url"><span class="entrada__fecha">April 2026</span>divr.es ↗</span>
+          <span class="entrada__texto">Where I keep my own portfolio: shares, transactions, dividends and PUT options, with the Spanish income tax already worked out. Web and mobile app. bme-fundamentals came out of this one, the day I stopped trusting the data I was using.</span>
+          <span class="entrada__stack"><span>Go</span><span>Postgres</span><span>React</span><span>Expo</span></span>
         </a>
 
-        <a class="entrada entra" href="https://api-production-2a50.up.railway.app">
-          <span class="entrada__izq">
+        <a class="entrada relieve entra" href="https://api-production-2a50.up.railway.app">
+          <span class="entrada__cabeza">
             <span class="entrada__titulo">bme-fundamentals</span>
-            <span class="entrada__meta">August 2026 · <span class="marca-estado marca-estado--obra">In development</span></span>
-            <span class="entrada__url">api-production-2a50.up.railway.app</span>
+            <span class="marca-estado marca-estado--obra">In development</span>
           </span>
-          <span class="entrada__der">
-            <span class="entrada__texto">Pulls the financial statements of Spanish listed companies straight from what they file with the regulator. I built it because the source I used before returned zeros where there was no data, and I was swallowing errors without noticing.</span>
-            <span class="entrada__stack">Go, Postgres, XBRL</span>
-          </span>
+          <span class="entrada__flecha" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
+          <span class="entrada__url"><span class="entrada__fecha">August 2026</span>api-production-2a50.up.railway.app ↗</span>
+          <span class="entrada__texto">Pulls the financial statements of Spanish listed companies straight from what they file with the regulator. I built it because the source I used before returned zeros where there was no data, and I was swallowing errors without noticing.</span>
+          <span class="entrada__stack"><span>Go</span><span>Postgres</span><span>XBRL</span></span>
         </a>
 
-        <a class="entrada entra" href="https://chess-coach-production-5b27.up.railway.app">
-          <span class="entrada__izq">
+        <a class="entrada relieve entra" href="https://chess-coach-production-5b27.up.railway.app">
+          <span class="entrada__cabeza">
             <span class="entrada__titulo">Chess Coach</span>
-            <span class="entrada__meta">August 2026 · <span class="marca-estado ">In production</span></span>
-            <span class="entrada__url">chess-coach-production-5b27.up.railway.app</span>
+            <span class="marca-estado">In production</span>
           </span>
-          <span class="entrada__der">
-            <span class="entrada__texto">You paste the PGN of a game and it tells you what you played wrong and which mistakes you keep repeating. Stockfish runs the analysis on the server, so it comes from the engine and not from my opinion.</span>
-            <span class="entrada__stack">TypeScript, Node, Stockfish</span>
-          </span>
+          <span class="entrada__flecha" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
+          <span class="entrada__url"><span class="entrada__fecha">August 2026</span>chess-coach-production-5b27.up.railway.app ↗</span>
+          <span class="entrada__texto">You paste the PGN of a game and it tells you what you played wrong and which mistakes you keep repeating. Stockfish runs the analysis on the server, so it comes from the engine and not from my opinion.</span>
+          <span class="entrada__stack"><span>TypeScript</span><span>Node</span><span>Stockfish</span></span>
         </a>
       </div>
     </div>
@@ -87,51 +125,73 @@
 
   <section class="seccion" id="ahora">
     <div class="ancho">
-      <h2 class="seccion__titulo entra">Right now</h2>
-      <dl class="ahora">
-        <div class="ahora__fila entra">
-          <dt class="ahora__clave">Building</dt>
-          <dd class="ahora__valor">bme-fundamentals <span>Still missing the first real load against the filings.</span></dd>
-        </div>
-        <div class="ahora__fila entra">
-          <dt class="ahora__clave">Learning</dt>
-          <dd class="ahora__valor">AI, RAG and whatever comes up <span>No plan behind it. It nags at me, that is all.</span></dd>
-        </div>
-        <div class="ahora__fila entra">
-          <dt class="ahora__clave">Away from the keyboard</dt>
-          <dd class="ahora__valor">Crossfit <span>Sport in general, or I never get out of the chair.</span></dd>
-        </div>
-      </dl>
+      <div class="seccion__cabeza entra">
+        <h2>Right now</h2>
+      </div>
+      <div class="rejilla">
+        <article class="tarjeta relieve entra">
+          <p class="dato">Building</p>
+          <p class="tarjeta__valor">bme-fundamentals</p>
+          <p class="tarjeta__pie">Still missing the first real load against the filings.</p>
+        </article>
+        <article class="tarjeta relieve entra">
+          <p class="dato">Learning</p>
+          <p class="tarjeta__valor">AI, RAG and whatever comes up</p>
+          <p class="tarjeta__pie">No plan behind it. It nags at me, that is all.</p>
+        </article>
+        <article class="tarjeta relieve entra">
+          <p class="dato">Away from the keyboard</p>
+          <p class="tarjeta__valor">Crossfit</p>
+          <p class="tarjeta__pie">Sport in general, or I never get out of the chair.</p>
+        </article>
+      </div>
     </div>
   </section>
 
   <section class="seccion" id="sobre">
     <div class="ancho">
-      <h2 class="seccion__titulo entra">About me</h2>
-      <div class="prosa entra">
-        <p>I have been programming for nine years, almost always on the back end: APIs, databases and getting the data clean.</p>
-        <p>Every project starts the same way: something I needed and could not find, or that existed in a form I did not trust.</p>
-        <p>Nothing special, but they work and I use them every day.</p>
+      <div class="seccion__cabeza entra">
+        <h2>About me</h2>
       </div>
-      <div class="herramientas entra">
-        <div class="herramientas__fila"><span class="herramientas__clave">Backend</span><span class="herramientas__valor">Go, Node, Postgres, REST</span></div>
-        <div class="herramientas__fila"><span class="herramientas__clave">Frontend</span><span class="herramientas__valor">TypeScript, React, Expo</span></div>
-        <div class="herramientas__fila"><span class="herramientas__clave">Infra and data</span><span class="herramientas__valor">Docker, Railway, XBRL, SQL</span></div>
-        <div class="herramientas__fila"><span class="herramientas__clave">Exploring</span><span class="herramientas__valor">LLM, RAG, embeddings</span></div>
+      <div class="sobre">
+        <div class="prosa relieve entra">
+          <p>I have been programming for nine years, almost always on the back end: APIs, databases and getting the data clean.</p>
+          <p>Every project starts the same way: something I needed and could not find, or that existed in a form I did not trust.</p>
+          <p>Nothing special, but they work and I use them every day.</p>
+        </div>
+        <aside class="herramientas relieve entra">
+          <div class="herramientas__grupo">
+            <p class="dato">Backend</p>
+            <div class="herramientas__lista"><span>Go</span><span>Node</span><span>Postgres</span><span>REST</span></div>
+          </div>
+          <div class="herramientas__grupo">
+            <p class="dato">Frontend</p>
+            <div class="herramientas__lista"><span>TypeScript</span><span>React</span><span>Expo</span><span>HTML/CSS</span></div>
+          </div>
+          <div class="herramientas__grupo">
+            <p class="dato">Infra and data</p>
+            <div class="herramientas__lista"><span>Docker</span><span>Railway</span><span>XBRL</span><span>SQL</span></div>
+          </div>
+          <div class="herramientas__grupo">
+            <p class="dato">Exploring</p>
+            <div class="herramientas__lista"><span>LLM</span><span>RAG</span><span>Embeddings</span></div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
 
   <section class="seccion" id="contacto">
     <div class="ancho">
-      <h2 class="seccion__titulo entra">Contact</h2>
-      <div class="contacto entra">
-        <p>If you want to get in touch, you can do it at:</p>
-        <p class="contacto__enlaces">
-          <a href="mailto:josmartin95@gmail.com">josmartin95@gmail.com</a>
-          <a href="https://github.com/jrio95" rel="me">GitHub</a>
-          <a href="https://www.linkedin.com/in/josemartinrio" rel="me">LinkedIn</a>
-        </p>
+      <div class="seccion__cabeza entra">
+        <h2>Contact</h2>
+      </div>
+      <div class="contacto relieve entra">
+        <p class="contacto__texto">If you want to get in touch, you can do it at:</p>
+        <div class="acciones">
+          <a class="boton boton--lleno" href="mailto:josmartin95@gmail.com">josmartin95@gmail.com</a>
+          <a class="boton" href="https://www.linkedin.com/in/josemartinrio" rel="me">LinkedIn</a>
+        </div>
       </div>
     </div>
   </section>
