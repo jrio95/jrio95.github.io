@@ -68,7 +68,7 @@ no sea su dueño.
   Todo lo que se mueve o cambia de tema está resuelto en CSS.
 - Sin compilar, sin dependencias y sin gestor de paquetes. Se abre el fichero en
   el navegador y ya se ve.
-- Lo único externo son dos tipografías de Google Fonts.
+- Lo único externo es una tipografía de Google Fonts.
 - Tema oscuro por defecto, claro por `prefers-color-scheme`. Sin interruptor,
   porque un interruptor obligaría a recordar la elección y eso pide JavaScript.
 - Servido en Railway (proyecto `jrio-dev`, servicio `web`) desde la rama `main`,
@@ -108,6 +108,11 @@ no sea su dueño.
   se parte en dos o se resuelve con comas.
 - El horizonte de Salamanca es el perfil real de la ciudad, dibujado en SVG.
   Es identidad, no ornamento, y no se sustituye por una ilustración genérica.
+- **La página no puede parecer generada.** Es un requisito de José, dicho
+  mirando la versión anterior: "se ve y sabes que está hecho con Claude Code".
+  La lista concreta de lo que queda prohibido está en DESIGN.md, en "Lo que
+  este sistema rechaza". Cualquier cambio futuro se comprueba contra esa lista
+  antes de publicarse.
 
 ## Evidence on Hand
 
