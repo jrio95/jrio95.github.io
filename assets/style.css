@@ -147,9 +147,31 @@ h1, h2, h3 {
   height: 760px;
   transform: translateX(-50%);
   background: radial-gradient(50% 50% at 50% 50%, var(--azul-halo), transparent 70%);
-  opacity: 0.55;
+  opacity: 0.5;
   pointer-events: none;
   z-index: 0;
+  animation: respirar 40s ease-in-out infinite;
+}
+
+/* El segundo reflejo va desfasado y más despacio. Al no ser 61 múltiplo de 40,
+ * los dos no vuelven a coincidir, y por eso el fondo no parece un bucle. */
+.halo--2 {
+  top: -180px;
+  left: 62%;
+  width: min(760px, 90%);
+  height: 620px;
+  opacity: 0.32;
+  animation: derivar 61s ease-in-out infinite;
+}
+
+@keyframes respirar {
+  0%, 100% { opacity: 0.5;  transform: translateX(-50%) scale(1); }
+  50%      { opacity: 0.72; transform: translateX(-46%) scale(1.1); }
+}
+
+@keyframes derivar {
+  0%, 100% { opacity: 0.22; transform: translateX(-50%) translateY(0) scale(1); }
+  50%      { opacity: 0.4;  transform: translateX(-58%) translateY(40px) scale(1.14); }
 }
 
 /* ---------- Piezas que se repiten ---------- */
@@ -316,12 +338,7 @@ h1, h2, h3 {
    * `balance` reparte el texto entre las líneas que salgan. */
   text-wrap: balance;
 }
-/* El color va sólo en el trozo que remata la frase. Pintar el titular entero
- * lo convierte en un cartel. */
-.titular em {
-  font-style: normal;
-  color: var(--azul);
-}
+.titular em { font-style: italic; }
 
 .entradilla {
   margin: 0;
@@ -739,7 +756,8 @@ h1, h2, h3 {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .aparece { animation: none; opacity: 1; transform: none; }
+  .aparece, .halo { animation: none; opacity: 1; }
+  .halo { transform: translateX(-50%); }
   .entrada:hover, .boton:hover, .tarjeta:hover { transform: none; }
   @supports (animation-timeline: view()) {
     .entra { animation: none; opacity: 1; transform: none; }
