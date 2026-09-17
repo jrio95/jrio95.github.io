@@ -64,6 +64,9 @@ no sea su dueño.
 - **Bilingüe, español e inglés**, con una página completa por idioma en vez de
   traducciones en el navegador. Un cambio de texto se hace dos veces. Es el
   precio de no tener compilación y está asumido.
+- La raíz elige idioma con la cabecera `Accept-Language`, resuelto en Caddy y
+  sin JavaScript. `/es/` es la puerta de atrás que permite elegir español a
+  mano sin que el desvío te devuelva al inglés.
 - **Cero JavaScript.** Es una restricción asumida del proyecto, no una pendiente.
   Todo lo que se mueve o cambia de tema está resuelto en CSS.
 - Sin compilar, sin dependencias y sin gestor de paquetes. Se abre el fichero en

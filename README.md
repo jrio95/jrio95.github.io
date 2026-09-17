@@ -139,8 +139,26 @@ Cada página declara sus alternativas con `hreflang`, para que un buscador
 sepa que son la misma página en dos lenguas y no contenido duplicado. El
 `x-default` apunta al español.
 
-El cambio de idioma es el botoncito `EN` o `ES` del final del menú. No hay
-detección automática: si alguien elige un idioma, se respeta.
+El cambio de idioma es el interruptor `ES`/`EN` del final del menú, con el
+idioma de la página marcado.
+
+**La raíz elige idioma sola**, en Caddy y sin JavaScript. Quien llega a `/` con
+un navegador que no pide español se va a `/en/` con un 302. Dos detalles que
+no son obvios:
+
+- Se exige que la cabecera `Accept-Language` **exista**. Los rastreadores de
+  los buscadores no la mandan, y a esos les interesa ver la página y no un
+  desvío.
+- `/es/` sirve el español **siempre**, saltándose el desvío, y es lo que enlaza
+  el botón ES. Sin esa puerta de atrás, un inglés que pulsara ES volvería a `/`
+  y el desvío lo devolvería a `/en/`: elegir idioma a mano sería imposible.
+
+La raíz manda `Vary: Accept-Language`, o cualquier caché intermedia le serviría
+a un inglés la respuesta que guardó para un español.
+
+El emparejamiento es por texto, no por los pesos `q` de la cabecera: Caddy no
+los sabe leer. En la práctica significa que alguien con el inglés de primero y
+el español de tercero recibe español. Para eso está el interruptor.
 
 ## Reglas de escritura
 

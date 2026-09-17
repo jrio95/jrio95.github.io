@@ -1,10 +1,12 @@
 # Configuración de Caddy para Railway.
 #
-# Existe por una razón concreta: sin cabecera Cache-Control el navegador
-# aplica caché heurística, y en el móvil eso significa seguir viendo la
-# versión de ayer después de desplegar. `no-cache` no desactiva la caché,
-# obliga a revalidar: con el ETag que ya envía Caddy, la respuesta habitual
-# es un 304 vacío. Sale gratis y siempre se ve lo último.
+# Hace dos cosas: servir los ficheros y elegir idioma en la raíz.
+#
+# La cabecera `Cache-Control` existe por una razón concreta: sin ella el
+# navegador aplica caché heurística, y en el móvil eso significa seguir viendo
+# la versión de ayer después de desplegar. `no-cache` no desactiva la caché,
+# obliga a revalidar: con el ETag que ya envía Caddy, la respuesta habitual es
+# un 304 vacío. Sale gratis y siempre se ve lo último.
 
 :{$PORT:8080} {
 	root * /srv
@@ -16,7 +18,39 @@
 		Referrer-Policy "strict-origin-when-cross-origin"
 	}
 
-	file_server
+	# Quien llega a la raíz con un navegador que no pide español se va a la
+	# versión inglesa. Se exige que la cabecera exista: los rastreadores de los
+	# buscadores no la mandan, y a esos les interesa ver la página y no un
+	# desvío. El desvío es 302 y no 301 a propósito, porque depende de quién
+	# pregunte y no es permanente.
+	@ingles {
+		path /
+		header Accept-Language *
+		not header Accept-Language *es*
+	}
+
+	# Sin esto, cualquier caché intermedia serviría a un inglés la respuesta
+	# que guardó para un español.
+	@raiz path /
+	header @raiz Vary Accept-Language
+
+	handle / {
+		redir @ingles /en/ 302
+		rewrite * /index.html
+		file_server
+	}
+
+	# La puerta de atrás: /es/ sirve el español siempre, sin pasar por el
+	# desvío. Es lo que enlaza el botón ES, y por eso elegir idioma a mano no
+	# te devuelve al que traía el navegador.
+	handle /es/* {
+		rewrite * /index.html
+		file_server
+	}
+
+	handle {
+		file_server
+	}
 
 	handle_errors {
 		rewrite * /404.html
