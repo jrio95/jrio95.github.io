@@ -35,7 +35,9 @@
   --azul: #5b8cff;
   --azul-hover: #7ba3ff;
   --azul-borde: #2f4a8f;
-  --azul-halo: rgba(91, 140, 255, 0.22);
+  --azul-halo: rgba(91, 140, 255, 0.28);
+  --violeta-halo: rgba(167, 139, 250, 0.20);
+  --punto: rgba(167, 178, 214, 0.08);
   --violeta: #a78bfa;
   --sobre-azul: #07080c;
 
@@ -70,7 +72,9 @@
     --azul: #2c5fef;
     --azul-hover: #1e4bcf;
     --azul-borde: #b9ccff;
-    --azul-halo: rgba(44, 95, 239, 0.14);
+    --azul-halo: rgba(44, 95, 239, 0.16);
+    --violeta-halo: rgba(124, 83, 240, 0.12);
+    --punto: rgba(40, 52, 90, 0.07);
     --violeta: #7c53f0;
     --sobre-azul: #ffffff;
 
@@ -135,10 +139,18 @@ h1, h2, h3 {
   border-radius: var(--radio-chico);
 }
 
-/* ---------- Halo ----------
+/* ---------- Fondo ----------
  *
- * Una sola mancha de luz azul detrás de la portada, no en toda la página.
- * Da profundidad al fondo sin convertirse en un dibujo. */
+ * Tres capas, y cada una resuelve un problema distinto:
+ *
+ * 1. Las luces dan el brillo y el movimiento. Van a 40 y 61 segundos: al no
+ *    ser 61 múltiplo de 40, no vuelven a coincidir y el bucle no se ve.
+ * 2. El grano da la textura. Es lo que de verdad quita el aspecto plano,
+ *    porque un degradado liso no tiene nada que el ojo pueda agarrar.
+ * 3. La retícula da la escala. Sin una referencia de tamaño, una mancha
+ *    difusa no parece profundidad, parece una mancha.
+ *
+ * El grano y la retícula no se mueven. Lo único que se mueve son las luces. */
 .halo {
   position: absolute;
   top: -280px;
@@ -147,7 +159,7 @@ h1, h2, h3 {
   height: 760px;
   transform: translateX(-50%);
   background: radial-gradient(50% 50% at 50% 50%, var(--azul-halo), transparent 70%);
-  opacity: 0.5;
+  opacity: 0.9;
   pointer-events: none;
   z-index: 0;
   animation: respirar 40s ease-in-out infinite;
@@ -156,22 +168,51 @@ h1, h2, h3 {
 /* El segundo reflejo va desfasado y más despacio. Al no ser 61 múltiplo de 40,
  * los dos no vuelven a coincidir, y por eso el fondo no parece un bucle. */
 .halo--2 {
-  top: -180px;
-  left: 62%;
-  width: min(760px, 90%);
-  height: 620px;
-  opacity: 0.32;
+  top: -60px;
+  left: 64%;
+  width: min(820px, 92%);
+  height: 700px;
+  background: radial-gradient(50% 50% at 50% 50%, var(--violeta-halo), transparent 70%);
+  opacity: 0.75;
   animation: derivar 61s ease-in-out infinite;
 }
 
+/* Grano. Una textura fina y fija sobre todo el documento: es la capa que
+ * quita el aspecto plano, porque le da al ojo algo que agarrar donde antes
+ * sólo había un degradado liso. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* Retícula de puntos, muy tenue y desvanecida hacia abajo. Da escala: sin una
+ * referencia de tamaño, una mancha difusa no parece profundidad. */
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1100px;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, var(--punto) 1px, transparent 0);
+  background-size: 32px 32px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+}
+
 @keyframes respirar {
-  0%, 100% { opacity: 0.5;  transform: translateX(-50%) scale(1); }
-  50%      { opacity: 0.72; transform: translateX(-46%) scale(1.1); }
+  0%, 100% { opacity: 0.75; transform: translateX(-50%) scale(1); }
+  50%      { opacity: 1;    transform: translateX(-44%) scale(1.12); }
 }
 
 @keyframes derivar {
-  0%, 100% { opacity: 0.22; transform: translateX(-50%) translateY(0) scale(1); }
-  50%      { opacity: 0.4;  transform: translateX(-58%) translateY(40px) scale(1.14); }
+  0%, 100% { opacity: 0.5;  transform: translateX(-50%) translateY(0) scale(1); }
+  50%      { opacity: 0.85; transform: translateX(-60%) translateY(60px) scale(1.18); }
 }
 
 /* ---------- Piezas que se repiten ---------- */
@@ -245,6 +286,9 @@ h1, h2, h3 {
 .boton svg { transition: transform 0.18s ease; }
 .boton:hover svg { transform: translateY(2px); }
 
+/* El contenido va por encima de las tres capas del fondo. */
+main, .barra, .pie, .horizonte { position: relative; z-index: 1; }
+
 /* ---------- Barra ---------- */
 
 .barra {
@@ -300,16 +344,30 @@ h1, h2, h3 {
 .menu a:hover { background: var(--hueco); color: var(--tinta); }
 .menu .menu--fuera { color: var(--tinta); }
 
-.menu .idioma {
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--tinta-suave);
+/* Interruptor de idioma: los dos a la vista y el de la página marcado, en vez
+ * de un solo enlace al otro idioma. Así se ve qué hay y en qué estás. */
+.idiomas {
+  display: inline-flex;
+  align-items: stretch;
+  margin-left: 8px;
   border: 1px solid var(--borde);
-  padding: 5px 9px;
-  margin-left: 6px;
+  border-radius: var(--radio-chico);
+  overflow: hidden;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
 }
-.menu .idioma:hover { color: var(--azul); border-color: var(--azul-borde); background: none; }
+.idiomas > * {
+  padding: 6px 10px;
+  color: var(--tinta-suave);
+  transition: color 0.16s ease, background 0.16s ease;
+}
+.idiomas a:hover { color: var(--tinta); background: var(--hueco); }
+.idiomas__on {
+  background: var(--azul);
+  color: var(--sobre-azul);
+  font-weight: 600;
+}
 
 /* ---------- Portada ---------- */
 
