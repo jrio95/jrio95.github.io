@@ -4,8 +4,7 @@ Página personal de José. Se sirve con GitHub Pages desde este repositorio.
 
 ## Cómo está hecha
 
-HTML, CSS y un archivo de JavaScript. **Sin compilar, sin dependencias y sin
-gestor de paquetes**: se abre `index.html` en el navegador y ya se ve. Para
+HTML y CSS. **Sin compilar, sin dependencias y sin gestor de paquetes**: se abre `index.html` en el navegador y ya se ve. Para
 trabajar en ella basta con editar el fichero y recargar.
 
 ```
@@ -51,7 +50,9 @@ de la ficha.
 **Los textos** están en `index.html`, tal cual. Ya no queda ningún hueco entre
 corchetes por rellenar.
 
-**Una entrada nueva** en la lista de proyectos se copia de la que ya hay. El
+**Una entrada nueva** en la lista de proyectos se copia de la que ya hay, y
+con ella su ficha. El `href` de `.entrada__abrir` tiene que coincidir con el
+`id` de la `<section class="detalle">`: ahí se rompe todo si se rompe algo. El
 estado se marca con `marca-estado` (punto azul, en producción) o
 `marca-estado marca-estado--obra` (punto hueco, en desarrollo). La primera
 tarjeta lleva además `entrada--destacada` y ocupa la fila entera; si algún día
@@ -62,9 +63,18 @@ tipo, y no filtraban nada: eran un control decorativo que además obligaba a
 desplazar la fila en el móvil. Si algún día hay notas y pruebas de verdad,
 están en el historial de git.
 
-Cada entrada apunta a la **aplicación en vivo**, no al repositorio. Los tres
-repos son privados y un enlace a un repo privado es un 404 para cualquiera que
-no sea su dueño, que es la mitad de quien visita una página personal.
+Cada tarjeta tiene **dos destinos y hay que distinguirlos a la primera**:
+
+- La tarjeta entera abre la **ficha** del proyecto (`#detalle-divr`,
+  `#detalle-bme`, `#detalle-chess`), y lo dice con el enlace azul de abajo.
+- El botón de la esquina se va a la **aplicación en vivo**, que es a donde
+  apuntaba antes la tarjeta entera. La dirección sigue escrita en
+  monoespaciada debajo del título, así que se ve a dónde lleva antes de
+  pincharlo.
+
+Ninguna apunta al repositorio. Los tres repos son privados y un enlace a un
+repo privado es un 404 para cualquiera que no sea su dueño, que es la mitad de
+quien visita una página personal.
 
 | Proyecto | Enlace |
 |---|---|
@@ -73,6 +83,80 @@ no sea su dueño, que es la mitad de quien visita una página personal.
 | Divr | `divr.es` |
 
 Si algún repositorio se hace público, ahí se puede volver a enlazar al código.
+
+## Las fichas de proyecto
+
+Como el código no se puede enseñar, lo cuenta la página: para qué es el
+proyecto, con qué está hecho, por dónde pasa un dato y qué decisiones
+cambiaron algo. Una ficha por proyecto, al final de `index.html` y de
+`en/index.html`.
+
+**De dónde sale lo que cuentan.** No está inventado ni estirado de la tarjeta:
+sale del repositorio de cada proyecto, de su README y de sus documentos de
+reglas de negocio. Las decisiones que aparecen son las que allí están escritas
+como decisiones, con su motivo. Cuando uno de los tres cambie de forma, esto es
+lo que hay que volver a leer.
+
+**Se abren y se cierran sin JavaScript.** Cada ficha es un `<section>` fijo y
+oculto con `visibility: hidden`, y la regla `.detalle:target` lo enciende
+cuando la dirección lleva su ancla. Cerrar es volver a `#proyectos`, y hay tres
+formas: el aspa, el telón de fondo y el botón del final. El `visibility` no es
+un capricho frente a `opacity`: es lo que además saca el panel cerrado del
+orden de tabulación y de los lectores de pantalla.
+
+**Van fuera de `<main>`, y eso no es cosmético.** `main` lleva `z-index`, así
+que abre un contexto de apilamiento: dentro de él, una ficha con `z-index: 80`
+sigue quedando por debajo de la barra pegajosa, que está fuera y tiene 50. Al
+sacarlas, el panel tapa la barra como debe.
+
+**Nunca se pierde la aplicación en vivo.** Es la mitad del asunto. El botón
+está en la barra de arriba de la ficha, que se queda pegada mientras se
+desplaza el panel, y otra vez en el bloque de cierre. Se puede leer la ficha
+entera sin que el enlace a la web se vaya de la pantalla.
+
+## Los diagramas
+
+Van **con cajas y no con una imagen**. Es la única decisión discutible del
+apartado, así que aquí queda el porqué.
+
+Lo natural sería Mermaid, que es la herramienta estándar para esto y la que se
+usa en el propio GitHub. Se descartó por dos razones: son unos cuantos cientos
+de kilobytes de JavaScript en una página que no tiene ni una línea, y su
+resultado son cajas de biblioteca que no se parecen al resto del sitio. Y sobre
+todo, un diagrama de ancho fijo obliga a elegir entre leerlo en el escritorio o
+leerlo en el móvil: al encogerlo, la letra se va a seis píxeles.
+
+Con cajas de CSS cada fila se recoloca sola, el texto se lee siempre a su
+tamaño real y los colores son los tokens de la página, así que el diagrama
+cambia de tema con ella. La estructura es esta:
+
+```html
+<div class="diagrama">
+  <div class="d-fila">
+    <div class="d-nodo">
+      <span class="dato">Origen</span>          <!-- el papel que hace -->
+      <strong>La CNMV</strong>                   <!-- qué es -->
+      <span class="d-nodo__nota">...</span>      <!-- qué pasa aquí -->
+      <span class="d-nodo__tec">Go</span>        <!-- con qué, opcional -->
+    </div>
+  </div>
+  <div class="d-paso" aria-hidden="true"><i></i></div>   <!-- el hilo -->
+</div>
+```
+
+Una `d-fila` con dos o tres nodos son pasos que ocurren a la vez; con tres se
+le pone además `d-fila--tres`, que baja el ancho mínimo para que quepan en una
+línea en vez de partirse y parecer dos momentos distintos. El `d-paso` es el
+hilo entre filas: lo único que se mueve en todo el diagrama, para que se vea
+hacia dónde va el dato. Hay tres variantes de nodo: `--fuerte` para el paso
+donde de verdad pasa algo, `--final` para la salida y `--futuro`, en trazo
+discontinuo, para lo que todavía no está hecho. El RAG sobre literatura de
+ajedrez de Chess Coach está dibujado así a propósito: aparece porque su propio
+repositorio lo da como el siguiente paso, no porque ya funcione. Una caja en
+trazo continuo es código que existe hoy.
+
+Al abrir la ficha el diagrama se monta por pasos, en el mismo orden en el que
+se lee. Con `prefers-reduced-motion` no se monta ni fluye nada.
 
 ## El diseño
 
@@ -126,7 +210,8 @@ protagonista de la página, que no es lo que hace.
 
 La página existe en español en `/` y en inglés en `/en/`. **Son dos ficheros
 HTML completos, no una plantilla con traducciones.** Es el precio de no tener
-compilación: un cambio de texto hay que hacerlo en los dos sitios.
+compilación: un cambio de texto hay que hacerlo en los dos sitios, y las fichas
+de proyecto son lo que más pesa de esa cuenta: están enteras en los dos.
 
 Se eligió así a propósito. La alternativa era detectar el idioma y cambiar los
 textos en el navegador, y eso son dependencias, JavaScript y una página que
