@@ -93,8 +93,14 @@ está en la barra de arriba, que se queda pegada mientras se desplaza el panel,
 y otra vez en el bloque de cierre. Se puede leer la ficha entera sin que el
 enlace a la web se vaya de la pantalla.
 
-Los textos de arquitectura son lo primero que se queda viejo. Están en prosa,
-en `index.html`, sin plantilla ni estructura que aprender.
+**De dónde sale lo que cuentan.** No está inventado ni resumido de la tarjeta:
+sale del repositorio de cada proyecto, de su README y de sus documentos de
+reglas de negocio. Las decisiones que se cuentan son las que allí están
+escritas como decisiones, con su motivo. Cuando uno de los tres cambie de
+forma, esto es lo que hay que volver a leer.
+
+Los textos son lo primero que se queda viejo. Están en prosa, en `index.html`,
+sin plantilla ni estructura que aprender.
 
 ## Los diagramas
 
@@ -129,9 +135,10 @@ Una `d-fila` con dos o tres nodos son pasos que ocurren a la vez. El `d-paso`
 es el hilo entre filas: lo único que se mueve en todo el diagrama, para que se
 vea hacia dónde va el dato. Hay tres variantes de nodo: `--fuerte` para el
 paso donde de verdad pasa algo, `--final` para la salida y `--futuro`, en
-trazo discontinuo, para lo que todavía no está hecho. La capa RAG de
-bme-fundamentals está dibujada así a propósito: aparece porque es lo
-siguiente, no porque ya funcione.
+trazo discontinuo, para lo que todavía no está hecho. El RAG sobre literatura
+de ajedrez de Chess Coach está dibujado así a propósito: aparece porque su
+propio repositorio lo da como el siguiente paso, no porque ya funcione. Una
+caja en trazo continuo es código que existe hoy.
 
 Al abrir la ficha el diagrama se monta por pasos, en el mismo orden en el que
 se lee. Con `prefers-reduced-motion` no se monta ni fluye nada.

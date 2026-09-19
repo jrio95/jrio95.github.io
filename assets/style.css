@@ -620,6 +620,19 @@ h1, h2 {
  * melocotón de la marca. */
 .ficha .rotulo--marca { color: var(--acento); }
 
+/* La regla que gobierna un proyecto entero se lee como una cita y no como un
+ * párrafo más. */
+.cita {
+  margin: 14px 0 0 !important;
+  padding: 18px 22px;
+  border-left: 3px solid var(--acento);
+  background: var(--tarjeta);
+  border-radius: 0 var(--radio-chico) var(--radio-chico) 0;
+  color: var(--texto) !important;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
 .lista-puntos { margin: 16px 0 0; padding: 0; list-style: none; }
 .lista-puntos li {
   position: relative;
@@ -657,6 +670,9 @@ h1, h2 {
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 12px;
 }
+/* Tres pasos que ocurren a la vez caben en una fila; con el mínimo de arriba
+ * se partirían en dos y parecerían dos momentos distintos. */
+.d-fila--tres { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
 
 .d-nodo {
   position: relative;
