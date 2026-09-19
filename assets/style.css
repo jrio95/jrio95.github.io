@@ -346,7 +346,12 @@ h1, h2 {
 
 .lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
 
+/* Cada tarjeta tiene dos destinos y hay que distinguirlos a la primera: la
+ * tarjeta entera abre la ficha del proyecto y el botón de abajo a la derecha
+ * se va a la aplicación en vivo. El enlace grande se estira por encima de la
+ * tarjeta y el botón se levanta por encima de él. */
 .entrada {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -363,6 +368,63 @@ h1, h2 {
 }
 .entrada[hidden] { display: none; }
 
+.entrada--melocoton { --acento: var(--melocoton); }
+.entrada--menta { --acento: var(--menta); }
+.entrada--lila { --acento: var(--lila); }
+
+.entrada__abrir {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: var(--radio);
+}
+.entrada__abrir:focus-visible { outline-offset: 2px; }
+
+.entrada__pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 2px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borde);
+}
+
+.entrada__ver {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--acento);
+}
+.entrada__ver svg { transition: transform 0.2s ease; }
+.entrada:hover .entrada__ver svg { transform: translateX(3px); }
+
+/* Por encima del enlace grande: si no, la tarjeta se comería el clic y ya no
+ * habría forma directa de llegar a la aplicación. */
+.entrada__web {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border: 1px solid var(--borde-claro);
+  border-radius: 999px;
+  color: var(--tenue);
+  background: var(--fondo-alto);
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+.entrada__web:hover {
+  color: #1b1726;
+  background: var(--acento);
+  border-color: var(--acento);
+}
+
 /* Un punto de color por proyecto, el mismo que su etiqueta. */
 .entrada__meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
@@ -378,21 +440,13 @@ h1, h2 {
 .etiqueta--lila { background: var(--lila); }
 
 .entrada__titulo {
+  margin: 0;
   font-family: var(--titulo);
   font-weight: 800;
   font-size: 27px;
   letter-spacing: -0.025em;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  line-height: 1.1;
 }
-
-.entrada__flecha {
-  color: var(--tenue);
-  display: inline-flex;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-.entrada:hover .entrada__flecha { transform: translate(3px, -3px); color: var(--melocoton); }
 
 .entrada__texto { color: var(--tenue); font-size: 16px; margin: 0; }
 
@@ -412,6 +466,298 @@ h1, h2 {
   border-radius: 999px;
   padding: 4px 11px;
 }
+
+/* ---------- Fichas de proyecto ----------
+ *
+ * Los tres repositorios son privados, así que el sitio cuenta por dentro lo
+ * que el código no puede enseñar: para qué es, con qué está hecho y por dónde
+ * pasa un dato. Se abre con el ancla de la tarjeta y se cierra volviendo a
+ * #proyectos, así que sigue sin haber una línea de JavaScript.
+ *
+ * La regla del panel es que nunca se pierda la aplicación en vivo: hay un
+ * botón en la barra de arriba, que se queda pegada al desplazar, y otro al
+ * final del todo. */
+
+.ficha {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+.ficha:target { opacity: 1; visibility: visible; }
+
+/* El telón también cierra: un clic fuera del panel devuelve a la lista. */
+.ficha__fuera {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 8, 18, 0.74);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.ficha__caja {
+  position: relative;
+  width: min(880px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--fondo-alto);
+  border: 1px solid var(--borde-claro);
+  border-radius: 24px;
+  box-shadow: 0 32px 80px rgba(8, 5, 14, 0.55);
+  transform: translateY(20px) scale(0.985);
+  transition: transform 0.32s cubic-bezier(0.16, 0.84, 0.24, 1);
+}
+.ficha:target .ficha__caja { transform: none; }
+
+.ficha__caja--melocoton { --acento: var(--melocoton); }
+.ficha__caja--menta { --acento: var(--menta); }
+.ficha__caja--lila { --acento: var(--lila); }
+
+/* Pegada arriba mientras se lee: el enlace a la aplicación no se va nunca de
+ * la pantalla, por largo que sea el panel. */
+.ficha__barra {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 20px;
+  background: rgba(34, 29, 49, 0.93);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--borde);
+  border-radius: 24px 24px 0 0;
+}
+.ficha__barra__nombre {
+  font-family: var(--titulo);
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+.ficha__barra__acciones { display: flex; align-items: center; gap: 8px; }
+
+.boton--chico {
+  min-height: 40px;
+  padding: 9px 16px;
+  font-size: 14px;
+  gap: 7px;
+}
+.boton--chico.boton--lleno { background: var(--acento); border-color: var(--acento); }
+.boton--chico.boton--lleno:hover { filter: brightness(1.12); }
+
+.ficha__cerrar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border: 1px solid var(--borde-claro);
+  border-radius: 999px;
+  color: var(--tenue);
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.ficha__cerrar:hover { background: var(--tarjeta); color: var(--texto); }
+
+.ficha__cuerpo { padding: 32px 36px 36px; }
+
+.ficha__cabeza {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--borde);
+}
+.ficha__cabeza h2 { font-size: clamp(32px, 5vw, 44px); }
+.ficha__lema { margin: 0; color: var(--tenue); font-size: 18px; max-width: 58ch; }
+
+.bloque { padding-top: 34px; }
+.bloque p + p { margin-top: 12px; }
+.bloque > p:not(.rotulo) { margin: 12px 0 0; color: var(--tenue); max-width: 68ch; }
+.bloque__pie { font-size: 15px; }
+.bloque__pie--nota { color: var(--apagado) !important; font-size: 14px; margin-top: 14px !important; }
+
+.bloque--cierre {
+  margin-top: 38px;
+  padding: 28px 26px;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+.bloque--cierre .acciones { margin-top: 18px; }
+.bloque--cierre .boton--lleno { background: var(--acento); border-color: var(--acento); }
+.bloque--cierre .boton--lleno:hover { filter: brightness(1.12); }
+
+.capas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.capa {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-chico);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+/* En la tarjeta de proyecto las tecnologías se pegan abajo del todo. Aquí no
+ * hay nada que empujar, así que van justo debajo de su rótulo. */
+.capa .entrada__stack { margin-top: 0; padding-top: 0; }
+
+/* Dentro de una ficha el rótulo destacado toma el color del proyecto y no el
+ * melocotón de la marca. */
+.ficha .rotulo--marca { color: var(--acento); }
+
+.lista-puntos { margin: 16px 0 0; padding: 0; list-style: none; }
+.lista-puntos li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 14px;
+  color: var(--tenue);
+  max-width: 68ch;
+}
+.lista-puntos li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--acento);
+}
+.lista-puntos strong { color: var(--texto); font-weight: 600; }
+
+/* ---------- Diagramas ----------
+ *
+ * Están hechos con cajas y no con una imagen. Un SVG de ancho fijo obliga a
+ * elegir entre leerlo en el escritorio o leerlo en el móvil: al encogerlo, la
+ * letra se va a seis píxeles. Así cada fila se recoloca sola y el texto
+ * siempre se lee al tamaño real.
+ *
+ * Lo único que se mueve es el hilo entre pasos, para que se vea hacia dónde
+ * va el dato. */
+
+.diagrama { margin-top: 20px; }
+
+.d-fila {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+}
+
+.d-nodo {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-chico);
+  padding: 15px 16px 16px 19px;
+}
+.d-nodo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--acento);
+  opacity: 0.5;
+}
+.d-nodo strong {
+  font-family: var(--titulo);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.d-nodo__nota { color: var(--tenue); font-size: 14px; line-height: 1.5; }
+.d-nodo__tec {
+  font-family: var(--teclado);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--apagado);
+  margin-top: 4px;
+}
+
+/* El paso donde de verdad pasa algo va un punto más alto. */
+.d-nodo--fuerte { background: var(--tarjeta-alta); border-color: var(--borde-claro); }
+.d-nodo--fuerte::before { opacity: 1; width: 4px; }
+
+.d-nodo--final { border-color: var(--acento); }
+.d-nodo--final::before { opacity: 0.85; }
+
+/* Trazo discontinuo: lo que todavía no está hecho se ve de un vistazo. */
+.d-nodo--futuro {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--borde-claro);
+}
+.d-nodo--futuro::before { opacity: 0.28; }
+.d-nodo--futuro strong { color: var(--tenue); }
+
+.d-paso {
+  position: relative;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+}
+.d-paso i {
+  width: 2px;
+  height: 100%;
+  background-image: linear-gradient(var(--acento) 55%, transparent 0);
+  background-size: 2px 9px;
+  opacity: 0.55;
+  animation: fluir 0.9s linear infinite;
+}
+.d-paso::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--acento);
+  opacity: 0.55;
+}
+
+@keyframes fluir {
+  to { background-position: 0 9px; }
+}
+
+/* Al abrir la ficha el diagrama se monta por pasos, en el mismo orden en el
+ * que se lee. */
+.ficha:target .diagrama > * {
+  animation: aparecer 0.5s cubic-bezier(0.16, 0.84, 0.24, 1) both;
+}
+.diagrama > :nth-child(1)  { animation-delay: 0.06s; }
+.diagrama > :nth-child(2)  { animation-delay: 0.11s; }
+.diagrama > :nth-child(3)  { animation-delay: 0.16s; }
+.diagrama > :nth-child(4)  { animation-delay: 0.21s; }
+.diagrama > :nth-child(5)  { animation-delay: 0.26s; }
+.diagrama > :nth-child(6)  { animation-delay: 0.31s; }
+.diagrama > :nth-child(7)  { animation-delay: 0.36s; }
+.diagrama > :nth-child(8)  { animation-delay: 0.41s; }
+.diagrama > :nth-child(9)  { animation-delay: 0.46s; }
+.diagrama > :nth-child(10) { animation-delay: 0.51s; }
+.diagrama > :nth-child(11) { animation-delay: 0.56s; }
 
 /* ---------- Sobre ---------- */
 
@@ -475,6 +821,8 @@ h1, h2 {
   .seccion { padding-top: 68px; }
   .panel { padding: 40px 26px; }
   .halo { filter: blur(80px); opacity: 0.13; }
+  .ficha { padding: 24px 16px; }
+  .ficha__cuerpo { padding: 28px 24px 32px; }
 }
 
 @media (max-width: 620px) {
@@ -487,6 +835,26 @@ h1, h2 {
   .boton { justify-content: center; }
   .lista { grid-template-columns: 1fr; }
   .pie__fila { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+  /* En el móvil la ficha ocupa la pantalla entera: un panel flotando con
+   * márgenes a los lados deja menos sitio del que hace falta para leer. */
+  .ficha { padding: 0; }
+  .ficha__caja {
+    max-height: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+  }
+  .ficha__barra { border-radius: 0; padding: 11px 16px; }
+  .ficha__barra__nombre { font-size: 15px; }
+  .boton--chico { padding: 9px 13px; font-size: 13px; }
+  .ficha__cuerpo { padding: 24px 20px 32px; }
+  .ficha__lema { font-size: 16px; }
+  .bloque--cierre { padding: 24px 20px; }
+  /* Las acciones a lo ancho vuelven a apilarse, menos las de la barra. */
+  .ficha__barra .acciones { flex-direction: row; }
+  .d-fila { grid-template-columns: 1fr; }
+  .d-paso { height: 26px; }
 }
 
 /* ---------- Sin movimiento ---------- */
@@ -494,6 +862,10 @@ h1, h2 {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .malla, .halo, .aparece { animation: none !important; }
+  .d-paso i { animation: none !important; opacity: 0.4; }
+  .ficha, .ficha__caja { transition: none !important; }
+  .ficha__caja { transform: none !important; }
+  .ficha:target .diagrama > * { animation: none !important; }
   .horizonte path { animation: none !important; stroke-dashoffset: 0; }
   .aparece { opacity: 1; transform: none; }
 }
