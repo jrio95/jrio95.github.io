@@ -151,6 +151,18 @@ h1, h2, h3 {
  *    difusa no parece profundidad, parece una mancha.
  *
  * El grano y la retícula no se mueven. Lo único que se mueve son las luces. */
+/* Las luces se salen a propósito por los lados, y al respirar crecen todavía
+ * más. Van dentro de una caja que las recorta: si no, en el móvil ensanchan
+ * la página y aparece scroll lateral. */
+.luces {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1100px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .halo {
   position: absolute;
   top: -280px;
@@ -1115,8 +1127,11 @@ main, .barra, .pie, .horizonte { position: relative; z-index: 1; }
   .ancho { padding-inline: 18px; }
   /* En el móvil la barra sólo lleva lo imprescindible: con cuatro enlaces el
    * menú salta a dos líneas y descuadra la cabecera entera. */
-  .menu { gap: 0; }
-  .menu a { padding: 7px 9px; font-size: 13.5px; }
+  .barra__fila { gap: 12px; }
+  .menu { gap: 0; min-width: 0; }
+  .menu a { padding: 7px 7px; font-size: 13.5px; white-space: nowrap; }
+  .idiomas { margin-left: 4px; }
+  .idiomas > * { padding: 6px 8px; }
   /* Con GitHub dentro, la barra se parte en dos líneas a esta anchura. El
    * enlace sigue en el pie, que es donde se va a buscar. */
   .menu .menu--oculto, .menu .menu--fuera { display: none; }
@@ -1147,6 +1162,15 @@ main, .barra, .pie, .horizonte { position: relative; z-index: 1; }
   .bloque--cierre { padding: 22px 18px; }
   .d-fila, .d-fila--tres { grid-template-columns: 1fr; }
   .d-paso { height: 24px; }
+}
+
+/* En los móviles más estrechos no cabe todo en una línea. Primero sobra el
+ * ".dev" de la marca; después, el enlace a contacto, que está al final. */
+@media (max-width: 400px) {
+  .marca > span:not(.marca__ficha) { display: none; }
+}
+@media (max-width: 340px) {
+  .menu .menu--movil { display: none; }
 }
 
 /* ---------- Sin movimiento ---------- */
