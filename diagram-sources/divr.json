@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Divr",
+    "output": "assets/diagrams/divr.html",
+    "quality_profile": "showcase",
+    "locale": "es",
+    "translations": {
+      "legend.frontend": "Interfaz",
+      "legend.backend": "Servicio",
+      "legend.database": "Almacenamiento",
+      "legend.external": "Externo"
+    }
+  },
+  "components": [
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "Web",
+      "sublabel": "React",
+      "pos": [
+        40,
+        50
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "mobile",
+      "type": "frontend",
+      "label": "App móvil",
+      "sublabel": "React Native · Expo",
+      "pos": [
+        330,
+        230
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "API compartida",
+      "sublabel": "Go · Gin · servicios de cartera",
+      "pos": [
+        330,
+        50
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "label": "PostgreSQL",
+      "sublabel": "Movimientos · dividendos · PUT",
+      "pos": [
+        620,
+        50
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "bme",
+      "type": "external",
+      "label": "bme-fundamentals",
+      "sublabel": "Cuentas y eventos",
+      "pos": [
+        330,
+        410
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "market",
+      "type": "external",
+      "label": "Datos de mercado",
+      "sublabel": "Yahoo · Frankfurter",
+      "pos": [
+        40,
+        230
+      ],
+      "size": [
+        170,
+        72
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "web-api",
+      "from": "web",
+      "to": "api",
+      "label": "JSON + JWT"
+    },
+    {
+      "id": "mobile-api",
+      "from": "mobile",
+      "to": "api",
+      "label": "JSON + JWT"
+    },
+    {
+      "id": "api-db",
+      "from": "api",
+      "to": "db",
+      "label": "SQL"
+    },
+    {
+      "id": "api-bme",
+      "from": "api",
+      "to": "bme",
+      "label": "si se configura",
+      "fromSide": "right",
+      "toSide": "right"
+    },
+    {
+      "id": "api-market",
+      "from": "api",
+      "to": "market",
+      "label": "consulta"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "violet",
+      "title": "Una cartera, dos interfaces",
+      "items": [
+        "La web y la app móvil consumen los mismos servicios.",
+        "La API protege los datos del usuario y persiste sus operaciones.",
+        "bme-fundamentals es opcional: necesita URL y token en el servidor."
+      ]
+    }
+  ]
+}

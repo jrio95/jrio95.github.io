@@ -14,8 +14,9 @@ en/index.html     La misma página, en inglés
 assets/style.css  Todo el diseño, tema claro y oscuro incluidos
 ```
 
-**No hay JavaScript.** Ni una línea. Lo único que se descarga de fuera son las
-dos tipografías de Google Fonts.
+Las portadas y fichas funcionan sin JavaScript. Los mapas interactivos de Archify
+se abren en HTML independientes con el visor incluido. Las tipografías de la
+portada se descargan de Google Fonts.
 
 Aparte está `.claude/`, que no es la página: es la skill de
 [Impeccable](https://github.com/pbakaus/impeccable) instalada en el proyecto,
@@ -283,3 +284,39 @@ son minutos.
 GitHub Pages sigue activo y sirve la misma rama en `jrio95.github.io`. No
 estorba: no hay fichero `CNAME` en el repositorio, que es lo que haría que
 Pages reclamase el dominio para sí.
+
+## Diagramas de proyectos
+
+Cada tarjeta incluye una miniatura SVG y un enlace al mapa interactivo.
+Los HTML y SVG están en `assets/diagrams/`, que el Dockerfile ya copia.
+Las especificaciones editables están en `diagram-sources/`.
+
+Generados con [Archify](https://github.com/tt-a1i/archify), revisión
+`d5a1333d7447c866a765adac7d4d062f2f02e4d2`. Se conserva su licencia MIT en
+`assets/diagrams/ARCHIFY-LICENSE.txt` y sus avisos de terceros.
+
+Son mapas de alto nivel. Se trazaron los clientes, puntos de entrada y módulos
+de análisis o persistencia de estos snapshots:
+
+| Proyecto | Revisión |
+|---|---|
+| Chess Coach | `88b902eed5bff4ca2233119468b3ea200a15cf8e` |
+| bme-fundamentals | `f40c68dc2dfaa0160726a432c1b5fb79779c0fca` |
+| Divr | `e51133da8f0d40da41177b2afa4d9e79868bb9fa` |
+
+El mapa de bme-fundamentals cubre las cuentas CNMV, no todos sus procesos de dividendos.
+Los mapas no incluyen código privado ni enlaces que darían un 404 a los visitantes.
+El contenido está en español; los controles del visor usan su interfaz inglesa.
+
+Validación: esquema y geometría del renderer de Archify aprobados. En el
+entorno Windows restringido se usó un adaptador de publicación local:
+`finalize` no pudo verificar la identidad de los directorios superiores.
+No se afirma haber pasado los controles de procedencia o navegador de
+`finalize`. Se comprobó por separado el renderizado real en Chrome a 1440 y
+390 px, las miniaturas, la ausencia de desbordamiento y la selección de nodos.
+Se inspeccionaron las capturas de escritorio y móvil.
+
+
+La integración conserva el diseño actual de `main`, las fichas, los dos idiomas
+y las correcciones de desbordamiento en móvil. Las vistas previas se enlazan
+desde ambas portadas; el contenido de los mapas sigue en español.
