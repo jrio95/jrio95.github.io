@@ -497,3 +497,14 @@ h1, h2 {
   .horizonte path { animation: none !important; stroke-dashoffset: 0; }
   .aparece { opacity: 1; transform: none; }
 }
+
+/* Mapas de arquitectura */
+.proyecto { display: flex; flex-direction: column; min-width: 0; overflow: hidden; background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); }
+.proyecto .entrada { border: 0; border-radius: 0; flex: 1; }
+.proyecto .entrada:hover { transform: none; }
+.mapa { display: block; margin: 0 16px 16px; border: 1px solid var(--borde); border-radius: 12px; overflow: hidden; background: var(--fondo); transition: border-color .2s ease; }
+.mapa:hover { border-color: var(--menta); }
+.mapa img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; padding: 12px; }
+.mapa__pie { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; padding: 14px 16px; border-top: 1px solid var(--borde); font-size: 14px; font-weight: 600; }
+.mapa__tipo { color: var(--tenue); font-weight: 400; }
+.mapa:focus-visible { outline: 3px solid var(--menta); outline-offset: 3px; }
