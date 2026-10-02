@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Chess Coach",
+    "output": "assets/diagrams/chess-coach.html",
+    "quality_profile": "showcase",
+    "locale": "es",
+    "translations": {
+      "legend.frontend": "Interfaz",
+      "legend.backend": "Servicio",
+      "legend.database": "Almacenamiento",
+      "legend.external": "Externo"
+    }
+  },
+  "components": [
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "Web y Android",
+      "sublabel": "React · Capacitor",
+      "pos": [
+        40,
+        50
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "API de partidas",
+      "sublabel": "Node · TypeScript",
+      "pos": [
+        330,
+        50
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "engine",
+      "type": "backend",
+      "label": "Stockfish",
+      "sublabel": "Pool de motores UCI",
+      "pos": [
+        620,
+        50
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "history",
+      "type": "database",
+      "label": "Historial",
+      "sublabel": "SQLite · partidas y etiquetas",
+      "pos": [
+        330,
+        230
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "coach",
+      "type": "backend",
+      "label": "Coach",
+      "sublabel": "Perfil a partir del historial",
+      "pos": [
+        620,
+        230
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "claude",
+      "type": "external",
+      "label": "Claude",
+      "sublabel": "Redacción opcional",
+      "pos": [
+        620,
+        410
+      ],
+      "size": [
+        170,
+        72
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "web-api",
+      "from": "web",
+      "to": "api",
+      "label": "PGN"
+    },
+    {
+      "id": "api-engine",
+      "from": "api",
+      "to": "engine",
+      "label": "FEN"
+    },
+    {
+      "id": "api-history",
+      "from": "api",
+      "to": "history",
+      "label": "guardar / leer"
+    },
+    {
+      "id": "api-coach",
+      "from": "api",
+      "to": "coach",
+      "label": "pedir informe"
+    },
+    {
+      "id": "coach-claude",
+      "from": "coach",
+      "to": "claude",
+      "label": "si hay clave"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "orange",
+      "title": "Evaluar antes de explicar",
+      "items": [
+        "Stockfish evalúa las posiciones y propone las mejores jugadas.",
+        "El coach redacta con el perfil calculado; requiere configurar una clave de IA."
+      ]
+    }
+  ]
+}
