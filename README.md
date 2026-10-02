@@ -4,7 +4,7 @@ Página personal de José. Se sirve con GitHub Pages desde este repositorio.
 
 ## Cómo está hecha
 
-HTML, CSS y un archivo de JavaScript. **Sin compilar, sin dependencias y sin
+HTML y CSS, con diagramas de arquitectura independientes. **Sin compilar, sin dependencias y sin
 gestor de paquetes**: se abre `index.html` en el navegador y ya se ve. Para
 trabajar en ella basta con editar el fichero y recargar.
 
@@ -14,8 +14,9 @@ index.html        La página entera
 assets/style.css  Todo el diseño, fondo y horizonte incluidos
 ```
 
-**No hay JavaScript.** Ni una línea. Lo único que se descarga de fuera son las
-dos tipografías de Google Fonts.
+La portada no tiene JavaScript. Los diagramas de arquitectura usan el visor
+interactivo de Archify, incluido en cada HTML, sin dependencias externas.
+Las dos tipografías de la portada se descargan de Google Fonts.
 
 ## Cambiar cosas
 
@@ -117,3 +118,35 @@ Ahora mismo se sirve en `jrio95.github.io`. Cuando `jrio.dev` esté comprado:
 
 El fichero `CNAME` no se añade antes de tener el dominio: haría que el sitio
 dejase de responder en la dirección actual sin responder todavía en la nueva.
+
+## Diagramas de proyectos
+
+Cada tarjeta incluye una miniatura SVG y un enlace al mapa interactivo.
+Los HTML y SVG están en `assets/diagrams/`, que el Dockerfile ya copia.
+Las especificaciones editables están en `diagram-sources/`.
+
+Generados con [Archify](https://github.com/tt-a1i/archify), revisión
+`d5a1333d7447c866a765adac7d4d062f2f02e4d2`. Se conserva su licencia MIT en
+`assets/diagrams/ARCHIFY-LICENSE.txt` y sus avisos de terceros.
+
+Son mapas de alto nivel. Se trazaron los clientes, puntos de entrada y módulos
+de análisis o persistencia de estos snapshots:
+
+| Proyecto | Revisión |
+|---|---|
+| Chess Coach | `88b902eed5bff4ca2233119468b3ea200a15cf8e` |
+| bme-fundamentals | `f40c68dc2dfaa0160726a432c1b5fb79779c0fca` |
+| Divr | `e51133da8f0d40da41177b2afa4d9e79868bb9fa` |
+
+El mapa de bme-fundamentals cubre las cuentas CNMV, no todos sus procesos de dividendos.
+Los mapas no incluyen código privado ni enlaces que darían un 404 a los visitantes.
+El contenido está en español; los controles del visor usan su interfaz inglesa.
+
+Validación: esquema y geometría del renderer de Archify aprobados. En el
+entorno Windows restringido se usó un adaptador de publicación local:
+`finalize` no pudo verificar la identidad de los directorios superiores.
+No se afirma haber pasado los controles de procedencia o navegador de
+`finalize`. Se comprobó por separado el renderizado real en Chrome a 1440 y
+390 px, las miniaturas, la ausencia de desbordamiento y la selección de nodos.
+Se inspeccionaron las capturas de escritorio y móvil.
+

@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "bme-fundamentals · cuentas CNMV",
+    "output": "assets/diagrams/bme-fundamentals.html",
+    "quality_profile": "showcase",
+    "locale": "es",
+    "translations": {
+      "legend.frontend": "Interfaz",
+      "legend.backend": "Servicio",
+      "legend.database": "Almacenamiento",
+      "legend.external": "Externo"
+    }
+  },
+  "components": [
+    {
+      "id": "cnmv",
+      "type": "external",
+      "label": "CNMV",
+      "sublabel": "Documentos oficiales",
+      "pos": [
+        40,
+        50
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "download",
+      "type": "backend",
+      "label": "Descarga",
+      "sublabel": "Go · cmd/download",
+      "pos": [
+        330,
+        50
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "files",
+      "type": "database",
+      "label": "Documentos",
+      "sublabel": "Ficheros originales en disco",
+      "pos": [
+        620,
+        50
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "derive",
+      "type": "backend",
+      "label": "Lectura y derivación",
+      "sublabel": "Go · XBRL y vista anual",
+      "pos": [
+        620,
+        230
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "label": "PostgreSQL",
+      "sublabel": "Hechos · valores · procedencia",
+      "pos": [
+        330,
+        230
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "API HTTP",
+      "sublabel": "Go · /v1/ con Bearer",
+      "pos": [
+        40,
+        230
+      ],
+      "size": [
+        170,
+        72
+      ]
+    },
+    {
+      "id": "clients",
+      "type": "external",
+      "label": "Consumidores",
+      "sublabel": "Divr y otros clientes",
+      "pos": [
+        40,
+        410
+      ],
+      "size": [
+        170,
+        72
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "download-cnmv",
+      "from": "download",
+      "to": "cnmv",
+      "label": "buscar"
+    },
+    {
+      "id": "download-files",
+      "from": "download",
+      "to": "files",
+      "label": "guardar"
+    },
+    {
+      "id": "derive-files",
+      "from": "derive",
+      "to": "files",
+      "label": "leer"
+    },
+    {
+      "id": "derive-db",
+      "from": "derive",
+      "to": "db",
+      "label": "leer / derivar"
+    },
+    {
+      "id": "api-db",
+      "from": "api",
+      "to": "db",
+      "label": "consultar"
+    },
+    {
+      "id": "clients-api",
+      "from": "clients",
+      "to": "api",
+      "label": "HTTP + token"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Cada cifra tiene un origen",
+      "items": [
+        "La lectura conserva hechos y contexto; la derivación construye las vistas de cuentas.",
+        "Un dato ausente conserva su motivo. No se transforma en un cero.",
+        "Este mapa cubre las cuentas CNMV; los dividendos y otras fuentes quedan fuera de este recorrido."
+      ]
+    }
+  ]
+}
