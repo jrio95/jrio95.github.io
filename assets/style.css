@@ -330,16 +330,13 @@ main, .barra, .pie, .horizonte { position: relative; z-index: 1; }
   font-weight: 600;
   letter-spacing: -0.01em;
 }
-/* El cuadrado con la inicial hace de logotipo sin necesitar un archivo. */
+/* El logotipo: «jr» en negro sobre el azul, con el punto de la «j» en blanco.
+ * Va en línea para no pedir un archivo más; es el mismo dibujo que
+ * assets/logo.svg, que hace de favicon. Los colores son fijos y no siguen al
+ * tema: en claro el azul baja a #2c5fef y la «jr» negra perdería contraste. */
 .marca__ficha {
-  display: grid;
-  place-items: center;
+  display: block;
   width: 27px; height: 27px;
-  border-radius: 8px;
-  background: linear-gradient(140deg, var(--azul), var(--violeta));
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
   flex: none;
 }
 .marca span { color: var(--tinta-suave); }
