@@ -148,7 +148,7 @@ interfaz que es el único color con voz.
 ### Secondary
 
 - **Violeta de madrugada** (`#a78bfa`): no pinta ningún elemento entero. Existe
-  para el degradado del logotipo y para el remate del titular. Si aparece
+  para el remate del titular. Si aparece
   sólido en algún sitio, es un error.
 
 ### Neutral

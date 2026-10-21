@@ -12,7 +12,13 @@ index.html        La página entera, en español
 en/index.html     La misma página, en inglés
 404.html          Página de error
 assets/style.css  Todo el diseño, tema claro y oscuro incluidos
+assets/logo.svg   El logotipo, que hace también de favicon
+assets/logo-180.png  El mismo, para la pantalla de inicio del iPhone
 ```
+
+El logotipo es «jr» en negro sobre el azul, con el punto de la «j» en blanco.
+En la barra va dibujado en línea dentro de cada página; si se cambia, hay que
+cambiarlo allí (en las tres páginas), en `logo.svg` y volver a sacar el PNG.
 
 Las portadas y fichas funcionan sin JavaScript. Los mapas interactivos de Archify
 se abren en HTML independientes con el visor incluido. Las tipografías de la
@@ -43,7 +49,7 @@ temas.
 ```
 
 Hay **un solo color de acento**. El violeta no pinta ningún elemento entero:
-existe para el degradado del titular y el del logotipo, y ahí se acaba. No hay
+existe para el degradado del titular, y ahí se acaba. No hay
 verde en ninguna parte: una pastilla verde de "disponible" es el adorno que
 lleva puesto media web generada, y no dice nada que no diga la fila `estado`
 de la ficha.
