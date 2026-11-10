@@ -43,8 +43,14 @@
 	# La puerta de atrás: /es/ sirve el español siempre, sin pasar por el
 	# desvío. Es lo que enlaza el botón ES, y por eso elegir idioma a mano no
 	# te devuelve al que traía el navegador.
-	handle /es/* {
-		rewrite * /index.html
+	#
+	# `handle_path` le quita el /es a la ruta antes de seguir. index.html pide
+	# sus ficheros con rutas relativas (assets/style.css), que desde /es/ se
+	# convierten en /es/assets/style.css: así se sirven desde /assets/ y no
+	# como otra copia de la página, que es lo que dejaba /es/ sin estilos.
+	redir /es /es/ 308
+	handle_path /es/* {
+		rewrite / /index.html
 		file_server
 	}
 

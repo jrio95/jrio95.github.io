@@ -366,12 +366,21 @@ main, .barra, .pie, .horizonte { position: relative; z-index: 1; }
   font-size: 11.5px;
   letter-spacing: 0.08em;
 }
-.idiomas > * {
+/* Las dos mitades tienen que medir lo mismo. El enlace vive dentro de `.menu`,
+ * así que sin el `.menu` delante heredaría la letra y el relleno de los
+ * enlaces del menú y quedaría más grande que el idioma marcado. */
+.idiomas > *,
+.menu .idiomas a {
+  display: grid;
+  place-items: center;
+  min-width: 36px;
   padding: 6px 10px;
+  font-size: inherit;
+  border-radius: 0;
   color: var(--tinta-suave);
   transition: color 0.16s ease, background 0.16s ease;
 }
-.idiomas a:hover { color: var(--tinta); background: var(--hueco); }
+.menu .idiomas a:hover { color: var(--tinta); background: var(--hueco); }
 .idiomas__on {
   background: var(--azul);
   color: var(--sobre-azul);
@@ -1128,7 +1137,7 @@ main, .barra, .pie, .horizonte { position: relative; z-index: 1; }
   .menu { gap: 0; min-width: 0; }
   .menu a { padding: 7px 7px; font-size: 13.5px; white-space: nowrap; }
   .idiomas { margin-left: 4px; }
-  .idiomas > * { padding: 6px 8px; }
+  .idiomas > *, .menu .idiomas a { min-width: 32px; padding: 6px 8px; }
   /* Con GitHub dentro, la barra se parte en dos líneas a esta anchura. El
    * enlace sigue en el pie, que es donde se va a buscar. */
   .menu .menu--oculto, .menu .menu--fuera { display: none; }

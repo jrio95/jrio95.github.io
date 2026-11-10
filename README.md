@@ -244,6 +244,12 @@ no son obvios:
 - `/es/` sirve el español **siempre**, saltándose el desvío, y es lo que enlaza
   el botón ES. Sin esa puerta de atrás, un inglés que pulsara ES volvería a `/`
   y el desvío lo devolvería a `/en/`: elegir idioma a mano sería imposible.
+  Ojo con las rutas: `index.html` pide sus ficheros con rutas relativas
+  (`assets/style.css`), que desde `/es/` se convierten en
+  `/es/assets/style.css`. Caddy le quita el `/es` a la ruta (`handle_path`)
+  para servirlas desde `/assets/`. Si se sirviera la página para cualquier
+  ruta bajo `/es/`, la hoja de estilos llegaría como HTML y `/es/` saldría sin
+  estilos, que es lo que pasaba antes.
 
 La raíz manda `Vary: Accept-Language`, o cualquier caché intermedia le serviría
 a un inglés la respuesta que guardó para un español.
